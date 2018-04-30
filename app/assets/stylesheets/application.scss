@@ -1,0 +1,336 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap";
+@import "font-awesome";
+
+/* General */
+body {
+  background: #eee url("bg.jpg") repeat;
+}
+
+.container {
+  max-width: 1240px;
+}
+
+.fa-margin {
+  margin-right: 8px;
+}
+
+::selection {
+  background: #015e94;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #015e94;
+  color: #fff;
+}
+
+/* Header */
+.container-header {
+  background-color: #fff;
+  color: #eee;
+}
+
+/* Navbar */
+.navbar-toggler {
+  margin-bottom: 12px;
+}
+
+.navbar {
+  padding: 20px;
+}
+
+.navbar-brand {
+  opacity: 1.0;
+  transition: opacity 0.2s ease-in-out;
+  color: #015e94;
+}
+
+.navbar-brand:hover {
+  opacity: 0.5;
+}
+
+.nav-main:after {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: 1px auto auto auto;
+  width: 0;
+  background: #015e94;
+  transition: width .5s ease, background-color .5s ease;
+}
+
+.nav-main:hover:after {
+  width: 25%;
+  background: #222831;
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-main:hover:after {
+    width: 0;
+  }
+}
+
+.nav-main > a {
+  color: #015e94;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-main:hover > a {
+  color: #222831;
+}
+
+ul.nav-controls {
+  margin-top: auto;
+  margin-bottom: auto;
+  list-style: none;
+  font-weight: bold;
+  float: right;
+}
+
+li.nav-control {
+  color: #015e94;
+  margin-left: 24px;
+  display: inline;
+}
+
+@media only screen and (max-width: 991px) {
+  li.nav-control {
+    margin-left: 4px;
+    font-size: 10px;
+  }
+}
+
+li.nav-control-language {
+  font-size: 12px;
+  color: #709abd;
+  margin-left: 6px;
+}
+
+.nav-control > a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-control > a:hover {
+  color: #222831;
+}
+
+ul.nav-language {
+  font-size: 8px;
+  margin-top: auto;
+  margin-bottom: auto;
+  list-style: none;
+  font-weight: bold;
+  float: right;
+}
+
+li.nav-language {
+  color: #709abd;
+  display: inline;
+}
+
+.nav-language > a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-language:hover > a {
+  color: #222831;
+}
+
+/* Airport info */
+.container-info-bg {
+  background: #015e94;
+  padding: 0;
+}
+
+.container-info {
+  background-color: #015e94;
+  color: #fff;
+  font-size: 14px;
+}
+
+ul.cover-info {
+  padding: 15px;
+  margin: auto;
+  list-style: none;
+}
+
+li.cover-info {
+  display: inline;
+  margin-right: 24px;
+}
+
+@media only screen and (max-width: 991px) {
+  li.cover-info {
+    display: block;
+  }
+}
+
+/* Cover photo */
+.container-cover {
+  background: url("cover.jpeg") center;
+  margin: auto;
+  padding: 0;
+}
+
+ul.cover-social {
+  float: right;
+  padding: 10px;
+  margin: auto;
+  list-style: none;
+}
+
+li.cover-social {
+  margin-left: 4px;
+  display: inline;
+}
+
+li.cover-social > a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+li.cover-social:hover > a {
+  color: #709abd;
+}
+
+.container-cover-flights {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 0;
+}
+
+.container-weather {
+  background-color: #015e94;
+  color: #fff;
+}
+
+.container-flights {
+  padding: 0;
+  background-color: #fff;
+  color: #015e94;
+}
+
+.nav-flights {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.table-flights {
+  margin-top: 12px;
+}
+
+.thead-primary {
+  background-color: #015e94;
+  color: #fff;
+}
+
+.container-flights-more {
+  background-color: #015e94;
+  color: #fff;
+  padding: 8px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+a.more-flights {
+  text-decoration: none;
+  padding-left: 4px;
+  transition: padding 0.1s ease-in-out;
+}
+
+a.more-flights:hover {
+  padding-left: 12px;
+  color: #fff;
+}
+
+/* Content */
+.content {
+  background-color: #fff;
+  padding: 0;
+}
+
+.content-title {
+  background-color: #015e94;
+  color: #fff;
+  padding: 2px 4px;
+}
+
+h2.content-title {
+  margin-left: 12px;
+}
+
+.content-content {
+  padding: 12px;
+}
+
+/* News */
+.container-news {
+  background-color: #ccc;
+}
+
+/* Footer */
+.container-footer {
+  background-color: #015e94;
+  color: #eee;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+.footer-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(112, 154, 189, 0.25)
+}
+
+ul.footer-list {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+  list-style: none;
+}
+
+li.footer-list-item > a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+li.footer-list-item > a:hover {
+  color: #709abd;
+}
+
+.footer-description {
+  font-size: 12px;
+  margin-left: 36px;
+  text-align: left;
+}
+
+.footer-text {
+  color: #709abd;
+  padding: 10px;
+  font-size: 12px;
+}
