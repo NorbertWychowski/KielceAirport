@@ -3,6 +3,5 @@ class StaticController < ApplicationController
 
   def index
     @weather = get_weather
-    @location = request.location.city
   end
 end
