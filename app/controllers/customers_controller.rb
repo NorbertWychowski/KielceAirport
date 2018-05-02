@@ -3,24 +3,29 @@ class CustomersController < ApplicationController
   end
 
   def create
-    person = Person.new(email: params[:customer][:email],
-                        first_name: params[:customer][:first_name],
-                        last_name: params[:customer][:last_name],
-                        password_digest: BCrypt::Password.create(params[:customer][:password_digest]),
-                        country: params[:customer][:country],
-                        city: params[:customer][:city],
-                        street: params[:customer][:street])
-    if person.save
-      customer = Customer.new(card_number: params[:customer][:card_number],
-                              year: params[:customer][:year],
-                              month: params[:customer][:month],
-                              cvv: params[:customer][:cvv],
-                              confirm_token: SecureRandom.urlsafe_base64.to_s,
-                              person_id: person.id)
-      customer.save
-      RegistrationMailer.registration_confirmation(request.host_with_port, person).deliver
-      flash[:success] = "Witaj na stronie Aplikacji Kielce Airport! Na podany przez Ciebie adres email został wysłany link aktywujący twoje konto"
-      redirect_to root_path
+    if Person.find_by_email params[:customer][:email]
+      flash[:danger] = "Do podanego adresu email przypisane jest już konto"
+      redirect_to register_path
+    else
+      person = Person.new(email: params[:customer][:email],
+                          first_name: params[:customer][:first_name],
+                          last_name: params[:customer][:last_name],
+                          password_digest: BCrypt::Password.create(params[:customer][:password_digest]),
+                          country: params[:customer][:country],
+                          city: params[:customer][:city],
+                          street: params[:customer][:street])
+      if person.save
+        customer = Customer.new(card_number: params[:customer][:card_number],
+                                year: params[:customer][:year],
+                                month: params[:customer][:month],
+                                cvv: params[:customer][:cvv],
+                                confirm_token: SecureRandom.urlsafe_base64.to_s,
+                                person_id: person.id)
+        customer.save
+        RegistrationMailer.registration_confirmation(ENV['host'] + ":" + request.port.to_s, person).deliver
+        flash[:success] = "Witaj na stronie Aplikacji Kielce Airport! Na podany przez Ciebie adres email został wysłany link aktywujący twoje konto"
+        redirect_to root_path
+      end
     end
   end
 

@@ -9,6 +9,9 @@
 <div class="container content">
   <div class="content-content">
     <div class="container-register">
+      <% flash.each do |key, value| %>
+        <div class='<%= "alert alert-#{key}" %>' style="margin-top: 10px"><%= value %></div>
+      <% end %>
       <h3 class="section-title font-weight-light">Dane wymagane</h3>
       <%= form_for :customer, url: register_path do |f| %>
         <div class="row">
