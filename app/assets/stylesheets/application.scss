@@ -14,17 +14,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
-/* General */
+/*** General ***/
+/* Main selectors */
 body {
   background: #eee url("bg.jpg") repeat;
-}
-
-.container {
-  max-width: 1240px;
-}
-
-.fa-margin {
-  margin-right: 8px;
 }
 
 ::selection {
@@ -37,10 +30,50 @@ body {
   color: #fff;
 }
 
+h2.section-title {
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 6px solid #015e94;
+}
+
+h3.section-title {
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 6px solid #709abd;
+}
+
+p.description {
+  font-size: 14px;
+  color: rgba(34, 40, 49, 0.7)
+}
+
+/* Icon */
+.fa-margin {
+  margin-right: 8px;
+}
+
+/* Bootstrap selectors */
+.container {
+  max-width: 1248px;
+}
+
+.btn-primary {
+  background: #015e94;
+  border-color: #015e94;
+}
+
+.btn-primary:hover {
+  background: #709abd;
+  border-color: #709abd;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 5px #015e94;
+}
+
 /* Header */
 .container-header {
   background-color: #fff;
-  color: #eee;
 }
 
 /* Navbar */
@@ -65,8 +98,8 @@ body {
 .nav-main:after {
   content: '';
   display: block;
+  margin: auto;
   height: 2px;
-  margin: 1px auto auto auto;
   width: 0;
   background: #015e94;
   transition: width .5s ease, background-color .5s ease;
@@ -154,36 +187,56 @@ li.nav-language {
 }
 
 /* Airport info */
-.container-info-bg {
+.container-airport-info-bg {
   background: #015e94;
   padding: 0;
 }
 
-.container-info {
+.container-airport-info {
   background-color: #015e94;
   color: #fff;
   font-size: 14px;
 }
 
-ul.cover-info {
+ul.airport-info {
   padding: 15px;
   margin: auto;
   list-style: none;
 }
 
-li.cover-info {
+li.airport-info {
   display: inline;
   margin-right: 24px;
 }
 
 @media only screen and (max-width: 991px) {
-  li.cover-info {
+  li.airport-info {
     display: block;
   }
 }
 
-/* Cover photo */
-.container-cover {
+/* Cover container */
+.container-cover-title {
+  margin: auto;
+  padding: 0;
+  background-color: #709abd;
+  color: #fff;
+  height: 96px;
+}
+
+.container-cover-image {
+  margin: auto;
+  padding: 0;
+  height: 96px;
+  background: url("cover.jpeg") no-repeat center;
+}
+
+.cover-content {
+  margin: auto;
+}
+
+/* Main cover */
+.container-main-cover {
   background: url("cover.jpeg") center;
   margin: auto;
   padding: 0;
@@ -220,6 +273,7 @@ li.cover-social:hover > a {
 .container-weather {
   background-color: #015e94;
   color: #fff;
+  text-transform: capitalize;
 }
 
 .container-flights {
@@ -333,4 +387,56 @@ li.footer-list-item > a:hover {
   color: #709abd;
   padding: 10px;
   font-size: 12px;
+}
+
+/*** Subpages ***/
+/* Login */
+.container-login {
+  padding: 2px 64px;
+}
+
+.container-login-left {
+  border-right: 1px solid rgba(112, 154, 189, 0.5);
+}
+
+@media only screen and (max-width: 991px) {
+  .container-login {
+    padding: 12px 12px;
+  }
+  .container-login-left {
+    border-right: none;
+  }
+}
+
+ul.register-features {
+  font-size: 12px;
+  color: rgba(34, 40, 49, 0.7)
+}
+
+a.register-features {
+  text-decoration: none;
+  color: #015e94;
+  transition: color 0.2s ease-in-out;
+  font-size: 12px;
+}
+
+a.register-features:hover {
+  color: #222831;
+}
+
+/* Register */
+.container-register {
+  padding: 2px 64px;
+}
+
+.register-description {
+  margin-top: 5px;
+  padding: auto;
+  float: right;
+}
+
+@media only screen and (max-width: 991px) {
+  .register-description {
+    float: none;
+  }
 }

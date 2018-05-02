@@ -7,7 +7,7 @@
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('clock').innerHTML =
-            "<i class=\"fa fa-margin fa-clock-o\" aria-hidden=\"true\"></i>" + h + ":" + m + ":" + s;
+            "<i class=\"fa fa-margin fa-clock-o\" aria-hidden=\"true\"></i>" + h + ":" + m + ":" + s + "</p>";
         var t = setTimeout(startTime, 500);
     }
 
@@ -21,18 +21,22 @@
 </script>
 <body onload="startTime()">
 <!-- cover-->
-<div class="container-fluid container-cover row">
+<% flash.each do |key, value| %>
+  <div class='<%= "alert alert-#{key}" %>' style="margin-top: 10px"><%= value %></div>
+<% end %>
+<div class="container-fluid container-main-cover row">
+
   <!-- flights -->
   <div class="container container-cover-flights">
-    <div class="col-lg-3 col-md-4 col-sm-12 float-left container-weather">
+    <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 float-left container-weather">
       <h2 class="font-weight-light">Pogoda</h2>
       <p class="font-weight-light">
-        <img src=<%= "http://openweathermap.org/img/w/" + @weather['weather'].first['icon'] + ".png" %>>
-        <%= @weather['weather'].first['description'].capitalize + " " + @weather['main']['temp'].to_s %>&#176C
+        <img src=<%= "http://openweathermap.org/img/w/#{@weather['weather'].first['icon']}.png" %>>
+        <%= @weather['weather'].first['description'].capitalize + " " + @weather['main']['temp'].round.to_s %>&#176C
       </p>
-      <p class="font-weight-light" id="clock"></p>
+      <p class="font-weight-light" style="margin-top: -8px" id="clock">
     </div>
-    <div class="col-lg-7 col-md-7 col-sm-12 float-right container-flights">
+    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right container-flights">
       <ul class="nav nav-tabs nav-flights" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" href="#flightsArrivals" role="tab" data-toggle="tab">Przyloty</a>

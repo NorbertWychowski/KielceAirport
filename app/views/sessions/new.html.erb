@@ -1,0 +1,58 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Logowanie</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login container-login-left">
+        <h3 class="font-weight-light" style="margin-bottom: 12px">Mam już konto</h3>
+        <button class="btn btn-primary">
+          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Zaloguj się kontem Google
+        </button>
+        <p class="description font-weight-light" style="margin-top: 12px">Zaloguj się adresem e-mail</p>
+        <%= form_for(:session, url: login_path) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :email, class: 'form-control', placeholder: "Adres e-mail", required: '' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_digest, class: 'form-control', placeholder: "Hasło", required: '' %>
+            <small id="passwordHelp" class="form-text text-muted">Nigdy nie podawaj innym swojego hasła!</small>
+          </div>
+          <%= f.submit "Zaloguj się", class: 'btn btn-primary' %>
+          <% flash.each do |_, value| %>
+            <div class='alert alert-danger' , style="margin-top: 10px"><%= value %></div>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login">
+        <h3 class="font-weight-light">Nie mam konta</h3>
+        <p class="description font-weight-light">Zarejestruj się za darmo</p>
+        <%= link_to "Rejestracja przez e-mail", register_path,
+                    {class: 'btn btn-primary', 'aria-describedby': 'registerHelp', style: 'margin-bottom: 12px'} %>
+        <a href="#" role="button" class="btn btn-primary" aria-describedby="registerHelp" style="margin-bottom: 12px">
+          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Rejestracja przez konto Google</a>
+        <p>
+          <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription">Dlaczego
+            warto mieć konto?</a>
+        </p>
+        <div class="collapse" id="registerDescription">
+          <div class="col">
+            <ul class="register-features">
+              <li class="register-features">Atrakcyjne promocje</li>
+              <li class="register-features">Rezerwacje biletów</li>
+              <li class="register-features">Historia lotów</li>
+              <li class="register-features">Historia lotów</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
