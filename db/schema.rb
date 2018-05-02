@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20180502082816) do
 
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "card_number"
-    t.integer "year"
-    t.integer "month"
-    t.integer "cvv"
-    t.string "confirm_token"
+    t.string "card_number", default: ""
+    t.integer "year", default: 0
+    t.integer "month", default: 0
+    t.integer "cvv", default: 0
+    t.string "confirm_token", default: ""
     t.boolean "email_confirmed", default: false
     t.bigint "person_id"
     t.index ["person_id"], name: "index_customers_on_person_id"
@@ -27,10 +27,12 @@ ActiveRecord::Schema.define(version: 20180502082816) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.string "password_digest"
-    t.string "country"
-    t.string "city"
-    t.string "street"
+    t.string "password_digest", default: ""
+    t.string "country", default: ""
+    t.string "city", default: ""
+    t.string "street", default: ""
+    t.string "provider", default: ""
+    t.string "uid", default: ""
   end
 
   add_foreign_key "customers", "people"

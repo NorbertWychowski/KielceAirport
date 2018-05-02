@@ -17,6 +17,10 @@ gem 'open-weather'
 # html select - wszystkie panstwa
 gem 'country_select'
 
+# API Google+
+gem 'omniauth-google-oauth2'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use mysql as the database for Active Record

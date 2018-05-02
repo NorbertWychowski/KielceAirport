@@ -11,9 +11,9 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login container-login-left">
         <h3 class="font-weight-light" style="margin-bottom: 12px">Mam już konto</h3>
-        <button class="btn btn-primary">
+        <%= link_to "/auth/google_oauth2", class: 'btn btn-primary' do %>
           <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Zaloguj się kontem Google
-        </button>
+        <% end %>
         <p class="description font-weight-light" style="margin-top: 12px">Zaloguj się adresem e-mail</p>
         <%= form_for(:session, url: login_path) do |f| %>
           <div class="form-group">
@@ -35,8 +35,6 @@
         <p class="description font-weight-light">Zarejestruj się za darmo</p>
         <%= link_to "Rejestracja przez e-mail", register_path,
                     {class: 'btn btn-primary', 'aria-describedby': 'registerHelp', style: 'margin-bottom: 12px'} %>
-        <a href="#" role="button" class="btn btn-primary" aria-describedby="registerHelp" style="margin-bottom: 12px">
-          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Rejestracja przez konto Google</a>
         <p>
           <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription">Dlaczego
             warto mieć konto?</a>

@@ -23,8 +23,7 @@ class CustomersController < ApplicationController
                                 person_id: person.id)
         customer.save
         RegistrationMailer.registration_confirmation(ENV['host'] + ":" + request.port.to_s, person).deliver
-        flash[:success] = "Witaj na stronie Aplikacji Kielce Airport! Na podany przez Ciebie adres email został wysłany link aktywujący twoje konto"
-        redirect_to root_path
+        redirect_to registration_confirm_path(person.email)
       end
     end
   end
