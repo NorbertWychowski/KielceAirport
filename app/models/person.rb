@@ -10,7 +10,7 @@ class Person < ApplicationRecord
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.info.email
-      user.save
+      user.save!
 
       @customer = Customer.find_by(person_id: user.id)
 
