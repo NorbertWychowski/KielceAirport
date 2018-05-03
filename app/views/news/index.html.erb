@@ -1,0 +1,65 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Aktualności</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <% @news.each do |news| %>
+      <div class="container container-news">
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            <%= image_tag news.image.thumb.url, class: 'news-image' %>
+          </div>
+          <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+            <div class="row news-info">
+              <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                <h2 class="font-weight-light news-title"><%= news.title %></h2>
+              </div>
+              <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                <h5 align="right" class="news-date"><%= news.add_date %></h5>
+              </div>
+            </div>
+            <div class="container news-content">
+              <p class="font-weight-light news-content"><%= simple_format(news.content.split("\n").first) %></p>
+              <%= link_to "Czytaj więcej", news_path(news), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="container">
+      <nav aria-label="Flights navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Poprzednia</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#">Następna</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'New News', new_news_path %>
+
+<!-- taki tam komentarz w ruby xD -->
+<% if false %>
+  <%= link_to 'Show', news %>
+  <%= link_to 'Edit', edit_news_path(news) %>
+  <%= link_to 'Destroy', news, method: :delete, data: {confirm: 'Are you sure?'} %>
+<% end %>

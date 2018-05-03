@@ -3,6 +3,8 @@ class StaticController < ApplicationController
 
   def index
     @weather = get_weather
+    @news = News.first
+    @content = @news.content[0..(@news.content.index('.') - 1)]
   end
 
   def registration_confirm

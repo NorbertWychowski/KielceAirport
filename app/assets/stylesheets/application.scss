@@ -127,6 +127,19 @@ p.description {
   color: #222831;
 }
 
+@media only screen and (max-width: 991px) {
+  .nav-main > a {
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #015e94;
+    color: #fff;
+  }
+
+  .nav-main:hover > a {
+    color: #709abd;
+  }
+}
+
 ul.nav-controls {
   margin-top: auto;
   margin-bottom: auto;
@@ -137,14 +150,27 @@ ul.nav-controls {
 
 li.nav-control {
   color: #015e94;
-  margin-left: 24px;
+  margin-left: 12px;
   display: inline;
 }
 
 @media only screen and (max-width: 991px) {
+  ul.nav-controls {
+    padding: 0;
+    float: left;
+  }
+
   li.nav-control {
-    margin-left: 4px;
-    font-size: 10px;
+    margin-left: 0;
+    margin-right: 4px;
+    font-size: 12px;
+  }
+
+  li.nav-control > a {
+    background-color: #709abd;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
   }
 }
 
@@ -152,6 +178,17 @@ li.nav-control-language {
   font-size: 12px;
   color: #709abd;
   margin-left: 6px;
+}
+
+@media only screen and (max-width: 991px) {
+  li.nav-control-language > a {
+    font-size: 12px;
+    margin-left: 0;
+    background-color: #709abd;
+    color: #fff;
+    padding: 2px;
+    border-radius: 4px;
+  }
 }
 
 .nav-control > a {
@@ -224,20 +261,13 @@ li.airport-info {
   height: 96px;
 }
 
-.container-cover-image {
-  margin: auto;
-  padding: 0;
-  height: 96px;
-  background: url("cover.jpeg") no-repeat center;
-}
-
 .cover-content {
   margin: auto;
 }
 
 /* Main cover */
 .container-main-cover {
-  background: url("cover.jpeg") center;
+  background: url("covermain.jpeg") no-repeat center;
   margin: auto;
   padding: 0;
 }
@@ -338,11 +368,6 @@ h2.content-title {
   padding: 12px;
 }
 
-/* News */
-.container-news {
-  background-color: #ccc;
-}
-
 /* Footer */
 .container-footer {
   background-color: #015e94;
@@ -389,6 +414,8 @@ li.footer-list-item > a:hover {
   font-size: 12px;
 }
 
+/*** Main page ***/
+
 /*** Subpages ***/
 /* Login */
 .container-login {
@@ -403,8 +430,9 @@ li.footer-list-item > a:hover {
   .container-login {
     padding: 12px 12px;
   }
+
   .container-login-left {
-    border-right: none;
+    border: none;
   }
 }
 
@@ -438,5 +466,144 @@ a.register-features:hover {
 @media only screen and (max-width: 991px) {
   .register-description {
     float: none;
+  }
+}
+
+p.password-confirmation {
+  margin-top: 6px;
+  font-weight: bold;
+  color: #015e94;
+}
+
+/* Search */
+.btn-search {
+  width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  .btn-search {
+    margin-top: 12px;
+  }
+}
+
+.page-link {
+  color: #015e94;
+  transition: color 0.1s ease-in-out;
+}
+
+td.flight-element {
+  min-width: 100px;
+}
+
+a.table-link {
+  color: #015e94;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a.table-link:hover {
+  color: #709abd;
+}
+
+@media only screen and (max-width: 991px) {
+  td.flight-element {
+    font-size: 12px;
+  }
+
+  a.flight-element {
+    background-color: #015e94;
+    color: #fff;
+    padding: 2px;
+    border-radius: 4px;
+  }
+}
+
+.pagination > li.active > a, .pagination > li.active > span {
+  color: #fff !Important;
+  background: #015e94 !Important;
+  border-color: #015e94 !Important;
+}
+
+/* User profile */
+.container-profile-menu {
+  padding: 6px 24px;
+  border-right: 1px solid rgba(112, 154, 189, 0.5);
+}
+
+@media only screen and (max-width: 991px) {
+  .container-profile-menu {
+    padding: 12px 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(112, 154, 189, 0.5);
+    margin-bottom: 12px;
+  }
+}
+
+.profile-row {
+  padding: 2px 8px;
+  margin: 4px 12px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #015e94;
+}
+
+p.profile-description {
+  float: right;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width: 991px) {
+  p.profile-description {
+    float: left;
+    margin-top: 7px;
+  }
+}
+
+td.table-element {
+  min-width: 120px;
+}
+
+/* News */
+.container-news {
+  padding: 12px;
+}
+
+.news-info {
+  border-bottom: 1px solid rgba(112, 154, 189, 0.25);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+img.news-image {
+  width: 100%;
+}
+
+.news-title {
+  color: #015e94;
+}
+
+.news-date {
+  color: rgba(34, 40, 49, 0.7);
+  font-size: 14px;
+  margin-top: 22px
+}
+
+@media only screen and (max-width: 991px) {
+  .news-date {
+    margin-top: 0;
+  }
+}
+
+.news-content {
+  font-size: 14px;
+  color: rgba(34, 40, 49, 0.7);
+  text-align: justify;
+}
+
+@media only screen and (max-width: 991px) {
+  .news-content {
+    margin-top: 12px;
   }
 }

@@ -7,7 +7,7 @@
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('clock').innerHTML =
-            "<i class=\"fa fa-margin fa-clock-o\" aria-hidden=\"true\"></i>" + h + ":" + m + ":" + s + "</p>";
+            "<i class=\"fa fa-margin fa-clock-o\" aria-hidden=\"true\"></i>" + h + ":" + m + ":" + s;
         var t = setTimeout(startTime, 500);
     }
 
@@ -24,6 +24,7 @@
 <% flash.each do |key, value| %>
   <div class='<%= "alert alert-#{key}" %>' style="margin-top: 10px"><%= value %></div>
 <% end %>
+<!-- cover-->
 <div class="container-fluid container-main-cover row">
 
   <!-- flights -->
@@ -32,9 +33,10 @@
       <h2 class="font-weight-light">Pogoda</h2>
       <p class="font-weight-light">
         <img src=<%= "http://openweathermap.org/img/w/#{@weather['weather'].first['icon']}.png" %>>
-        <%= @weather['weather'].first['description'].capitalize + " " + @weather['main']['temp'].round.to_s %>&#176C
+        <%= @weather['weather'].first['description'].capitalize + " " + @weather['main']['temp'].round.to_s %>
+        &#176C
       </p>
-      <p class="font-weight-light" style="margin-top: -8px" id="clock">
+      <p class="font-weight-light" style="margin-top: -8px" id="clock"></p>
     </div>
     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right container-flights">
       <ul class="nav nav-tabs nav-flights" role="tablist">
@@ -91,7 +93,7 @@
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <a class="more-flights" href="#">Zobacz więcej przylotów</a>
+              <a class="more-flights" href="loty.html">Zobacz więcej przylotów</a>
             </div>
           </div>
         </div>
@@ -140,7 +142,7 @@
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <a class="more-flights" href="#">Zobacz więcej odlotów</a>
+              <a class="more-flights" href="loty.html">Zobacz więcej odlotów</a>
             </div>
           </div>
         </div>
@@ -151,26 +153,50 @@
 </div>
 
 <!-- content -->
-<div class="container content">
-  <div class="content-title">
-    <h2 class="font-weight-light content-title">Aktualności</h2>
+<% unless @news.nil? %>
+  <div class="container content">
+    <div class="content-title">
+      <h2 class="font-weight-light content-title">Najnowsza wiadomość</h2>
+    </div>
+    <div class="content-content container-news">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+          <%= image_tag @news.image.thumb.url, class: 'news-image' %>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="container row news-info">
+            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+              <h2 class="font-weight-light news-title"><%= @news.title %></h2>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+              <h5 align="right" class="news-date"><%= @news.add_date %></h5>
+            </div>
+          </div>
+          <div class="container">
+            <p class="news-content"><%= @content %></p>
+            <%= link_to "Czytaj więcej", news_path(@news), class: 'btn btn-primary' %>
+            <a href="aktualnosci.html" class="btn btn-primary">Zobacz listę aktualności</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="content-content">
-  </div>
-</div>
-
+<% end %>
 <div class="container content">
   <div class="content-title">
     <h2 class="font-weight-light content-title">Dupa</h2>
   </div>
   <div class="content-content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lectus ante, tincidunt ac risus eget, mollis
-      pharetra
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lectus ante, tincidunt ac risus eget,
+      mollis pharetra
       ipsum. Quisque eleifend scelerisque augue vitae porta. Phasellus et justo ipsum. Fusce eget augue id urna
-      tempor placerat. Praesent ullamcorper at enim in molestie. In finibus nisl ut orci mattis euismod. Duis dignissim
+      tempor placerat. Praesent ullamcorper at enim in molestie. In finibus nisl ut orci mattis euismod. Duis
+      dignissim
       efficitur orci volutpat lacinia. Cras pharetra rutrum massa a dignissim. Suspendisse pharetra, libero vel
-      sollicitudin convallis, velit eros mattis sem, ac luctus purus urna et ex. Duis lacinia vitae metus et porta.
-      Nam id hendrerit arcu, sit amet cursus tortor. Praesent dignissim ipsum non leo consectetur, quis porta eros
+      sollicitudin convallis, velit eros mattis sem, ac luctus purus urna et ex. Duis lacinia vitae metus et
+      porta.
+      Nam id hendrerit arcu, sit amet cursus tortor. Praesent dignissim ipsum non leo consectetur, quis porta
+      eros
       porta. Praesent hendrerit consectetur pulvinar.</p>
   </div>
 </div>

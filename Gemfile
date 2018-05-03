@@ -20,6 +20,12 @@ gem 'country_select'
 # API Google+
 gem 'omniauth-google-oauth2'
 
+#gem imagemagick - potrzebny do mini_magick
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
+# gem do wysyłania i pobierania obrazów
+gem 'carrierwave', '~> 1.0'
+# gem do skalowania obrazow
+gem 'mini_magick', '~> 4.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
