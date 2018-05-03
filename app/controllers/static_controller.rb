@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   def index
     @weather = get_weather
     @news = News.last
-    @content = @news.content[0..(@news.content.index('.'))]
+    @content = @news.content[0..(@news.content.index('.'))] unless @news.nil?
   end
 
   def registration_confirm
