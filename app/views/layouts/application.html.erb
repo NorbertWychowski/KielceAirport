@@ -14,7 +14,6 @@
 <body>
 <!-- header -->
 <div class="container-fluid container-header">
-
   <!-- navbar -->
   <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-navigation">
     <div class="container">
@@ -44,9 +43,9 @@
         </ul>
         <ul class="nav-controls">
           <li class="nav-control">
+            <i class="fa fa-margin fa-user" aria-hidden="true"></i>
             <% if current_user.nil? %>
-              <%= link_to login_path do %><i class="fa fa-margin fa-user" aria-hidden="true"></i>Zaloguj się
-              <% end %>
+              <%= link_to "Zaloguj się", login_path %>
             <% else %>
               <%= link_to "Wyloguj się", logout_path, method: :delete %>
             <% end %>

@@ -35,6 +35,9 @@
         <p class="description font-weight-light">Zarejestruj się za darmo</p>
         <%= link_to "Rejestracja przez e-mail", register_path,
                     {class: 'btn btn-primary', 'aria-describedby': 'registerHelp', style: 'margin-bottom: 12px'} %>
+        <%= link_to "/auth/google_oauth2", {class: 'btn btn-primary', style: 'margin-bottom: 12px'} do %>
+          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Rejestracja przez konto Google
+        <% end %>
         <p>
           <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription">Dlaczego
             warto mieć konto?</a>
