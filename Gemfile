@@ -27,6 +27,9 @@ gem 'carrierwave', '~> 1.0'
 # gem do skalowania obrazow
 gem 'mini_magick', '~> 4.3'
 
+# gem do podstron - m.in. newsy
+gem 'kaminari'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use mysql as the database for Active Record
