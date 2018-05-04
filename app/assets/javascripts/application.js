@@ -11,7 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require popper
 //= require bootstrap
 //= require rails-ujs
 //= require tether
 //= require turbolinks
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});

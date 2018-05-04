@@ -7,7 +7,7 @@ end
 
 # jQuery, Boostrap, font-awesome
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.0'
+gem 'bootstrap', '~> 4.1.1'
 gem 'rails-assets-tether', '>= 1.3.3', source: 'https://rails-assets.org'
 gem 'font-awesome-rails'
 

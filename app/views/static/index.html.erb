@@ -26,15 +26,13 @@
 <% end %>
 <!-- cover-->
 <div class="container-fluid container-main-cover row">
-
   <!-- flights -->
   <div class="container container-cover-flights">
     <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 float-left container-weather">
       <h2 class="font-weight-light">Pogoda</h2>
       <p class="font-weight-light">
-        <img src=<%= "http://openweathermap.org/img/w/#{@weather['weather'].first['icon']}.png" %>>
-        <%= @weather['weather'].first['description'].capitalize + " " + @weather['main']['temp'].round.to_s %>
-        &#176C
+        <img src=<%= "http://openweathermap.org/img/w/#{get_weather['weather'].first['icon']}.png" %>>
+        <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>&#176C
       </p>
       <p class="font-weight-light" style="margin-top: -8px" id="clock"></p>
     </div>
@@ -152,7 +150,7 @@
   </div>
 </div>
 
-<!-- content -->
+<!-- news -->
 <% unless @news.nil? %>
   <div class="container content">
     <div class="content-title">

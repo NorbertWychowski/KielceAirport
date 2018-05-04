@@ -9,22 +9,32 @@
 <div class="container content">
   <div class="content-content">
     <div class="container-register">
-      <% flash.each do |key, value| %>
-        <div class='<%= "alert alert-#{key}" %>' style="margin-top: 10px"><%= value %></div>
-      <% end %>
       <h3 class="section-title font-weight-light">Dane wymagane</h3>
-      <%= form_for :customer, url: register_path do |f| %>
+      <%= form_for :person, url: register_path do |f| %>
         <div class="row">
           <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
-            <p class="description register-description">Dane do zalogowania</p>
+            <p class="description register-description">Dane konta</p>
           </div>
           <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
             <%= f.email_field(:email, {class: 'form-control', placeholder: 'Adres e-mail', required: ''}) %>
           </div>
           <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
-            <%= f.password_field(:password_digest, {class: 'form-control', placeholder: 'Hasło', required: ''}) %>
+            <%= f.password_field(:password_digest,
+                                 {class: 'form-control', placeholder: 'Hasło', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
+                                  title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków'}) %>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+            <%= f.password_field(:password_digest_confirmation,
+                                 {class: 'form-control', placeholder: 'Hasło', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
+                                  title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków'}) %>
           </div>
         </div>
+        <% flash.each do |_, value| %>
+          <div class="alert alert-info alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= value %>
+          </div>
+        <% end %>
         <div class="row">
           <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
             <p class="description register-description">Dane osobowe</p>
@@ -56,22 +66,25 @@
           <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
             <p class="description register-description">Karta kredytowa</p>
           </div>
-          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 form-group">
-            <%= f.text_field(:card_number, {class: 'form-control', pattern: '[0-9]{16}', placeholder: 'Numer karty'}) %>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 form-group">
-            <%= f.select :month, options_for_select((1..12).to_a.map {|s| ['%02d' % s, s]}), {},
-                         class: 'form-control' %>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12 form-group">
-            <%= f.select :year, options_for_select((Time.current.year..Time.current.year + 20).to_a.map {|s| ["#{s}", s]}), {},
-                         class: 'form-control' %>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
-            <%= f.text_field(:cvv, {class: 'form-control', pattern: '[0-9]{3}', placeholder: 'CVC/CVV'}) %>
-          </div>
+          <%= fields_for :customer do |customer| %>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 form-group">
+              <%= customer.text_field(:card_number, {class: 'form-control', pattern: '[0-9]{16}', placeholder: 'Numer karty'}) %>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+              <%= customer.select :month, options_for_select((1..12).to_a.map {|s| ['%02d' % s, s]}), {},
+                                  class: 'form-control' %>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+              <%= customer.select :year, options_for_select((Time.current.year..Time.current.year + 20).to_a.map {|s| ["#{s}", s]}), {},
+                                  class: 'form-control' %>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+              <%= customer.text_field(:cvv, {class: 'form-control', pattern: '[0-9]{3}', placeholder: 'CVC/CVV',
+                                             'data-toggle': 'tooltip', 'data-placement': 'top', 'title': 'Kod CVC/CVV to trzycyfrowy kod widoczny z tyłu karty'}) %>
+            </div>
+          <% end %>
         </div>
-        <div class="col">
+        <div class="container">
           <%= f.submit "Potwierdź rejestrację", class: 'btn btn-primary' %>
         </div>
       <% end %>

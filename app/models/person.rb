@@ -2,6 +2,9 @@ class Person < ApplicationRecord
   has_secure_password
   has_many :customers
 
+  attr_accessor :password_digest_confirmation
+  validates_confirmation_of :password_digest
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider

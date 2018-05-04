@@ -3,17 +3,17 @@ class CustomersController < ApplicationController
   end
 
   def create
-    if Person.find_by_email params[:customer][:email]
+    if Person.find_by_email params[:person][:email]
       flash[:danger] = "Do podanego adresu email przypisane jest już konto"
       redirect_to register_path
+    elsif params[:person][:password_digest] != params[:person][:password_digest_confirmation]
+      flash[:danger] = "Hasła muszą być takie same!"
+      redirect_to register_path
     else
-      person = Person.new(email: params[:customer][:email],
-                          first_name: params[:customer][:first_name],
-                          last_name: params[:customer][:last_name],
-                          password_digest: BCrypt::Password.create(params[:customer][:password_digest]),
-                          country: params[:customer][:country],
-                          city: params[:customer][:city],
-                          street: params[:customer][:street])
+      person = Person.new(person_params)
+      person.update(country: params[:person][:country],
+                    city: params[:person][:city],
+                    street: params[:person][:street])
       if person.save
         customer = Customer.new(card_number: params[:customer][:card_number],
                                 year: params[:customer][:year],
@@ -39,6 +39,10 @@ class CustomersController < ApplicationController
       flash[:danger] = "Użytkownik nie istnieje"
     end
     redirect_to root_path
+  end
+
+  private def person_params
+    params.require(:person).permit(:email, :first_name, :last_name, :password_digest, :password_digest_confirmation)
   end
 end
 
