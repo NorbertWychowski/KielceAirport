@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <title>Kielce Airport</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Platforma obsługi lotniska" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="container-fluid container-header">
+
+        <!-- navbar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-navigation">
+            <div class="container">
+                <button class="float-right navbar-toggler" style="margin-top: 16px" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">Kielce Airport</a>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item nav-link nav-main">
+                            <a href="index.html">
+                                <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna</a>
+                        </li>
+                        <li class="nav-item nav-link nav-main">
+                            <a href="aktualnosci.html">
+                                <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i>Aktualności</a>
+                        </li>
+                        <li class="nav-item nav-link nav-main">
+                            <a href="wyszukiwarka.html">
+                                <i class="fa fa-margin fa-search fa-fw" aria-hidden="true"></i>Wyszukiwarka</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-controls">
+                        <li class="nav-control">
+                            <a href="logowanie.html">
+                                <i class="fa fa-margin fa-lock" aria-hidden="true"></i>Zaloguj się</a>
+                        </li>
+                        <li class="nav-control nav-control-language">
+                            <a href="#">PL</a>
+                            <span>/</span>
+                            <a href="#">EN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- airport info -->
+    <div class="container-fluid container-airport-info-bg">
+        <div class="container container-airport-info">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <ul class="airport-info">
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-map-marker" aria-hidden="true"></i>Poland, Kielce</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-road" aria-hidden="true"></i>Aleja Tysiąclecia 7</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-envelope" aria-hidden="true"></i>contact@kielceairport.pl</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-phone" aria-hidden="true"></i>+48 333 444 555</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <ul class="cover-social">
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-facebook-official" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-youtube-square" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-flickr" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- cover-->
+    <div class="container-fluid container-cover-title row">
+        <div class="container cover-content">
+            <h2 class="font-weight-light cover-title">Logowanie</h2>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="container content">
+        <div class="content-content">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login container-login-left">
+                    <h3 class="font-weight-light" style="margin-bottom: 12px">Mam już konto</h3>
+                    <button class="btn btn-primary">
+                        <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Zaloguj się kontem Google</button>
+                    <p class="description font-weight-light" style="margin-top: 12px">Zaloguj się adresem e-mail</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="numeric" class="form-control" id="login" placeholder="Adres e-mail" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Hasło" required="">
+                            <small id="passwordHelp" class="form-text text-muted">Nigdy nie podawaj innym swojego hasła!</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+                        <a href="profil.html" role="button" class="btn btn-primary">¯\_ツ_/¯</a>
+                    </form>
+                </div>
+                <br>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login">
+                    <h3 class="font-weight-light">Nie mam konta</h3>
+                    <p class="description font-weight-light">Zarejestruj się za darmo</p>
+                    <a href="rejestracja.html" role="button" class="btn btn-primary" aria-describedby="registerHelp" style="margin-bottom: 12px">Rejestracja przez e-mail</a>
+                    <a href="#" role="button" class="btn btn-primary" aria-describedby="registerHelp" style="margin-bottom: 12px">
+                        <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Rejestracja przez konto Google</a>
+                    <p>
+                        <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription">Dlaczego warto mieć konto?</a>
+                    </p>
+                    <div class="collapse" id="registerDescription">
+                        <div class="col">
+                            <ul class="register-features">
+                                <li class="register-features">Atrakcyjne promocje</li>
+                                <li class="register-features">Rezerwacje biletów</li>
+                                <li class="register-features">Historia lotów</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="container container-footer">
+        <div class="row">
+            <div class="col-lg-2 col-sm-12">
+                <h3 class="font-weight-light footer-title">Menu</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i>Aktualności</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <h3 class="font-weight-light footer-title">Informacje</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-map-marker" aria-hidden="true"></i>Poland, Kielce</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-road" aria-hidden="true"></i>Aleja Tysiąclecia 7</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-envelope" aria-hidden="true"></i>contact@kielceairport.pl</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-phone" aria-hidden="true"></i>+48 333 444 555</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <h3 class="font-weight-light footer-title">Media</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-facebook-official" aria-hidden="true"></i>Facebook</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-twitter-square" aria-hidden="true"></i>Twitter</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-youtube-square" aria-hidden="true"></i>YouTube</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-flickr" aria-hidden="true"></i>Flickr</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <h3 class="font-weight-light footer-title">Kielce Airport</h3>
+                <p class="footer-description">Still better than Radom Airport.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <p class="font-weight-light footer-text">
+                <b>Kielce Airport</b> &copy; 2018 / Inżynieria systemów informacyjnych</p>
+        </div>
+    </div>
+</body>
+
+</html>
