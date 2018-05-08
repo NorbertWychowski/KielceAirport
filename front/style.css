@@ -31,6 +31,10 @@ p.description {
     color: rgba(34, 40, 49, 0.7)
 }
 
+kbd.primary {
+    background-color: #015e94;
+}
+
 /* Icon */
 .fa-margin {
     margin-right: 8px;
