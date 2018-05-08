@@ -5,7 +5,6 @@ class RegistrationMailer < ApplicationMailer
     @user = user
     @customer = Customer.find_by(person_id: @user.id)
     @host = host
-    puts @host
     mail(to: @user.email, subject: 'Welcome to Kielce Airport')
   end
 end

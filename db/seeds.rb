@@ -153,3 +153,4 @@ News.create([{title: "News nr 1", content: lorem_ipsum, add_date: Time.now, imag
              {title: "News nr 133", content: lorem_ipsum, add_date: Time.now, image: pic3},
              {title: "News nr 134", content: lorem_ipsum, add_date: Time.now, image: pic1},
              {title: "News nr 135", content: lorem_ipsum, add_date: Time.now, image: pic3}])
+

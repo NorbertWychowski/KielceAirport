@@ -6,6 +6,10 @@ class StaticController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   def registration_confirm
     @email = params[:email]
   end

@@ -1,6 +1,7 @@
 class Person < ApplicationRecord
   has_secure_password
   has_many :customers
+  has_many :user_accounts
 
   attr_accessor :password_digest_confirmation
   validates_confirmation_of :password_digest
