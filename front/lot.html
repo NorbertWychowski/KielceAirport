@@ -127,129 +127,42 @@
 <!-- cover-->
 <div class="container-fluid container-cover-title row">
     <div class="container cover-content">
-        <h2 class="font-weight-light cover-title">Loty</h2>
+        <h2 class="font-weight-light cover-title">Przedstawienie lotu</h2>
     </div>
 </div>
 
 <!-- content -->
 <div class="container content">
     <div class="content-content">
-        <div class="container container-flights" style="margin-bottom: 12px">
-            <ul class="nav nav-tabs nav-flights" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#flightsArrivals" role="tab" data-toggle="tab">Przyloty</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#flightsDepartures" role="tab" data-toggle="tab">Odloty</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade active show" id="flightsArrivals">
-                    <div class="container table-responsive">
-                        <table class="table table-flights table-hover" style="margin-top: 16px">
-                            <thead class="thead-primary">
-                            <tr>
-                                <th scope="col">Lot</th>
-                                <th scope="col">Przewoźnik</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Godzina</th>
-                                <th scope="col">Kierunek</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Akcja</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="table-element">LOT 997</td>
-                                <td class="table-element">LuftWaffle</td>
-                                <td class="table-element">02.05.2018</td>
-                                <td class="table-element">10:00</td>
-                                <td class="table-element">Radom</td>
-                                <td class="table-element">Zestrzelony</td>
-                                <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html">Zobacz
-                                    lot</a></td>
-                            </tr>
-                            <tr>
-                                <td class="table-element">LOT 997</td>
-                                <td class="table-element">LuftWaffle</td>
-                                <td class="table-element">02.05.2018</td>
-                                <td class="table-element">10:00</td>
-                                <td class="table-element">Radom</td>
-                                <td class="table-element">Zestrzelony</td>
-                                <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html">Zobacz
-                                    lot</a></td>
-                            </tr>
-                            </tbody>
-                        </table>
+        <div class="container">
+            <h2 class="font-weight-light section-title">Dane</h2>
+            <div class="container flight-attributes">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12" style="margin: 12px 0px">
+                        <ul class="list-group flight-attributes">
+                            <li class="list-group-item">Lotnisko początkowe: <b>Kielce Airport</b></li>
+                            <li class="list-group-item">Lotnisko końcowe: <b>Radom Airport</b></li>
+                            <li class="list-group-item">Data wylotu: <b>04.05.2018 17:32</b></li>
+                            <li class="list-group-item">Data przylotu: <b>04.05.2018 18:59</b></li>
+                            <li class="list-group-item">Przewoźnik: <b>LOT</b></li>
+                            <li class="list-group-item">Samolot: <b>Boeing 747</b></li>
+                        </ul>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="flightsDepartures">
-                    <div class="container table-responsive">
-                        <table class="table table-flights table-hover" style="margin-top: 16px">
-                            <thead class="thead-primary">
-                            <tr>
-                                <th scope="col">Lot</th>
-                                <th scope="col">Przewoźnik</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Godzina</th>
-                                <th scope="col">Kierunek</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            <tr>
-                                <td class="table-element">LOT 997</td>
-                                <td class="table-element">LuftWaffle</td>
-                                <td class="table-element">02.05.2018</td>
-                                <td class="table-element">10:00</td>
-                                <td class="table-element">Radom</td>
-                                <td class="table-element">Zestrzelony</td>
-                                <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html">Zobacz
-                                    lot</a></td>
-                            </tr>
-                            </tr>
-                            <tr>
-                            <tr>
-                                <td class="table-element">LOT 997</td>
-                                <td class="table-element">LuftWaffle</td>
-                                <td class="table-element">02.05.2018</td>
-                                <td class="table-element">10:00</td>
-                                <td class="table-element">Radom</td>
-                                <td class="table-element">Zestrzelony</td>
-                                <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html">Zobacz
-                                    lot</a></td>
-                            </tr>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" style="margin: 12px 0px">
+                        <p class="description">Na ten lot możesz:</p>
+                        <a class="btn btn-primary" role="button" href="#">Kup bilet</a>
+                        <a class="btn btn-primary" role="button" href="#">Zarezerwuj bilet</a>
+
                     </div>
                 </div>
             </div>
-            </nav>
-        </div>
-        <div class="container">
-            <nav aria-label="Flights navigation">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Poprzednia</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Następna</a>
-                    </li>
-                </ul>
-            </nav>
+            <h2 class="font-weight-light section-title">Przewoźnik</h2>
+            <h2 class="font-weight-light section-title">Miejsca</h2>
+            <h3 class="font-weight-light section-title" style="margin-left: 24px">Lotnisko początkowe</h3>
+            <h3 class="font-weight-light section-title" style="margin-left: 24px">Lotnisko końcowe</h3>
         </div>
     </div>
+</div>
 </div>
 
 <!-- footer -->

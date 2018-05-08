@@ -592,3 +592,12 @@ img.news-image {
         margin-top: 12px;
     }
 }
+
+/* Flight */
+.container-flight {
+    border-bottom: 1px solid rgba(112, 154, 189, 0.25);
+}
+
+.flight-attributes {
+    color: rgba(34, 40, 49, 0.7);
+}
