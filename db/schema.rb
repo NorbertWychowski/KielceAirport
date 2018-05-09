@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
   end
 
   create_table "flights", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "flight_identifier"
     t.datetime "dep_date"
     t.datetime "arr_date"
     t.bigint "airline_id"

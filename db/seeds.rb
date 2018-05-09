@@ -401,9 +401,9 @@ arr = [DateTime.new(2018, 5, 15, 15, 55, 0),
        DateTime.new(2018, 5, 15, 18, 5, 0)]
 
 flights = []
-for i in 1..1000
+(1..1000).each {|i|
   type = flight_type.sample
-  flights << {dep_date: dep.sample, arr_date: arr.sample, airline: airlines.sample, airport: airports.sample,
-              airplane: airplanes.sample, flight_type: type, flight_status: flight_status[2]}
-end
+  flights << {flight_identifier: "LOT #{i}", dep_date: dep.sample, arr_date: arr.sample, airline: airlines.sample,
+              airport: airports.sample, airplane: airplanes.sample, flight_type: type, flight_status: flight_status[2]}
+}
 Flight.create(flights)

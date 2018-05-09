@@ -35,7 +35,7 @@
               <tbody>
               <% @flights_incoming.each do |flight| %>
                 <tr>
-                  <td class="table-element"><%= flight.id %></td>
+                  <td class="table-element"><%= flight.flight_identifier %></td>
                   <td class="table-element"><%= flight.airline_name %></td>
                   <td class="table-element"><%= flight.arr_date.strftime("%d/%m/%Y") %></td>
                   <td class="table-element"><%= flight.arr_date.strftime("%H:%M") %></td>
@@ -69,7 +69,7 @@
               <tbody>
               <% @flights_outgoing.each do |flight| %>
                 <tr>
-                  <td class="table-element"><%= flight.id %></td>
+                  <td class="table-element"><%= flight.flight_identifier %></td>
                   <td class="table-element"><%= flight.airline_name %></td>
                   <td class="table-element"><%= flight.arr_date.strftime("%d/%m/%Y") %></td>
                   <td class="table-element"><%= flight.arr_date.strftime("%H:%M") %></td>
