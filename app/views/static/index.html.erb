@@ -12,10 +12,8 @@
     }
 
     function checkTime(i) {
-        if (i < 10) {
+        if (i < 10)
             i = "0" + i
-        }
-        ;  // add zero in front of numbers < 10
         return i;
     }
 </script>
@@ -32,9 +30,12 @@
       <h2 class="font-weight-light">Pogoda</h2>
       <p class="font-weight-light">
         <img src=<%= "http://openweathermap.org/img/w/#{get_weather['weather'].first['icon']}.png" %>>
-        <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>&#176C
+        <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>
+        &#176C
       </p>
-      <p class="font-weight-light" style="margin-top: -8px" id="clock"></p>
+      <p class="font-weight-light" style="margin-top: -8px" id="clock">
+        <i class="fa fa-margin fa-clock-o" aria-hidden="true"></i>
+      </p>
     </div>
     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right container-flights">
       <ul class="nav nav-tabs nav-flights" role="tablist">
@@ -57,46 +58,24 @@
                 <th scope="col">Status</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
+              <tbody id="flights">
+              <% @flights_incoming.each do |flight| %>
+                <tr>
+                  <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
+                  <td><%= flight.airport_name %></td>
+                  <td><%= flight.id %></td>
+                  <td><%= flight.flight_status_name %></td>
+                </tr>
+              <% end %>
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <a class="more-flights" href="loty.html">Zobacz więcej przylotów</a>
+              <%= link_to "Zobacz więcej przylotów", flights_path, class: 'more-flights' %>
             </div>
           </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="flightsDepartures">
-          <div class="container">
+          <div class="container-fluid">
             <table class="table table-flights">
               <thead class="thead-primary">
               <tr>
@@ -106,41 +85,20 @@
                 <th scope="col">Status</th>
               </tr>
               </thead>
-              <tbody>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
-              <tr>
-                <th scope="row">10:00</th>
-                <td>Brisbain</td>
-                <td>KIE 105</td>
-                <td>Rozbity</td>
-              </tr>
+              <br>
+              <tbody id="flights">
+              <% @flights_outgoing.each do |flight| %>
+                <tr>
+                  <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
+                  <td><%= flight.airport_name %></td>
+                  <td><%= flight.id %></td>
+                  <td><%= flight.flight_status_name %></td>
+                </tr>
+              <% end %>
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <a class="more-flights" href="loty.html">Zobacz więcej odlotów</a>
+              <%= link_to "Zobacz więcej przylotów", flights_path, class: 'more-flights' %>
             </div>
           </div>
         </div>

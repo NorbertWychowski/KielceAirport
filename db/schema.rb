@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
 
   create_table "airports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.string "IATA"
     t.bigint "city_id"
     t.index ["city_id"], name: "index_airports_on_city_id"
   end

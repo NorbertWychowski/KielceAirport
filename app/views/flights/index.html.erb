@@ -1,0 +1,99 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Loty</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container container-flights" style="margin-bottom: 12px">
+      <ul class="nav nav-tabs nav-flights" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link <%= "active" if @current_tab == "#flightsArrivals" or @current_tab.nil? %>" href="#flightsArrivals" role="tab" data-toggle="tab">Przyloty</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= "active" if @current_tab == "#flightsDepartures" %>" href="#flightsDepartures" role="tab" data-toggle="tab">Odloty</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade <%= "active show" if @current_tab == "#flightsArrivals" or @current_tab.nil? %>" id="flightsArrivals">
+          <div class="container table-responsive">
+            <table class="table table-flights table-hover" style="margin-top: 16px">
+              <thead class="thead-primary">
+              <tr>
+                <th scope="col">Lot</th>
+                <th scope="col">Przewoźnik</th>
+                <th scope="col">Data</th>
+                <th scope="col">Godzina</th>
+                <th scope="col">Kierunek</th>
+                <th scope="col">Status</th>
+                <th scope="col">Akcja</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @flights_incoming.each do |flight| %>
+                <tr>
+                  <td class="table-element"><%= flight.id %></td>
+                  <td class="table-element"><%= flight.airline_name %></td>
+                  <td class="table-element"><%= flight.arr_date.strftime("%d/%m/%Y") %></td>
+                  <td class="table-element"><%= flight.arr_date.strftime("%H:%M") %></td>
+                  <td class="table-element"><%= flight.airport_name %></td>
+                  <td class="table-element"><%= flight.flight_status_name %></td>
+                  <td class="table-element">
+                    <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <%= paginate @flights_incoming, params: {id: 'flightsArrivals'}, window: 2, class: 'page-item' %>
+        </div>
+        <div role="tabpanel" class="tab-pane fade <%= "active show" if @current_tab == "#flightsDepartures" %>" id="flightsDepartures">
+          <div class="container table-responsive">
+            <table class="table table-flights table-hover" style="margin-top: 16px">
+              <thead class="thead-primary">
+              <tr>
+                <th scope="col">Lot</th>
+                <th scope="col">Przewoźnik</th>
+                <th scope="col">Data</th>
+                <th scope="col">Godzina</th>
+                <th scope="col">Kierunek</th>
+                <th scope="col">Status</th>
+                <th scope="col">Akcja</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @flights_outgoing.each do |flight| %>
+                <tr>
+                  <td class="table-element"><%= flight.id %></td>
+                  <td class="table-element"><%= flight.airline_name %></td>
+                  <td class="table-element"><%= flight.arr_date.strftime("%d/%m/%Y") %></td>
+                  <td class="table-element"><%= flight.arr_date.strftime("%H:%M") %></td>
+                  <td class="table-element"><%= flight.airport_name %></td>
+                  <td class="table-element"><%= flight.flight_status_name %></td>
+                  <td class="table-element">
+                    <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
+                    </a>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <%= paginate @flights_outgoing, params: {id: 'flightsDepartures'}, window: 2, class: 'page-item' %>
+        </div>
+      </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<script>
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var target = $(e.target).attr("href"); // activated tab
+        document.cookie = "tab=" + target;
+    });
+</script>

@@ -20,3 +20,19 @@
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+$(function () {
+    $("#flights").on('click', '.pagination .justify-content-center a', function () {
+        console.log("test");
+        $.getScript(this.href);
+        return false;
+    });
+    $("#flight_search").submit(function () {
+        $.get(this.action, $(this).serialize(), null, "script");
+        return false;
+    });
+    $("#flight_search input").keyup(function () {
+        $.get($("#flight_search").attr("action"), $("#flight_search").serialize(), null, "script");
+        return false;
+    })
+});

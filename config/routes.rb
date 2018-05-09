@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  resources :news
   root 'static#index'
-
-  get 'search', to: 'static#search'
 
   # logowanie
   get 'login', to: 'sessions#new'
@@ -15,8 +12,17 @@ Rails.application.routes.draw do
   get 'register', to: 'customers#new'
   post 'register', to: 'customers#create'
 
+
+  # loty
+  get 'flights', to: 'flights#index'
+  match 'search(/:search)', to: 'flights#search', as: :search, via: [:get, :post]
+
+
   get 'confirm_account/:token', to: 'customers#confirm_email', as: 'confirm_account'
   get 'registration_confirm/:email', to: 'static#registration_confirm', as: 'registration_confirm', constraints: {email: /[^\/]+/}
+
+  # newsy
+  resources :news
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

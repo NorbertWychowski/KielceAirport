@@ -1,0 +1,49 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Wyszukiwarka</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container">
+      <%= form_tag search_path, method: :post, id: 'flight_search' do %>
+        <p class="description">Podaj nazwę lotniska, nazwę przewoźnika lub oznaczenie lotu.</p>
+        <div class="row">
+          <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+            <%= text_field_tag :search, params[:search], placeholder: 'Wpisz frazę...', autocomplete: :off,
+                               class: 'form-control form-search', 'aria-label': 'Search' %>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+            <%= button_tag type: 'submit', class: 'btn btn-primary btn-search' do %>
+              <i class="fa fa-margin fa-search" aria-hidden="true"></i> Wyszukaj
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="container" style="margin-bottom: 12px">
+      <div class="table-responsive">
+        <table class="table table-hover" style="margin-top: 16px">
+          <thead class="thead-primary">
+          <tr>
+            <th scope="col">Lot</th>
+            <th scope="col">Przewoźnik</th>
+            <th scope="col">Data</th>
+            <th scope="col">Godzina</th>
+            <th scope="col">Kierunek</th>
+            <th scope="col">Status</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Akcja</th>
+          </tr>
+          </thead>
+          <tbody id="flights"><%= render @flights %></tbody>
+        </table>
+      </div>
+    </div>
+    <%= paginate @flights, window: 2, class: 'page-item' %>
+  </div>
+</div>

@@ -4,11 +4,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    if News.exists?
-      @news = params[:page].nil? ? News.page(1) : News.page(params[:page])
-    else
-      not_found
-    end
+    @news = params[:page].nil? ? News.page(1) : News.page(params[:page])
   end
 
   # GET /news/1
