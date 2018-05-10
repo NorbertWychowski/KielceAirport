@@ -63,7 +63,7 @@
                 <tr>
                   <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
                   <td><%= flight.airport_name %></td>
-                  <td><%= flight.id %></td>
+                  <td><%= flight.flight_identifier %></td>
                   <td><%= flight.flight_status_name %></td>
                 </tr>
               <% end %>
@@ -90,7 +90,7 @@
                 <tr>
                   <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
                   <td><%= flight.airport_name %></td>
-                  <td><%= flight.id %></td>
+                  <td><%= flight.flight_identifier %></td>
                   <td><%= flight.flight_status_name %></td>
                 </tr>
               <% end %>
