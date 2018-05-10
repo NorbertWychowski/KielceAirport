@@ -28,8 +28,11 @@ class Flight < ApplicationRecord
       joins(:airport, :flight_status, :airline, :flight_type)
           .select('flights.*, airports.name as airport_name, flight_statuses.name as flight_status_name, ' +
                       'airlines.name as airline_name, flight_types.name as flight_type_name')
-          .where([(['(flights.flight_identifier LIKE ? OR airports.name LIKE ? OR flight_statuses.name LIKE ? or airlines.name LIKE ? or flight_types.name LIKE ?)'] * search_length)
-                      .join(' AND ')] + binded_values)
+          .where([(['(LOWER(flights.flight_identifier) LIKE LOWER(?) OR ' +
+                        'LOWER(airports.name) LIKE LOWER(?) OR ' +
+                        'LOWER(flight_statuses.name) LIKE LOWER(?) OR ' +
+                        'LOWER(airlines.name) LIKE LOWER(?) OR ' +
+                        'LOWER(flight_types.name) LIKE LOWER(?))'] * search_length).join(' AND ')] + binded_values)
     end
   end
 end
