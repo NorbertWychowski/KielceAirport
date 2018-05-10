@@ -31,8 +31,12 @@ $(function () {
         $.get(this.action, $(this).serialize(), null, "script");
         return false;
     });
+    var searchTimer;
     $("#flight_search input").keyup(function () {
-        $.get($("#flight_search").attr("action"), $("#flight_search").serialize(), null, "script");
-        return false;
-    })
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+            $.get($("#flight_search").attr("action"), $("#flight_search").serialize(), null, "script");
+            return false;
+        }, 500)
+    });
 });
