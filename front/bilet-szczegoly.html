@@ -126,131 +126,60 @@
     <!-- cover-->
     <div class="container-fluid container-cover-title row">
         <div class="container cover-content">
-            <h2 class="font-weight-light cover-title">Loty</h2>
+            <h2 class="font-weight-light cover-title">Kup bilet - szczegóły</h2>
         </div>
     </div>
 
     <!-- content -->
     <div class="container content">
         <div class="content-content">
-            <div class="container container-flights" style="margin-bottom: 12px">
-                <ul class="nav nav-tabs nav-flights" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#flightsArrivals" role="tab" data-toggle="tab">Przyloty</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#flightsDepartures" role="tab" data-toggle="tab">Odloty</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade active show" id="flightsArrivals">
-                        <div class="container table-responsive">
-                            <table class="table table-flights table-hover" style="margin-top: 16px">
-                                <thead class="thead-primary">
-                                    <tr>
-                                        <th scope="col">Lot</th>
-                                        <th scope="col">Przewoźnik</th>
-                                        <th scope="col">Data</th>
-                                        <th scope="col">Godzina</th>
-                                        <th scope="col">Kierunek</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Akcja</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="table-element">LOT 997</td>
-                                        <td class="table-element">LuftWaffle</td>
-                                        <td class="table-element">02.05.2018</td>
-                                        <td class="table-element">10:00</td>
-                                        <td class="table-element">Radom</td>
-                                        <td class="table-element">Zestrzelony</td>
-                                        <td class="table-element">
-                                            <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-element">LOT 997</td>
-                                        <td class="table-element">LuftWaffle</td>
-                                        <td class="table-element">02.05.2018</td>
-                                        <td class="table-element">10:00</td>
-                                        <td class="table-element">Radom</td>
-                                        <td class="table-element">Zestrzelony</td>
-                                        <td class="table-element">
-                                            <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="flightsDepartures">
-                        <div class="container table-responsive">
-                            <table class="table table-flights table-hover" style="margin-top: 16px">
-                                <thead class="thead-primary">
-                                    <tr>
-                                        <th scope="col">Lot</th>
-                                        <th scope="col">Przewoźnik</th>
-                                        <th scope="col">Data</th>
-                                        <th scope="col">Godzina</th>
-                                        <th scope="col">Kierunek</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="table-element">LOT 997</td>
-                                        <td class="table-element">LuftWaffle</td>
-                                        <td class="table-element">02.05.2018</td>
-                                        <td class="table-element">10:00</td>
-                                        <td class="table-element">Radom</td>
-                                        <td class="table-element">Zestrzelony</td>
-                                        <td class="table-element">
-                                            <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-element">LOT 997</td>
-                                        <td class="table-element">LuftWaffle</td>
-                                        <td class="table-element">02.05.2018</td>
-                                        <td class="table-element">10:00</td>
-                                        <td class="table-element">Radom</td>
-                                        <td class="table-element">Zestrzelony</td>
-                                        <td class="table-element">
-                                            <a class="btn btn-primary" role="button" href="lot.html">Zobacz lot
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                </nav>
-            </div>
             <div class="container">
-                <nav aria-label="Flights navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Poprzednia</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Następna</a>
-                        </li>
-                    </ul>
-                </nav>
+                <form>
+                    <h2 class="font-weight-light section-title">Uzupełnij wymagane dane</h2>
+                    <div class="container">
+                        <div class="form-group container-ticket">
+                            <h4 class="font-weight-light section-title">Bilet 1</h4>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <label class="description" for "inputName1">Podaj imię</label>
+                                    <input class="form-control" type="text" id="inputName1" placeholder="Imię" required="">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <label class="description" for "inputSurname1">Podaj nazwisko</label>
+                                    <input class="form-control" type="text" id="inputSurname1" placeholder="Nazwisko" required="">
+                                </div>
+                            </div>
+
+                            <label class="description" for="inputDiscount1">Wybierz ulgę</label>
+                            <select class="form-control" id="inputDiscount1">
+                                <option>Płaskoziemca - 100%</option>
+                                <option>Brak ulgi - 0%</option>
+                            </select>
+                        </div>
+                        <div class="form-group container-ticket">
+                            <h4 class="font-weight-light section-title">Bilet 2</h4>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <label class="description" for "inputName2">Podaj imię</label>
+                                    <input class="form-control" type="text" id="inputName2" placeholder="Imię" required="">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                    <label class="description" for "inputSurname2">Podaj nazwisko</label>
+                                    <input class="form-control" type="text" id="inputSurname2" placeholder="Nazwisko" required="">
+                                </div>
+                            </div>
+                            <label class="description" for="inputDiscount2">Wybierz ulgę</label>
+                            <select class="form-control" id="inputDiscount2">
+                                <option>Płaskoziemca - 100%</option>
+                                <option>Brak ulgi - 0%</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                            <button class="btn btn-primary btn-search" type="submit">Potwierdź dane</button>
+                        </div>
+                        <a href="bilet-podsumowanie.html" class="btn btn-primary" style="margin-top: 12px">Frontendowe potwierdzenie (tego nie rób)</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
