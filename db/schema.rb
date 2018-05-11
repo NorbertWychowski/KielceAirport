@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
   create_table "airlines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.bigint "user_account_id"
-    t.index ["user_account_id"], name: "index_airlines_on_user_account_id"
+    t.index ["user_account_id"], name: "index_airlines_on_user_account_id", unique: true
   end
 
   create_table "airplanes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,14 +53,14 @@ ActiveRecord::Schema.define(version: 20180508125004) do
   end
 
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "card_number", default: ""
-    t.integer "year", default: 0
-    t.integer "month", default: 0
-    t.integer "cvv", default: 0
+    t.string "card_number"
+    t.integer "year"
+    t.integer "month"
+    t.integer "cvv"
     t.string "confirm_token", default: ""
     t.boolean "email_confirmed", default: false
     t.bigint "person_id"
-    t.index ["person_id"], name: "index_customers_on_person_id"
+    t.index ["person_id"], name: "index_customers_on_person_id", unique: true
   end
 
   create_table "discount_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
   create_table "user_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_type_id"
     t.bigint "person_id"
-    t.index ["person_id"], name: "index_user_accounts_on_person_id"
+    t.index ["person_id"], name: "index_user_accounts_on_person_id", unique: true
     t.index ["user_type_id"], name: "index_user_accounts_on_user_type_id"
   end
 

@@ -50,13 +50,24 @@
           </li>
         </ul>
         <ul class="nav-controls">
-          <li class="nav-control">
-            <i class="fa fa-margin fa-user" aria-hidden="true"></i>
-            <% if current_user.nil? %>
-              <%= link_to "Zaloguj się", login_path %>
-            <% else %>
-              <%= link_to "Wyloguj się", logout_path, method: :delete %>
-            <% end %>
+          <% if current_user.nil? %>
+            <li class="nav-control">
+              <%= link_to login_path do %>
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Zaloguj się
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-control">
+              <%= link_to customer_path(current_user) do %>
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Twoje konto
+              <% end %>
+            </li>
+            <li class="nav-control">
+              <%= link_to logout_path, method: :delete do %>
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Wyloguj się
+              <% end %>
+            </li>
+          <% end %>
           </li>
           <li class="nav-control nav-control-language">
             <a href="#">PL</a>

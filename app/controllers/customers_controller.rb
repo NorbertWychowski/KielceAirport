@@ -41,6 +41,20 @@ class CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    if loggen_in? and !current_user.customer.nil?
+      @customer = Person.joins(:customer).select('*, customers.id as customer_id').first
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    customer = Customer.find(params[:id])
+    customer.update_data(params)
+    redirect_to customer_path(params[:id])
+  end
+
   private def person_params
     params.require(:person).permit(:email, :first_name, :last_name, :password_digest, :password_digest_confirmation)
   end

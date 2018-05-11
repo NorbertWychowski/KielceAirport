@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'customers/show'
+
   root 'static#index'
 
   # logowanie
@@ -8,10 +10,6 @@ Rails.application.routes.draw do
   # google+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
-
-  get 'register', to: 'customers#new'
-  post 'register', to: 'customers#create'
-
 
   # loty
   get 'flights', to: 'flights#index'
@@ -23,6 +21,9 @@ Rails.application.routes.draw do
 
   # newsy
   resources :news
+
+  # klienci
+  resources :customers, only: [:show, :new, :create, :update]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

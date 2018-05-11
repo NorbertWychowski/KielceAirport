@@ -1,7 +1,7 @@
 class Person < ApplicationRecord
   has_secure_password
-  has_many :customers
-  has_many :user_accounts
+  has_one :customer
+  has_one :user_account
 
   attr_accessor :password_digest_confirmation
   validates_confirmation_of :password_digest
@@ -14,6 +14,7 @@ class Person < ApplicationRecord
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.info.email
+      user.country = auth.extra.raw_info.locale.upcase
       user.save!
 
       @customer = Customer.find_by(person_id: user.id)
@@ -27,5 +28,9 @@ class Person < ApplicationRecord
         @customer.save
       end
     end
+  end
+
+  def person_params(params)
+    params.require(:person).permit(:email, :first_name, :last_name, :password_digest, :country, :city, :street)
   end
 end
