@@ -72,6 +72,10 @@ kbd.primary {
     border-color: #222831;
 }
 
+.form-control-margin {
+    margin-top: 12px;
+}
+
 .form-control:focus {
     box-shadow: 0 0 5px #015e94;
 }

@@ -144,6 +144,8 @@
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="sectionData-tab" data-toggle="pill" href="#sectionData" role="tab" aria-controls="sectionData"
                             aria-selected="true">Dane</a>
+                        <a class="nav-link" id="sectionPassword-tab" data-toggle="pill" href="#sectionPassword" role="tab" aria-controls="sectionPassword"
+                            aria-selected="true">Hasło</a>
                         <a class="nav-link" id="sectionTickets-tab" data-toggle="pill" href="#sectionTickets" role="tab" aria-controls="sectionTickets"
                             aria-selected="false">Bilety</a>
                         <a class="nav-link" id="sectionHistory-tab" data-toggle="pill" href="#sectionHistory" role="tab" aria-controls="sectionHistory"
@@ -163,19 +165,6 @@
                                         </div>
                                         <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                                             <input type="email" class="form-control" id="inputEmail" placeholder="Adres e-mail" required="">
-                                        </div>
-                                    </div>
-                                    <div class="row profile-row">
-                                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                            <p class="description profile-description">Hasło</p>
-                                        </div>
-                                        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                                                title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków">
-                                        </div>
-                                        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                                            <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Potwierdź hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                                                title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków">
                                         </div>
                                     </div>
                                     <h3 class="font-weight-light section-title">Dane osobowe</h3>
@@ -255,9 +244,37 @@
                                     </div>
                                 </div>
                                 <div class="container" style="margin-top: 12px">
+                                    <p class="description">Aby potwierdzić zmiany podaj swoje aktualne hasło</p>
+                                </div>
+                                <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                        title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków">
+                                </div>
+                                <div class="container" style="margin-top: 12px">
                                     <button type="submit" class="btn btn-primary">Potwierdź zmianę danych</button>
                                 </div>
                             </form>
+                        </div>
+                        <div class="tab-pane fade" id="sectionPassword" role="tabpanel" aria-labelledby="sectionPassword-tab">
+                            <div class="container">
+                                <h3 class="font-weight-light section-title">Zmiana hasła</h3>
+                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                                    <form>
+                                        <input type="password" class="form-control" id="inputOldPassword" placeholder="Stare hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                            title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków"
+                                            style="margin-bottom: 12px">
+                                        <input type="password" class="form-control" id="inputNewPassword" placeholder="Nowe hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                            title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków"
+                                            style="margin-bottom: 12px">
+                                        <input type="password" class="form-control" id="inputNewPasswordConfirm" placeholder="Potwierdź nowe hasło" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                            title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków"
+                                            style="margin-bottom: 12px">
+                                        <div style="margin-top: 12px">
+                                            <button type="submit" class="btn btn-primary">Potwierdź zmianę hasła</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="sectionTickets" role="tabpanel" aria-labelledby="sectionTickets-tab">
                             <div class="container">
