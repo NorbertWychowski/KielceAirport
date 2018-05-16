@@ -3,7 +3,7 @@ class Person < ApplicationRecord
   has_one :customer
   has_one :user_account
 
-  attr_accessor :password_digest_confirmation
+  attr_accessor :password_confirmation
   validates_confirmation_of :password_digest
 
   def self.from_omniauth(auth)
@@ -15,6 +15,7 @@ class Person < ApplicationRecord
       user.last_name = auth.info.last_name
       user.email = auth.info.email
       user.country = auth.extra.raw_info.locale.upcase
+      user.without_password = true
       user.save!
 
       @customer = Customer.find_by(person_id: user.id)
@@ -31,6 +32,7 @@ class Person < ApplicationRecord
   end
 
   def person_params(params)
-    params.require(:person).permit(:email, :first_name, :last_name, :password_digest, :country, :city, :street)
+    params.require(:person).permit(:email, :first_name, :last_name, :password, :password_confirmation, :country, :city, :street)
+        .merge(without_password: false)
   end
 end

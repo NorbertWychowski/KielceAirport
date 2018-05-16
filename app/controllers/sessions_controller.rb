@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       user = Person.find_by(email: params[:session][:email])
-      if user && user.authenticate(params[:session][:password_digest])
+      if user && user.authenticate(params[:session][:password])
         customer = Customer.find_by(person_id: user.id)
         if customer && !customer.email_confirmed
           flash.now[:danger] = "Konto nie zostało aktywowane"

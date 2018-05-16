@@ -2,6 +2,7 @@ class CreateFlights < ActiveRecord::Migration[5.1]
   def change
     create_table :flights do |t|
       t.string :flight_identifier
+      t.float :ticket_price
       t.datetime :dep_date
       t.datetime :arr_date
       t.references :airline, foreign_key: true

@@ -10,6 +10,7 @@ class CreatePeople < ActiveRecord::Migration[5.1]
       t.string :street, default: ''
       t.string :provider, default: ''
       t.string :uid, default: ''
+      t.boolean :without_password, default: false
     end
   end
 end

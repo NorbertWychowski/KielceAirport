@@ -1,15 +1,13 @@
 class Flight < ApplicationRecord
-  has_many :bookings
+  has_many :tickets
   belongs_to :airline
   belongs_to :airplane
   belongs_to :airport
   belongs_to :flight_type
   belongs_to :flight_status
 
-  default_scope {order("id ASC")}
-
   def has_empty_seats?
-    bookings.size < airplane.seats
+    tickets.size < airplane.seats
   end
 
   def self.search(params)
@@ -17,6 +15,7 @@ class Flight < ApplicationRecord
       joins(:airport, :flight_status, :airline, :flight_type)
           .select('flights.*, airports.name as airport_name, flight_statuses.name as flight_status_name, ' +
                       'airlines.name as airline_name, flight_types.name as flight_type_name')
+          .order(dep_date: :asc)
     else
       binded_values = []
       params.split.map {|params| "%#{params}%"}.each do |f|
@@ -33,6 +32,7 @@ class Flight < ApplicationRecord
                         'LOWER(flight_statuses.name) LIKE LOWER(?) OR ' +
                         'LOWER(airlines.name) LIKE LOWER(?) OR ' +
                         'LOWER(flight_types.name) LIKE LOWER(?))'] * search_length).join(' AND ')] + binded_values)
+          .order(dep_date: :asc)
     end
   end
 end

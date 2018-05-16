@@ -2,13 +2,15 @@ class StaticController < ApplicationController
   def index
     @flights_incoming = Flight.joins(:airport, :flight_status)
                             .select('flights.*, airports.name as airport_name, flight_statuses.name as flight_status_name')
-                            .where(flight_type_id: 2, flight_status_id: 3)
+                            .where(flight_type_id: 2, flight_status_id: 3, dep_date: Time.now..Float::INFINITY)
                             .limit(5)
+                            .order(dep_date: :asc)
 
     @flights_outgoing = Flight.joins(:airport, :flight_status)
                             .select('flights.*, airports.name as airport_name, flight_statuses.name as flight_status_name')
-                            .where(flight_type_id: 1, flight_status_id: 3)
+                            .where(flight_type_id: 1, flight_status_id: 3, dep_date: Time.now..Float::INFINITY)
                             .limit(5)
+                            .order(dep_date: :asc)
 
     @news = News.last
     unless @news.nil?

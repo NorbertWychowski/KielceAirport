@@ -1,5 +1,4 @@
 class Customer < ApplicationRecord
-  has_many :bookings
   belongs_to :person
 
   def email_activate
@@ -9,8 +8,12 @@ class Customer < ApplicationRecord
   end
 
   def update_data(params)
-    self.update(customer_params(params))
-    self.person.update(self.person.person_params(params))
+    unless params[:customer].nil?
+      self.update(customer_params(params))
+    end
+    unless params[:person].nil?
+      self.person.update(self.person.person_params(params))
+    end
   end
 
   def customer_params(params)

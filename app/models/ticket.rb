@@ -1,4 +1,4 @@
 class Ticket < ApplicationRecord
-  has_many :bookings
+  belongs_to :flight
   belongs_to :discount_type
 end

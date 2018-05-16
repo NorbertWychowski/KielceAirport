@@ -10,20 +10,20 @@
     <div class="row">
       <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 container-profile-menu">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="sectionData-tab" data-toggle="pill" href="#sectionData" role="tab" aria-controls="sectionData"
+          <a class="nav-link <%= (@tab.nil? or @tab != 'sectionPassword') ? 'active' : '' %>" id="sectionData-tab" data-toggle="pill" href="#sectionData" role="tab" aria-controls="sectionData"
              aria-selected="true">Dane</a>
+          <a class="nav-link <%= (!@tab.nil? and @tab == 'sectionPassword') ? 'active' : '' %>" id="sectionPassword-tab" data-toggle="pill" href="#sectionPassword" role="tab" aria-controls="sectionPassword"
+             aria-selected="true">Hasło</a>
           <a class="nav-link" id="sectionTickets-tab" data-toggle="pill" href="#sectionTickets" role="tab" aria-controls="sectionTickets"
              aria-selected="false">Bilety</a>
-          <a class="nav-link" id="sectionBooking-tab" data-toggle="pill" href="#sectionBooking" role="tab" aria-controls="sectionBooking"
-             aria-selected="false">Rezerwacje</a>
           <a class="nav-link" id="sectionHistory-tab" data-toggle="pill" href="#sectionHistory" role="tab" aria-controls="sectionHistory"
              aria-selected="false">Historia lotów</a>
-
         </div>
       </div>
       <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="sectionData" role="tabpanel" aria-labelledby="sectionData-tab">
+          <div class="tab-pane fade show <%= (@tab.nil? or @tab != 'sectionPassword') ? 'active' : '' %>"
+               id="sectionData" role="tabpanel" aria-labelledby="sectionData-tab">
             <%= form_tag customer_path(@customer.customer_id), method: :put do %>
               <div class="container">
                 <%= fields_for :person do |person| %>
@@ -34,19 +34,6 @@
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                       <%= person.text_field :email, value: @customer.email, class: 'form-control', placeholder: 'Adres e-mail', required: '' %>
-                    </div>
-                  </div>
-                  <div class="row profile-row">
-                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                      <p class="description profile-description">Hasło</p>
-                    </div>
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                      <%= person.password_field :password_digest, {class: 'form-control', placeholder: 'Hasło', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
-                                                                   title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków'} %>
-                    </div>
-                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                      <%= person.password_field :password_digest_confirmation, {class: 'form-control', placeholder: 'Hasło', required: '', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
-                                                                                title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków'} %>
                     </div>
                   </div>
                   <h3 class="font-weight-light section-title">Dane osobowe</h3>
@@ -124,11 +111,39 @@
                     </div>
                   </div>
                 <% end %>
-              </div>
-              <div class="container" style="margin-top: 12px">
-                <%= submit_tag "Potwierdź zmianę danych", class: 'btn btn-primary' %>
-              </div>
+                <div class="container" style="margin-top: 12px" id="#confirm_button" id="confirm_container">
+                  <%= submit_tag "Potwierdź zmianę danych", class: 'btn btn-primary' %>
+                </div>
             <% end %>
+            </div>
+          </div>
+          <div class="tab-pane fade <%= (!@tab.nil? and @tab == 'sectionPassword') ? 'show active' : '' %>"
+               id="sectionPassword" role="tabpanel" aria-labelledby="sectionPassword-tab">
+            <div class="container">
+              <h3 class="font-weight-light section-title">Zmiana hasła</h3>
+              <% flash.each do |_, value| %>
+                <div class='alert alert-danger' , style="margin-top: 10px"><%= value %></div>
+              <% end %>
+              <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                <%= form_tag customer_path(@customer.customer_id), method: :put do %>
+                  <%= fields_for :person do |person| %>
+                    <% if !@customer.without_password %>
+                      <%= person.password_field :old_password, class: 'form-control', placeholder: 'Stare hasło', required: '', style: 'margin-bottom: 12px',
+                                                title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków' %>
+                    <% end %>
+                    <%= person.password_field :password, class: 'form-control', placeholder: 'Nowe hasło', required: '',
+                                              style: 'margin-bottom: 12px', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
+                                              title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków' %>
+                    <%= person.password_field :password_confirmation, class: 'form-control', placeholder: 'Potwierdź nowe hasło', required: '',
+                                              style: 'margin-bottom: 12px', pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}',
+                                              title: 'Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków' %>
+                    <div style="margin-top: 12px">
+                      <%= submit_tag "Potwierdź zmianę hasła", class: 'btn btn-primary' %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
           <div class="tab-pane fade" id="sectionTickets" role="tabpanel" aria-labelledby="sectionTickets-tab">
             <div class="container">
@@ -158,44 +173,6 @@
                       <a class="table-link" href="#">
                         <i class="fa fa-margin fa-file" aria-hidden="true"></i>Pobierz</a>
                     </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="sectionBooking" role="tabpanel" aria-labelledby="sectionBooking-tab">
-            <div class="container">
-              <h3 class="font-weight-light section-title">Twoje rezerwacje</h3>
-              <div class="container table-responsive" style="margin-top: 12px">
-                <table class="table table-hover">
-                  <thead class="thead-primary">
-                  <tr>
-                    <th scope="col">Numer lotu</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Kierunek</th>
-                    <th scope="col">Cena</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td class="table-element">
-                      <a href="#" class="table-link">3515612</a>
-                    </td>
-                    <td class="table-element">02.05.2018</td>
-                    <td class="table-element">Górnicza Dolina</td>
-                    <td class="table-element">Pięćset sztuk złota</td>
-                    <td class="table-element">Oczekuje na zapłatę</td>
-                  </tr>
-                  <tr>
-                    <td class="table-element">
-                      <a href="#" class="table-link">3515612</a>
-                    </td>
-                    <td class="table-element">02.05.2018</td>
-                    <td class="table-element">Górnicza Dolina</td>
-                    <td class="table-element">Pięćset sztuk złota</td>
-                    <td class="table-element">Zrealizowana</td>
                   </tr>
                   </tbody>
                 </table>

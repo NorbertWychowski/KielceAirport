@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508125004) do
+ActiveRecord::Schema.define(version: 20180508124732) do
 
   create_table "airlines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -28,24 +28,6 @@ ActiveRecord::Schema.define(version: 20180508125004) do
     t.string "IATA"
     t.bigint "city_id"
     t.index ["city_id"], name: "index_airports_on_city_id"
-  end
-
-  create_table "book_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-  end
-
-  create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "date"
-    t.bigint "flight_id"
-    t.bigint "customer_id"
-    t.bigint "payment_id"
-    t.bigint "book_status_id"
-    t.bigint "ticket_id"
-    t.index ["book_status_id"], name: "index_bookings_on_book_status_id"
-    t.index ["customer_id"], name: "index_bookings_on_customer_id"
-    t.index ["flight_id"], name: "index_bookings_on_flight_id"
-    t.index ["payment_id"], name: "index_bookings_on_payment_id"
-    t.index ["ticket_id"], name: "index_bookings_on_ticket_id"
   end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -78,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
 
   create_table "flights", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "flight_identifier"
+    t.float "ticket_price", limit: 24
     t.datetime "dep_date"
     t.datetime "arr_date"
     t.bigint "airline_id"
@@ -99,11 +82,6 @@ ActiveRecord::Schema.define(version: 20180508125004) do
     t.string "image"
   end
 
-  create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "payment_date"
-    t.float "total_price", limit: 24
-  end
-
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
     t.string "first_name"
@@ -114,12 +92,15 @@ ActiveRecord::Schema.define(version: 20180508125004) do
     t.string "street", default: ""
     t.string "provider", default: ""
     t.string "uid", default: ""
+    t.boolean "without_password", default: false
   end
 
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.float "price", limit: 24
     t.bigint "discount_type_id"
+    t.bigint "flight_id"
     t.index ["discount_type_id"], name: "index_tickets_on_discount_type_id"
+    t.index ["flight_id"], name: "index_tickets_on_flight_id"
   end
 
   create_table "user_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,11 +116,6 @@ ActiveRecord::Schema.define(version: 20180508125004) do
 
   add_foreign_key "airlines", "user_accounts"
   add_foreign_key "airports", "cities"
-  add_foreign_key "bookings", "book_statuses"
-  add_foreign_key "bookings", "customers"
-  add_foreign_key "bookings", "flights"
-  add_foreign_key "bookings", "payments"
-  add_foreign_key "bookings", "tickets"
   add_foreign_key "customers", "people"
   add_foreign_key "flights", "airlines"
   add_foreign_key "flights", "airplanes"
@@ -147,6 +123,7 @@ ActiveRecord::Schema.define(version: 20180508125004) do
   add_foreign_key "flights", "flight_statuses"
   add_foreign_key "flights", "flight_types"
   add_foreign_key "tickets", "discount_types"
+  add_foreign_key "tickets", "flights"
   add_foreign_key "user_accounts", "people"
   add_foreign_key "user_accounts", "user_types"
 end

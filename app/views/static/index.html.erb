@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
     function startTime() {
         var today = new Date();
         var h = today.getHours();
@@ -13,11 +13,13 @@
 
     function checkTime(i) {
         if (i < 10)
-            i = "0" + i
+            i = "0" + i;
         return i;
     }
+
+    $(document).on('turbolinks:load', startTime);
 </script>
-<body onload="startTime()">
+
 <!-- cover-->
 <% flash.each do |key, value| %>
   <div class='<%= "alert alert-#{key}" %>' style="margin-top: 10px"><%= value %></div>
@@ -61,7 +63,7 @@
               <tbody id="flights">
               <% @flights_incoming.each do |flight| %>
                 <tr>
-                  <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
+                  <th scope="row"><%= flight.dep_date.strftime("%F %T") %></th>
                   <td><%= flight.airport_name %></td>
                   <td><%= flight.flight_identifier %></td>
                   <td><%= flight.flight_status_name %></td>
@@ -88,7 +90,7 @@
               <tbody id="flights">
               <% @flights_outgoing.each do |flight| %>
                 <tr>
-                  <th scope="row"><%= flight.dep_date.strftime("%H:%M") %></th>
+                  <th scope="row"><%= flight.dep_date.strftime("%F %T") %></th>
                   <td><%= flight.airport_name %></td>
                   <td><%= flight.flight_identifier %></td>
                   <td><%= flight.flight_status_name %></td>
