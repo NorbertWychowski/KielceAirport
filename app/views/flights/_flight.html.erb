@@ -1,10 +1,10 @@
 <tr>
   <td class="table-element"><%= flight.flight_identifier %></td>
   <td class="table-element"><%= flight.airline_name %></td>
-  <td class="table-element"><%= flight.arr_date.strftime("%d.%m.%Y") %></td>
-  <td class="table-element"><%= flight.arr_date.strftime("%H:%M") %></td>
+  <td class="table-element"><%= simple_format flight.dep_date.strftime("%F <br> %H:%M") %></td>
+  <td class="table-element"><%= simple_format flight.arr_date.strftime("%F <br> %H:%M") %></td>
   <td class="table-element"><%= flight.airport_name %></td>
-  <td class="table-element"><%= flight.flight_status_name %></td>
-  <td class="table-element"><%= flight.flight_type_name %></td>
-  <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html">Zobacz lot</a></td>
+  <td class="table-element"><%= FlightStatus::i18n_status flight.flight_status_name %></td>
+  <td class="table-element"><%= FlightType::i18n_type flight.flight_type_name %></td>
+  <td class="table-element"><a class="btn btn-primary" role="button" href="lot.html"><%= t :show_flight %></a></td>
 </tr>

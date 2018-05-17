@@ -58,8 +58,8 @@ airplanes = Airplane.create([{name: "Boeing 747", seats: 513},
                              {name: "Airbus A320", seats: 160},
                              {name: "Airbus A321", seats: 220}])
 
-flight_type = FlightType.create([{name: "Przylot"}, {name: "Odlot"}])
-flight_status = FlightStatus.create([{name: "Wystartował"}, {name: "Wylądował"}, {name: "Oczekiwany"}, {name: "Odwołany"}])
+flight_type = FlightType.create([{name: "arrival"}, {name: "departure"}])
+flight_status = FlightStatus.create([{name: "departed"}, {name: "landed"}, {name: "expected"}, {name: "canceled"}])
 
 airlines = Airline.create([{name: "Ryanair"}, {name: "EasyJet"}, {name: "Wizz Air"}, {name: "Germanwings"}, {name: "Norwegian"},
                            {name: "LOT"}, {name: "Emirates"}, {name: "Qatar Airways"}, {name: "Turkish Airlines"}, {name: "Enter Air"},

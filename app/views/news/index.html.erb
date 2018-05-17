@@ -1,7 +1,7 @@
 <!-- cover-->
 <div class="container-fluid container-cover-title row">
   <div class="container cover-content">
-    <h2 class="font-weight-light cover-title">Aktualności</h2>
+    <h2 class="font-weight-light cover-title"><%= t :news %></h2>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="container news-content">
               <p class="font-weight-light news-content"><%= simple_format(news.content.split("\n").first) %></p>
-              <%= link_to "Czytaj więcej", news_path(news), class: 'btn btn-primary' %>
+              <%= link_to t(:read_more), news_path(news), class: 'btn btn-primary' %>
             </div>
           </div>
         </div>

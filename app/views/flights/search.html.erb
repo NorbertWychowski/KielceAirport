@@ -1,7 +1,7 @@
 <!-- cover-->
 <div class="container-fluid container-cover-title row">
   <div class="container cover-content">
-    <h2 class="font-weight-light cover-title">Wyszukiwarka</h2>
+    <h2 class="font-weight-light cover-title"><%= t :search_engine %></h2>
   </div>
 </div>
 
@@ -10,15 +10,15 @@
   <div class="content-content">
     <div class="container">
       <%= form_tag search_path, method: :post, id: 'flight_search' do %>
-        <p class="description">Podaj nazwę lotniska, nazwę przewoźnika lub oznaczenie lotu.</p>
+        <p class="description"><%= t :search_description %></p>
         <div class="row">
           <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-            <%= text_field_tag :search, params[:search], placeholder: 'Wpisz frazę...', autocomplete: :off,
+            <%= text_field_tag :search, params[:search], placeholder: t(:enter_phrase), autocomplete: :off,
                                class: 'form-control form-search', 'aria-label': 'Search' %>
           </div>
           <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
             <%= button_tag type: 'submit', class: 'btn btn-primary btn-search' do %>
-              <i class="fa fa-margin fa-search" aria-hidden="true"></i> Wyszukaj
+              <i class="fa fa-margin fa-search" aria-hidden="true"></i><%= t :search_button %>
             <% end %>
           </div>
         </div>
@@ -29,14 +29,14 @@
         <table class="table table-hover" style="margin-top: 16px">
           <thead class="thead-primary">
           <tr>
-            <th scope="col">Lot</th>
-            <th scope="col">Przewoźnik</th>
-            <th scope="col">Data</th>
-            <th scope="col">Godzina</th>
-            <th scope="col">Kierunek</th>
-            <th scope="col">Status</th>
-            <th scope="col">Typ</th>
-            <th scope="col">Akcja</th>
+            <th scope="col"><%= t :flight_no %></th>
+            <th scope="col"><%= t :airline %></th>
+            <th scope="col"><%= t :departure_time %></th>
+            <th scope="col"><%= t :arrival_time %></th>
+            <th scope="col"><%= t :direction %></th>
+            <th scope="col"><%= t :flight_status %></th>
+            <th scope="col"><%= t :flight_type %></th>
+            <th scope="col"><%= t :action_flight %></th>
           </tr>
           </thead>
           <tbody id="flights"><%= render @flights %></tbody>

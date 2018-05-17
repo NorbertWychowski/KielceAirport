@@ -7,5 +7,5 @@
     remote:        data-remote
 -%>
 <li class="page-item">
-  <%= link_to_unless current_page.last?, "Następna", url, {remote: remote, class: 'page-link'} %>
+  <%= link_to_unless current_page.last?, t(:next), url, {remote: remote, class: 'page-link'} %>
 </li>

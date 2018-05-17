@@ -1,7 +1,7 @@
 <!-- cover-->
 <div class="container-fluid container-cover-title row">
   <div class="container cover-content">
-    <h2 class="font-weight-light cover-title">Logowanie</h2>
+    <h2 class="font-weight-light cover-title"><%= t :login %></h2>
   </div>
 </div>
 
@@ -10,20 +10,20 @@
   <div class="content-content">
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login container-login-left">
-        <h3 class="font-weight-light" style="margin-bottom: 12px">Mam już konto</h3>
+        <h3 class="font-weight-light" style="margin-bottom: 12px"><%= t :already_have_account %></h3>
         <%= link_to "/auth/google_oauth2", class: 'btn btn-primary' do %>
-          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Zaloguj się kontem Google
+          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i><%= t :login_with_google %>
         <% end %>
-        <p class="description font-weight-light" style="margin-top: 12px">Zaloguj się adresem e-mail</p>
+        <p class="description font-weight-light" style="margin-top: 12px"><%= t :login_with_email %></p>
         <%= form_for(:session, url: login_path) do |f| %>
           <div class="form-group">
-            <%= f.text_field :email, class: 'form-control', placeholder: "Adres e-mail", required: '' %>
+            <%= f.text_field :email, class: 'form-control', placeholder: t(:email), required: '' %>
           </div>
           <div class="form-group">
-            <%= f.password_field :password, class: 'form-control', placeholder: "Hasło", required: '' %>
-            <small id="passwordHelp" class="form-text text-muted">Nigdy nie podawaj innym swojego hasła!</small>
+            <%= f.password_field :password, class: 'form-control', placeholder: t(:password), required: '' %>
+            <small id="passwordHelp" class="form-text text-muted"><%= t :never_give_password %></small>
           </div>
-          <%= f.submit "Zaloguj się", class: 'btn btn-primary' %>
+          <%= f.submit t(:login), class: 'btn btn-primary' %>
           <% flash.each do |_, value| %>
             <div class='alert alert-danger' , style="margin-top: 10px"><%= value %></div>
           <% end %>
@@ -31,24 +31,20 @@
       </div>
       <br>
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-login">
-        <h3 class="font-weight-light">Nie mam konta</h3>
-        <p class="description font-weight-light">Zarejestruj się za darmo</p>
-        <%= link_to "Rejestracja przez e-mail", new_customer_path,
+        <h3 class="font-weight-light"><%= t :dont_have_account %></h3>
+        <p class="description font-weight-light"><%= t :register_for_free %></p>
+        <%= link_to t(:register_by_email), new_customer_path,
                     {class: 'btn btn-primary', 'aria-describedby': 'registerHelp', style: 'margin-bottom: 12px'} %>
         <%= link_to "/auth/google_oauth2", {class: 'btn btn-primary', style: 'margin-bottom: 12px'} do %>
-          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i>Rejestracja przez konto Google
+          <i class="fa fa-margin fa-google fa-square" aria-hidden="true"></i><%= t :register_by_google %>
         <% end %>
         <p>
-          <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription">Dlaczego
-            warto mieć konto?</a>
+          <a class="register-features" data-toggle="collapse" href="#registerDescription" role="button" aria-expanded="false" aria-controls="registerDescription"><%= t :why_worth_to_have_account %></a>
         </p>
         <div class="collapse" id="registerDescription">
           <div class="col">
             <ul class="register-features">
-              <li class="register-features">Atrakcyjne promocje</li>
-              <li class="register-features">Rezerwacje biletów</li>
-              <li class="register-features">Historia lotów</li>
-              <li class="register-features">Historia lotów</li>
+              <%= t :register_features_html %>
             </ul>
           </div>
         </div>

@@ -31,21 +31,21 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item nav-link nav-main">
             <%= link_to root_path do %>
-              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna
+              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i><%= t :home %>
             <% end %>
           </li>
           <li class="nav-item nav-link nav-main">
             <a href="kup-bilet.html">
-              <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i>Kup bilet</a>
+              <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i><%= t :buy_ticket %></a>
           </li>
           <li class="nav-item nav-link nav-main">
             <%= link_to news_index_path do %>
-              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Aktualności
+              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i><%= t :news %>
             <% end %>
           </li>
           <li class="nav-item nav-link nav-main">
             <%= link_to search_path do %>
-              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Wyszukiwarka
+              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i><%= t :search %>
             <% end %>
           </li>
         </ul>
@@ -53,26 +53,26 @@
           <% if current_user.nil? %>
             <li class="nav-control">
               <%= link_to login_path do %>
-                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Zaloguj się
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i><%= t :login %>
               <% end %>
             </li>
           <% else %>
             <li class="nav-control">
               <%= link_to customer_path(current_user) do %>
-                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Twoje konto
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i><%= t :your_profile %>
               <% end %>
             </li>
             <li class="nav-control">
               <%= link_to logout_path, method: :delete do %>
-                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Wyloguj się
+                <i class="fa fa-margin fa-user" aria-hidden="true"></i><%= t :logout %>
               <% end %>
             </li>
           <% end %>
           </li>
           <li class="nav-control nav-control-language">
-            <a href="#">PL</a>
+            <%= link_to "PL", url_for(locale: :pl)%>
             <span>/</span>
-            <a href="#">EN</a>
+            <%= link_to "EN", url_for(locale: :en)%>
           </li>
         </ul>
       </div>
@@ -134,31 +134,31 @@
 <div class="container container-footer">
   <div class="row">
     <div class="col-lg-2 col-sm-12">
-      <h3 class="font-weight-light footer-title">Menu</h3>
+      <h3 class="font-weight-light footer-title"><%= t :menu %></h3>
       <ul class="footer-list">
         <li class="footer-list-item">
           <%= link_to root_path, class: 'footer-link' do %>
-            <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna
+            <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i><%= t :home %>
           <% end %>
         </li>
         <li class="footer-list-item">
           <a class="footer-link" href="kup-bilet.html">
-            <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i>Kup bilet</a>
+            <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i><%= t :buy_ticket %></a>
         </li>
         <li class="footer-list-item">
           <%= link_to news_index_path, class: 'footer-link' do %>
-            <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i>Aktualności
+            <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i><%= t :news %>
           <% end %>
         </li>
         <li class="footer-list-item">
           <%= link_to search_path, class: 'footer-link' do %>
-            <i class="fa fa-margin fa-search fa-fw" aria-hidden="true"></i>Wyszukiwarka
+            <i class="fa fa-margin fa-search fa-fw" aria-hidden="true"></i><%= t :search %>
           <% end %>
         </li>
       </ul>
     </div>
     <div class="col-lg-3 col-sm-12">
-      <h3 class="font-weight-light footer-title">Informacje</h3>
+      <h3 class="font-weight-light footer-title"><%= t :informations %></h3>
       <ul class="footer-list">
         <li class="footer-list-item">
           <i class="fa fa-margin fa-map-marker" aria-hidden="true"></i>Poland, Kielce
@@ -175,7 +175,7 @@
       </ul>
     </div>
     <div class="col-lg-3 col-sm-12">
-      <h3 class="font-weight-light footer-title">Media</h3>
+      <h3 class="font-weight-light footer-title"><%= t :media %></h3>
       <ul class="footer-list">
         <li class="footer-list-item">
           <a class="footer-link" href="#">

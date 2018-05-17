@@ -1,7 +1,7 @@
 <!-- cover-->
 <div class="container-fluid container-cover-title row">
   <div class="container cover-content">
-    <h2 class="font-weight-light cover-title">Potwierdzenie rejestracji</h2>
+    <h2 class="font-weight-light cover-title"><%= t :registration_confirmation %></h2>
   </div>
 </div>
 
@@ -9,11 +9,9 @@
 <div class="container content">
   <div class="content-content">
     <div class="container-register">
-      <h3 class="section-title font-weight-light">Konto zostało utworzone poprawnie</h3>
+      <h3 class="section-title font-weight-light"><%= t :account_created_successful %></h3>
       <div class="col">
-        <p class="description">Na Twój adres e-mail <b><%= @email %></b> został wysłany link aktywacyjny.
-          Przed rozpoczęciem korzystania z serwisu upewnij się, że Twoje konto zostało aktywowane. Na koncie
-          nieaktywowanym nie można wykonywać żadnych operacji.</p>
+        <p class="description"><%= t(:account_created_description_html, email: @email) %></p>
       </div>
     </div>
   </div>

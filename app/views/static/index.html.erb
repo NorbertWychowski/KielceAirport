@@ -29,7 +29,7 @@
   <!-- flights -->
   <div class="container container-cover-flights">
     <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 float-left container-weather">
-      <h2 class="font-weight-light">Pogoda</h2>
+      <h2 class="font-weight-light"><%= t :weather %></h2>
       <p class="font-weight-light">
         <img src=<%= "http://openweathermap.org/img/w/#{get_weather['weather'].first['icon']}.png" %>>
         <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>
@@ -42,10 +42,10 @@
     <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 float-right container-flights">
       <ul class="nav nav-tabs nav-flights" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" href="#flightsArrivals" role="tab" data-toggle="tab">Przyloty</a>
+          <a class="nav-link active" href="#flightsArrivals" role="tab" data-toggle="tab"><%= t :arrivals %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#flightsDepartures" role="tab" data-toggle="tab">Odloty</a>
+          <a class="nav-link" href="#flightsDepartures" role="tab" data-toggle="tab"><%= t :departures %></a>
         </li>
       </ul>
       <div class="tab-content">
@@ -54,25 +54,25 @@
             <table class="table table-flights">
               <thead class="thead-primary">
               <tr>
-                <th scope="col">Godzina</th>
-                <th scope="col">Kierunek</th>
-                <th scope="col">Lot</th>
-                <th scope="col">Status</th>
+                <th scope="col"><%= t :arrival_time %></th>
+                <th scope="col"><%= t :direction %></th>
+                <th scope="col"><%= t :flight_no %></th>
+                <th scope="col"><%= t :flight_status %></th>
               </tr>
               </thead>
               <tbody id="flights">
               <% @flights_incoming.each do |flight| %>
                 <tr>
-                  <th scope="row"><%= flight.dep_date.strftime("%F %T") %></th>
+                  <th scope="row"><%= flight.arr_date.strftime("%F %H:%M") %></th>
                   <td><%= flight.airport_name %></td>
                   <td><%= flight.flight_identifier %></td>
-                  <td><%= flight.flight_status_name %></td>
+                  <td><%= FlightStatus::i18n_status(flight.flight_status_name) %></td>
                 </tr>
               <% end %>
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <%= link_to "Zobacz więcej przylotów", flights_path, class: 'more-flights' %>
+              <%= link_to t(:more_arrivals), flights_path, class: 'more-flights' %>
             </div>
           </div>
         </div>
@@ -81,25 +81,25 @@
             <table class="table table-flights">
               <thead class="thead-primary">
               <tr>
-                <th scope="col">Godzina</th>
-                <th scope="col">Kierunek</th>
-                <th scope="col">Lot</th>
-                <th scope="col">Status</th>
+                <th scope="col"><%= t :departure_time %></th>
+                <th scope="col"><%= t :direction %></th>
+                <th scope="col"><%= t :flight_no %></th>
+                <th scope="col"><%= t :flight_status %></th>
               </tr>
               </thead>
               <tbody id="flights">
               <% @flights_outgoing.each do |flight| %>
                 <tr>
-                  <th scope="row"><%= flight.dep_date.strftime("%F %T") %></th>
+                  <th scope="row"><%= flight.dep_date.strftime("%F %H:%M") %></th>
                   <td><%= flight.airport_name %></td>
                   <td><%= flight.flight_identifier %></td>
-                  <td><%= flight.flight_status_name %></td>
+                  <td><%= FlightStatus::i18n_status(flight.flight_status_name) %></td>
                 </tr>
               <% end %>
               </tbody>
             </table>
             <div class="container-fluid container-flights-more">
-              <%= link_to "Zobacz więcej przylotów", flights_path, class: 'more-flights' %>
+              <%= link_to t(:more_departures), flights_path, class: 'more-flights' %>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@
 <% unless @news.nil? %>
   <div class="container content">
     <div class="content-title">
-      <h2 class="font-weight-light content-title">Najnowsza wiadomość</h2>
+      <h2 class="font-weight-light content-title"><%= t :top_news %></h2>
     </div>
     <div class="content-content container-news">
       <div class="row">
@@ -131,8 +131,8 @@
           </div>
           <div class="container">
             <p class="news-content"><%= @content %></p>
-            <%= link_to "Czytaj więcej", news_path(@news), class: 'btn btn-primary' %>
-            <%= link_to "Zobacz listę aktualności", news_index_path, class: 'btn btn-primary' %>
+            <%= link_to t(:read_more), news_path(@news), class: 'btn btn-primary' %>
+            <%= link_to t(:see_news_list), news_index_path, class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
