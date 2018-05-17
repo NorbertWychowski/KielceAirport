@@ -79,7 +79,6 @@ en:
   search_description: "Enter the name of the airport, the name of the airline or the designation of the flight."
   enter_phrase: "Enter a phrase..."
   search_button: "Search"
-  search_engine: "Search engine"
   flight_type: "Type"
   registration: "Registration"
   data_required: "Data required"

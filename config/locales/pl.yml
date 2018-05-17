@@ -48,7 +48,6 @@ pl:
   search_description: "Podaj nazwę lotniska, nazwę przewoźnika lub oznaczenie lotu."
   enter_phrase: "Wpisz frazę..."
   search_button: "Wyszukaj"
-  search_engine: "Wyszukiwarka"
   flight_type: "Typ"
   registration: "Rejestracja"
   data_required: "Dane wymagane"
