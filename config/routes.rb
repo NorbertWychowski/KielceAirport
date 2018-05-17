@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  root 'static#index'
   scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
     get 'customers/show'
-
-    root 'static#index'
 
     # logowanie
     get '/login', to: 'sessions#new'
