@@ -9,6 +9,8 @@
   <meta name="description" content="Platforma obsługi lotniska"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <%= favicon_link_tag 'favicon.ico' %>
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
   <%= stylesheet_link_tag 'w3' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
@@ -25,7 +27,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <%= link_to "Kielce Airport", root_path, class: 'navbar-brand' %>
+      <%= link_to (image_tag 'logo.png', width: 200, height: 47, alt: 'logo'), root_path, class: 'navbar-brand' %>
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
@@ -35,12 +37,13 @@
             <% end %>
           </li>
           <li class="nav-item nav-link nav-main">
-            <a href="kup-bilet.html">
-              <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i><%= t :buy_ticket %></a>
+            <%= link_to tickets_path do %>
+              <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i><%= t :buy_ticket %>
+            <% end %>
           </li>
           <li class="nav-item nav-link nav-main">
             <%= link_to news_index_path do %>
-              <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i><%= t :news %>
+              <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i><%= t :news %>
             <% end %>
           </li>
           <li class="nav-item nav-link nav-main">

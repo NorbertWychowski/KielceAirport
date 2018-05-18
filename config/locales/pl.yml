@@ -77,3 +77,4 @@ pl:
   confirm_new_password: "Potwierdź nowe hasło"
   password_info: "Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków"
   confirm_password_change: "Potwierdź zmianę hasła"
+  airport: "Lotnisko"

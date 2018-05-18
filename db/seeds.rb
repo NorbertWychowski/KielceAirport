@@ -23,9 +23,27 @@ news = []
 }
 News.create(news)
 
-cities = City.create([{name: "Warszawa"}, {name: "Berlin"}, {name: "Zurych"}, {name: "Amsterdam"},
-                      {name: "Chicago"}, {name: "Waszyngton"}, {name: "Tokio"}, {name: "Pekin"},
-                      {name: "Paryż"}, {name: "Moskwa"}])
+countries = Country.create([{name: "Polska", alpha2: "pl"},
+                            {name: "Niemcy", alpha2: "de"},
+                            {name: "Szwajcaria", alpha2: "ch"},
+                            {name: "Holandia", alpha2: "nl"},
+                            {name: "Stany Zjednoczone", alpha2: "us"},
+                            {name: "Stany Zjednoczone", alpha2: "us"},
+                            {name: "Japonia", alpha2: "jp"},
+                            {name: "Chiny", alpha2: "cn"},
+                            {name: "Francja", alpha2: "fr"},
+                            {name: "Rosja", alpha2: "ru"}])
+
+cities = City.create([{name: "Warszawa", country: countries[0]},
+                      {name: "Berlin", country: countries[1]},
+                      {name: "Zurych", country: countries[2]},
+                      {name: "Amsterdam", country: countries[3]},
+                      {name: "Chicago", country: countries[4]},
+                      {name: "Waszyngton", country: countries[4]},
+                      {name: "Tokio", country: countries[5]},
+                      {name: "Pekin", country: countries[6]},
+                      {name: "Paryż", country: countries[7]},
+                      {name: "Moskwa", country: countries[8]}])
 
 airports = Airport.create([{city: cities[0], name: "Okęcie / im. Fryderyka Chopina", IATA: "WAW"},
                            {city: cities[1], name: "Tegel", IATA: "TXL"},
@@ -93,3 +111,13 @@ flights = []
               airport: airports.sample, airplane: airplanes.sample, flight_type: type, flight_status: flight_status[2]}
 }
 Flight.create(flights)
+
+Baggage.create([{name: "Bagaż podręczny (1x 8kg)", price: 0.0},
+                {name: "Bagaż podręczny (2x 8kg)", price: 50.0},
+                {name: "Bagaż rejestrowany (1x 23kg) + bagaż podręczny (1x 8kg)", price: 80.0},
+                {name: "Bagaż rejestrowany (2x 23kg) + bagaż podręczny (1x 8kg)", price: 150.0},
+                {name: "Bagaż rejestrowany (2x 23kg) + bagaż podręczny (2x 8kg)", price: 180.0}])
+
+DiscountType.create([{name: "Brak ulgi - 0%", value: 1.0},
+                     {name: "Niemowlęta do 2 roku życia - 90%", value: 0.1},
+                     {name: "Dzieci w wieku od 2 do 11 roku życia - 25%", value: 0.75}])

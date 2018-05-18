@@ -30,8 +30,20 @@ ActiveRecord::Schema.define(version: 20180508124732) do
     t.index ["city_id"], name: "index_airports_on_city_id"
   end
 
+  create_table "baggages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.float "price", limit: 24
+  end
+
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "alpha2"
   end
 
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -96,9 +108,15 @@ ActiveRecord::Schema.define(version: 20180508124732) do
   end
 
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.float "price", limit: 24
+    t.bigint "customers_id"
     t.bigint "discount_type_id"
     t.bigint "flight_id"
+    t.bigint "baggages_id"
+    t.index ["baggages_id"], name: "index_tickets_on_baggages_id"
+    t.index ["customers_id"], name: "index_tickets_on_customers_id"
     t.index ["discount_type_id"], name: "index_tickets_on_discount_type_id"
     t.index ["flight_id"], name: "index_tickets_on_flight_id"
   end
@@ -116,12 +134,15 @@ ActiveRecord::Schema.define(version: 20180508124732) do
 
   add_foreign_key "airlines", "user_accounts"
   add_foreign_key "airports", "cities"
+  add_foreign_key "cities", "countries"
   add_foreign_key "customers", "people"
   add_foreign_key "flights", "airlines"
   add_foreign_key "flights", "airplanes"
   add_foreign_key "flights", "airports"
   add_foreign_key "flights", "flight_statuses"
   add_foreign_key "flights", "flight_types"
+  add_foreign_key "tickets", "baggages", column: "baggages_id"
+  add_foreign_key "tickets", "customers", column: "customers_id"
   add_foreign_key "tickets", "discount_types"
   add_foreign_key "tickets", "flights"
   add_foreign_key "user_accounts", "people"

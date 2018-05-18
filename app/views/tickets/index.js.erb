@@ -1,0 +1,7 @@
+<% if @flights %>
+  $('#flights').html("<%= j render partial: 'tickets/flight' %>");
+  $('#paginate').html("<%= j render 'tickets/pagination' %>");
+<% else %>
+  $('#flights').html("");
+  $('#paginate').html("");
+<% end %>

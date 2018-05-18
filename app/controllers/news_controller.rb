@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = params[:page].nil? ? News.page(1) : News.page(params[:page])
+    @news = News.page(params[:page])
   end
 
   # GET /news/1

@@ -1,0 +1,58 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Kup bilet</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+          <div class="container container-ticket-attributes">
+            <h3 class="font-weight-light section-title section-title-ticket">Wyszukaj lot</h3>
+            <%= form_tag tickets_path, method: :post, id: 'flight_search' do %>
+              <label for="inputAirport">Podaj nazwę lotniska docelowego</label>
+              <%= text_field_tag :airport, params[:airport], placeholder: t(:airport), autocomplete: :off, class: 'form-control' %>
+              <label class="label-input" for="inputDate">Podaj lub wybierz termin</label>
+              <%= date_field_tag :dep_date, (params[:dep_date] || Time.now.to_date), class: 'form-control' %>
+              <label class="label-input" for="inputPassengers">Podaj liczbę pasażerów</label>
+              <%= number_field_tag :tickets_count, params[:tickets_count], {class: 'form-control', min: 1, step: 1, value: 1} %>
+              <%= button_tag type: 'submit', class: 'btn btn-secondary btn-search', style: 'margin-top: 24px' do %>
+                <i class="fa fa-margin fa-search" aria-hidden="true"></i> Wyszukaj
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+          <div class="table-responsive">
+            <table class="table table-flights">
+              <thead class="thead-primary">
+              <tr>
+                <th scope="col" class="radio-th">Wybierz</th>
+                <th scope="col" class="width-th">Godzina</th>
+                <th scope="col" class="width-th">Przewoźnik</th>
+                <th scope="col" class="width-th">Miasto</th>
+                <th scope="col" class="width-th">Cena (za os.)</th>
+                <th scope="col" class="width-th">Lot</th>
+              </tr>
+              </thead>
+              <tbody id="flights">
+              <% if @flights %>
+                <%= render partial: 'tickets/flight' %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div id="paginate">
+            <% if @flights %>
+              <%= render 'tickets/pagination' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

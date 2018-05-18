@@ -108,3 +108,4 @@ en:
   confirm_new_password: "Confirm new password"
   password_info: "The password must contain at least one lowercase letter, one capital letter, one number, and a length of at least 6 characters"
   confirm_password_change: "Confirm password change"
+  airport: "Airport"

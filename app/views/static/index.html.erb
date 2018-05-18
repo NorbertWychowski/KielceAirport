@@ -32,8 +32,7 @@
       <h2 class="font-weight-light"><%= t :weather %></h2>
       <p class="font-weight-light">
         <img src=<%= "http://openweathermap.org/img/w/#{get_weather['weather'].first['icon']}.png" %>>
-        <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>
-        &#176C
+        <%= get_weather['weather'].first['description'].capitalize + " " + get_weather['main']['temp'].round.to_s %>&#176C
       </p>
       <p class="font-weight-light" style="margin-top: -8px" id="clock">
         <i class="fa fa-margin fa-clock-o" aria-hidden="true"></i>

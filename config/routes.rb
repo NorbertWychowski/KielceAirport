@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
     # klienci
     resources :customers, only: [:show, :new, :create, :update]
+
+    # bilet
+    resources :tickets, only: [:index]
+    post '/tickets', to: 'tickets#index'
   end
 
   # google+
