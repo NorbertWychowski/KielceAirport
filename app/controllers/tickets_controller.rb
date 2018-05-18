@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
         params[:dep_date] and !params[:tickets_count].empty?
       airport_cond = " and (LOWER(airports.name) LIKE LOWER('%#{params[:airport]}%') or LOWER(cities.name) LIKE LOWER('%#{params[:airport]}%'))"
       dep_date_cond = " and DATE(flights.dep_date) > DATE('#{params[:dep_date]}')"
-      tickets_count_cond = "tickets_count - 1 + #{params[:tickets_count]}"
+      tickets_count_cond = "COUNT(tickets.id) - 1 + #{params[:tickets_count]}"
       @flights = Flight.left_joins(:tickets).joins(:airline, :airplane, :airport, airport: :city)
                      .select('flights.*, airports.name as airport_name, ' +
                                  'airplanes.seats as seats, cities.name as city_name, ' +
