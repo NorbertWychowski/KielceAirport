@@ -7,6 +7,9 @@
     <meta name="description" content="Platforma obsługi lotniska" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- favicon -->
+    <link rel="icon" href="images/favicon.ico">
+
     <!-- css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
@@ -37,7 +40,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.html">Kielce Airport</a>
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" width="200" height="47" alt="logo">
+                </a>
 
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav mr-auto">
@@ -136,44 +141,96 @@
             <div class="container">
                 <form>
                     <h2 class="font-weight-light section-title">Uzupełnij wymagane dane</h2>
+                    <p class="description">Uwaga! Wszystkie bilety kupowane są na wspólny rachunek!</p>
                     <div class="container">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                <p class="description form-description">Adres e-mail</p>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 form-group">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Adres e-mail" required="">
+                            </div>
+                        </div>
                         <div class="form-group container-ticket">
                             <h4 class="font-weight-light section-title">Bilet 1</h4>
                             <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <label class="description" for "inputName1">Podaj imię</label>
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Dane osobowe</p>
+                                </div>
+                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                                     <input class="form-control" type="text" id="inputName1" placeholder="Imię" required="">
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <label class="description" for "inputSurname1">Podaj nazwisko</label>
+                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                                     <input class="form-control" type="text" id="inputSurname1" placeholder="Nazwisko" required="">
                                 </div>
                             </div>
-
-                            <label class="description" for="inputDiscount1">Wybierz ulgę</label>
-                            <select class="form-control" id="inputDiscount1">
-                                <option>Płaskoziemca - 100%</option>
-                                <option>Brak ulgi - 0%</option>
-                            </select>
-                        </div>
-                        <div class="form-group container-ticket">
-                            <h4 class="font-weight-light section-title">Bilet 2</h4>
                             <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <label class="description" for "inputName2">Podaj imię</label>
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Bagaż</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                                    <select class="form-control" id="inputBaggage1" required="">
+                                        <option>Brak - 0 zł</option>
+                                        <option>Bagaż podręczny (2x 8kg) - 50 zł</option>
+                                        <option>Bagaż rejestrowany (1x 23kg) + bagaż podręczny (1x 8kg) - 80 zł</option>
+                                        <option>Bagaż rejestrowany (2x 23kg) + bagaż podręczny (1x 8kg) - 150 zł</option>
+                                        <option>Bagaż rejestrowany (3x 23kg) + bagaż podręczny (2x 8kg) - 180 zł</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Ulga</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                                    <select class="form-control" id="inputDiscount1" required="">
+                                        <option>Brak ulgi - 0%</option>
+                                        <option>Płaskoziemca - 100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group container-ticket">
+                            <h4 class="font-weight-light section-title">Bilet 1</h4>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Dane osobowe</p>
+                                </div>
+                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                                     <input class="form-control" type="text" id="inputName2" placeholder="Imię" required="">
                                 </div>
-                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                    <label class="description" for "inputSurname2">Podaj nazwisko</label>
+                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
                                     <input class="form-control" type="text" id="inputSurname2" placeholder="Nazwisko" required="">
                                 </div>
                             </div>
-                            <label class="description" for="inputDiscount2">Wybierz ulgę</label>
-                            <select class="form-control" id="inputDiscount2">
-                                <option>Płaskoziemca - 100%</option>
-                                <option>Brak ulgi - 0%</option>
-                            </select>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Bagaż</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                                    <select class="form-control" id="inputBaggage2" required="">
+                                        <option>Brak - 0 zł</option>
+                                        <option>Bagaż podręczny (2x 8kg) - 50 zł</option>
+                                        <option>Bagaż rejestrowany (1x 23kg) + bagaż podręczny (1x 8kg) - 80 zł</option>
+                                        <option>Bagaż rejestrowany (2x 23kg) + bagaż podręczny (1x 8kg) - 150 zł</option>
+                                        <option>Bagaż rejestrowany (3x 23kg) + bagaż podręczny (2x 8kg) - 180 zł</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Ulga</p>
+                                </div>
+                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                                    <select class="form-control" id="inputDiscount2" required="">
+                                        <option>Brak ulgi - 0%</option>
+                                        <option>Płaskoziemca - 100%</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
                             <button class="btn btn-primary btn-search" type="submit">Potwierdź dane</button>
                         </div>

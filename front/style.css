@@ -38,6 +38,11 @@ p.description {
     color: rgba(34, 40, 49, 0.7)
 }
 
+i.description {
+    font-size: 14px;
+    color: rgba(34, 40, 49, 0.7)
+}
+
 kbd.primary {
     background-color: #015e94;
 }
@@ -74,6 +79,13 @@ kbd.primary {
 
 .form-control-margin {
     margin-top: 12px;
+}
+
+@media only screen and (max-width: 991px) {
+    .form-control-margin-mobile {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
 }
 
 .form-control:focus {
@@ -230,6 +242,19 @@ li.nav-language {
 
 .nav-language:hover > a {
     color: #222831;
+}
+
+/* Form */
+.form-description {
+    margin-top: 5px;
+    padding: auto;
+    float: right;
+}
+
+@media only screen and (max-width: 991px) {
+    .form-description {
+        float: none;
+    }
 }
 
 /* Airport info */
@@ -694,4 +719,43 @@ label.description {
         width: 90%;
         padding: 12px;
     }
+}
+
+/* Admin */
+.container-admin {
+    border-radius: 8px;
+    border: 1px solid rgba(112, 154, 189, 0.25);
+    padding: 0px 0px 4px 0px;
+    margin: 12px 0px;
+}
+
+.container-admin-title {
+    background-color: #015e94;
+    color: #fff;
+    border-radius: 8px 8px 0px 0px;
+    padding: 2px 12px;
+    margin-bottom: 12px;
+}
+
+.container-admin-content {
+    margin-bottom: 8px;
+}
+
+ul.admin-list {
+    font-size: 16px;
+    color: #709abd;
+}
+
+li.admin-list {
+    margin: 2px 0px;
+}
+
+a.admin-link {
+    color: #015e94;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a.admin-link:hover {
+    color: #222831;
 }

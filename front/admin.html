@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+
+<head>
+    <title>Kielce Airport</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Platforma obsługi lotniska" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- favicon -->
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="container-fluid container-header">
+
+        <!-- navbar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-navigation">
+            <div class="container">
+                <button class="float-right navbar-toggler" style="margin-top: 16px" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" width="200" height="47" alt="logo">
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item nav-link nav-main">
+                            <a href="index.html">
+                                <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna</a>
+                        </li>
+                        <li class="nav-item nav-link nav-main">
+                            <a href="kup-bilet.html">
+                                <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i>Kup bilet</a>
+                        </li>
+                        <li class="nav-item nav-link nav-main">
+                            <a href="aktualnosci.html">
+                                <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i>Aktualności</a>
+                        </li>
+                        <li class="nav-item nav-link nav-main">
+                            <a href="wyszukiwarka.html">
+                                <i class="fa fa-margin fa-search fa-fw" aria-hidden="true"></i>Wyszukiwarka</a>
+                        </li>
+                    </ul>
+                    <ul class="nav-controls">
+                        <li class="nav-control">
+                            <a href="admin.html">
+                                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Administrator</a>
+                        </li>
+                        <li class="nav-control">
+                            <a href="logowanie.html">
+                                <i class="fa fa-margin fa-lock" aria-hidden="true"></i>Wyloguj się</a>
+                        </li>
+                        <li class="nav-control nav-control-language">
+                            <a href="#">PL</a>
+                            <span>/</span>
+                            <a href="#">EN</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- airport info -->
+    <div class="container-fluid container-airport-info-bg">
+        <div class="container container-airport-info">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <ul class="airport-info">
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-map-marker" aria-hidden="true"></i>Poland, Kielce</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-road" aria-hidden="true"></i>Aleja Tysiąclecia 7</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-envelope" aria-hidden="true"></i>contact@kielceairport.pl</li>
+                        <li class="airport-info">
+                            <i class="fa fa-margin fa-phone" aria-hidden="true"></i>+48 333 444 555</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <ul class="cover-social">
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-facebook-official" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-youtube-square" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="cover-social">
+                            <a href="#">
+                                <i class="fa fa-2x fa-flickr" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- cover-->
+    <div class="container-fluid container-cover-title row">
+        <div class="container cover-content">
+            <h2 class="font-weight-light cover-title">Panel administratora</h2>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="container content">
+        <div class="content-content">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 container-profile-menu">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="sectionSummary-tab" data-toggle="pill" href="#sectionSummary" role="tab" aria-controls="sectionSummary"
+                            aria-selected="true">Podsumowanie</a>
+                        <a class="nav-link" id="sectionNews-tab" data-toggle="pill" href="#sectionNews" role="tab" aria-controls="sectionNews" aria-selected="true">Aktualności</a>
+                        <a class="nav-link" id="sectionUsers-tab" data-toggle="pill" href="#sectionUsers" role="tab" aria-controls="sectionUsers"
+                            aria-selected="false">Użytkownicy</a>
+                        <a class="nav-link" id="sectionFlights-tab" data-toggle="pill" href="#sectionFlights" role="tab" aria-controls="sectionFlights"
+                            aria-selected="false">Loty</a>
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="sectionSummary" role="tabpanel" aria-labelledby="sectionSummary-tab">
+                            <h2 class="font-weight-light section-title">Podsumowanie</h2>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Kielce Airport w liczbach</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p align="center" class="description">Wykres z liczbami (bar chart): ile użytkowników, ile opublikowanych newsów, ile lotów,
+                                        ile lotnisk, ile przewoźników, ile samolotów</p>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Zasięg</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p align="center" class="description">Wykres (geo chart) przedstawiający kraje, do których są loty</p>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-admin">
+                                        <div class="container-admin-title">
+                                            <h4 class="font-weight-light admin-title">Udział przewoźników</h4>
+                                        </div>
+                                        <div class="container container-admin-content">
+                                            <p align="center" class="description">Wykres kołowy przedstawiający udział przewoźników w lotach</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 container-admin">
+                                        <div class="container-admin-title">
+                                            <h4 class="font-weight-light admin-title">Udział lotnisk</h4>
+                                        </div>
+                                        <div class="container container-admin-content">
+                                            <p align="center" class="description">Wykres kołowy przedstawiający udział lotnisk w lotach</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Rozkład godzinowy lotów</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p align="center" class="description">Wykres (area chart) przedstawiający jak godzinowo rozkłada się ilość lotów</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sectionNews" role="tabpanel" aria-labelledby="sectionNews-tab">
+                            <h2 class="font-weight-light section-title">Aktualności</h2>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Najnowsze</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <ul class="admin-list">
+                                        <li class="admin-list">
+                                            <b>
+                                                <a class="admin-link" href="news.html">Lotnisko nieczynne</a>
+                                            </b>
+                                            <i class="description">(05.06.2018)</i>
+                                        </li>
+                                        <li class="admin-list">
+                                            <b>
+                                                <a class="admin-link" href="news.html">Lotnisko nieczynne</a>
+                                            </b>
+                                            <i class="description">(05.06.2018)</i>
+                                        </li>
+                                        <li class="admin-list">
+                                            <b>
+                                                <a class="admin-link" href="news.html">Lotnisko nieczynne</a>
+                                            </b>
+                                            <i class="description">(05.06.2018)</i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Dodaj newsa</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="inputNewsTitle">Tytuł</label>
+                                            <input type="text" class="form-control" id="inputNewsTitle" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputNewsContent">Treść</label>
+                                            <textarea class="form-control" id="inputNewsContent" rows="6" required=""></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputNewsImage">Zdjęcie</label>
+                                            <input type="file" class="form-control-file" id="inputNewsImage">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 12px">Dodaj newsa</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Lista aktualności</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p class="description">Z poziomu listy możliwa jest modyfikacja oraz usuwanie aktualności.</p>
+                                    <a href="admin-lista-aktualnosci.html" class="btn btn-primary" role="button">Wyświetl listę aktualności</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sectionUsers" role="tabpanel" aria-labelledby="sectionUsers-tab">
+                            <h2 class="font-weight-light section-title">Użytkownicy</h2>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Statystyki</h4>
+                                </div>
+                                <div class="container">
+                                    <p class="description">Zarejestrowanych użytkowników:
+                                        <b>tysiąć pięćset sto dziewięćset</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Dodaj nowego użytkownika</h4>
+                                </div>
+                                <form>
+                                    <div class="container container-admin-content">
+                                        <p class="description">Uzupełnij wymagane dane:</p>
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                                <input type="email" class="form-control form-control-margin-mobile" id="inputEmail" placeholder="Adres e-mail" required="">
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                                                <input type="password" class="form-control form-control-margin-mobile" id="inputPassword" placeholder="Hasło" required=""
+                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Hasło musi zawierać przynajmniej jedną małą literę, jedną wielką literę, jedną liczbę oraz być długości conajmniej 6 znaków">
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                                                <input type="text" class="form-control form-control-margin-mobile" id="inputName" placeholder="Imię" required="">
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                                                <input type="numeric" class="form-control form-control-margin-mobile" id="inputSurname" placeholder="Nazwisko" required="">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="margin-top: 12px">Potwierdź utworzenie konta</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Lista użytkowników</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p class="description">Z poziomu listy możliwa jest modyfikacja oraz usuwanie użytkowników.</p>
+                                    <a href="admin-lista-uzytkownikow.html" class="btn btn-primary" role="button">Wyświetl listę użytkowników</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="sectionFlights" role="tabpanel" aria-labelledby="sectionFlights-tab">
+                            <h2 class="font-weight-light section-title">Loty</h2>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Dodaj nowy lot</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <form>
+                                        <div class="container" style="margin-top: 12px">
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Typ</p>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                                    <div class="form-check" style="margin-top: 6px">
+                                                        <label class="form-check-label" for="inputFlightArrival">Przylot</label>
+                                                        <input class="form-check-input" type="radio" name="flightType" id="inputFlightarrival" value="flightArrival" checked>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                                    <div class="form-check" style="margin-top: 6px">
+                                                        <label class="form-check-label" for="inputFlightDeparture">Odlot</label>
+                                                        <input class="form-check-input" type="radio" name="flightType" id="inputFlightDeparture" value="flightDeparture">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Lotnisko</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <select class="form-control" id="inputFlightAirport">
+                                                        <option>Radom Airport</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Data odlotu</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <input type="datetime-local" class="form-control" id="inputFlightDateStart">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Data przylotu</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <input type="datetime-local" class="form-control" id="inputFlightDateEnd">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Przewoźnik</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <select class="form-control" id="inputFlightLine">
+                                                        <option>LOT</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Samolot</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <select class="form-control" id="inputFlightAirplane">
+                                                        <option>Boeing 747</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Cena</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <input type="number" min="1" class="form-control" id="inputFlightPrice">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                                    <p class="description form-description">Status</p>
+                                                </div>
+                                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                                    <select class="form-control" id="inputFlightStatus">
+                                                        <option>Oczekujący</option>
+                                                        <option>Zrelizowany</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" style="margin-top: 12px">Dodaj nowy lot</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="container-admin">
+                                <div class="container-admin-title">
+                                    <h4 class="font-weight-light admin-title">Lista lotów</h4>
+                                </div>
+                                <div class="container container-admin-content">
+                                    <p class="description">Z poziomu listy możliwa jest modyfikacja oraz usuwanie lotów.</p>
+                                    <a href="admin-lista-lotow.html" class="btn btn-primary" role="button">Wyświetl listę lotów</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="container container-footer">
+        <div class="row">
+            <div class="col-lg-2 col-sm-12">
+                <h3 class="font-weight-light footer-title">Menu</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="index.html">
+                            <i class="fa fa-margin fa-home fa-fw" aria-hidden="true"></i>Strona główna</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="kup-bilet.html">
+                            <i class="fa fa-margin fa-ticket fa-fw" aria-hidden="true"></i>Kup bilet</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="aktualnosci.html">
+                            <i class="fa fa-margin fa-newspaper-o fa-fw" aria-hidden="true"></i>Aktualności</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="wyszukiwarka.html">
+                            <i class="fa fa-margin fa-search fa-fw" aria-hidden="true"></i>Wyszukiwarka</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <h3 class="font-weight-light footer-title">Informacje</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-map-marker" aria-hidden="true"></i>Poland, Kielce</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-road" aria-hidden="true"></i>Aleja Tysiąclecia 7</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-envelope" aria-hidden="true"></i>contact@kielceairport.pl</li>
+                    <li class="footer-list-item">
+                        <i class="fa fa-margin fa-phone" aria-hidden="true"></i>+48 333 444 555</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <h3 class="font-weight-light footer-title">Media</h3>
+                <ul class="footer-list">
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-facebook-official" aria-hidden="true"></i>Facebook</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-twitter-square" aria-hidden="true"></i>Twitter</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-youtube-square" aria-hidden="true"></i>YouTube</a>
+                    </li>
+                    <li class="footer-list-item">
+                        <a class="footer-link" href="#">
+                            <i class="fa fa-margin fa-flickr" aria-hidden="true"></i>Flickr</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <h3 class="font-weight-light footer-title">Kielce Airport</h3>
+                <p class="footer-description">Still better than Radom Airport.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <p class="font-weight-light footer-text">
+                <b>Kielce Airport</b> &copy; 2018 / Inżynieria systemów informacyjnych</p>
+        </div>
+    </div>
+</body>
+
+</html>

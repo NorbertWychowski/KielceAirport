@@ -9,7 +9,7 @@
 
     <!-- favicon -->
     <link rel="icon" href="images/favicon.ico">
-    
+
     <!-- css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
@@ -65,8 +66,12 @@
                     </ul>
                     <ul class="nav-controls">
                         <li class="nav-control">
+                            <a href="admin.html">
+                                <i class="fa fa-margin fa-user" aria-hidden="true"></i>Administrator</a>
+                        </li>
+                        <li class="nav-control">
                             <a href="logowanie.html">
-                                <i class="fa fa-margin fa-lock" aria-hidden="true"></i>Zaloguj się</a>
+                                <i class="fa fa-margin fa-lock" aria-hidden="true"></i>Wyloguj się</a>
                         </li>
                         <li class="nav-control nav-control-language">
                             <a href="#">PL</a>
@@ -124,46 +129,18 @@
         </div>
     </div>
 
+    <!-- cover-->
+    <div class="container-fluid container-cover-title row">
+        <div class="container cover-content">
+            <h2 class="font-weight-light cover-title">Panel administratora - lista użytkowników</h2>
+        </div>
+    </div>
+
     <!-- content -->
     <div class="container content">
         <div class="content-content">
-            <div class="container container-news">
-                <div class="row news-info">
-                    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                        <h2 class="font-weight-light news-title">Lotnisko nieczynne dnia 03.05.2018</h2>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                        <h5 align="right" class="news-date">04.05.2018</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                        <img class="news-image" src="images/news.jpeg">
-                    </div>
-                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                        <p class="font-weight-light news-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non commodo purus. Cras sapien nisl,
-                            ullamcorper non lorem a, fringilla tincidunt enim. In suscipit consequat varius. Integer ut iaculis
-                            libero, aliquet vestibulum dolor. Sed tincidunt a nisi nec tempus. Mauris porttitor viverra ultricies.
-                            Nulla scelerisque sapien nec nisl lacinia malesuada. Morbi ultricies lobortis massa id tempor.
-                            Etiam in ante eros. In vitae risus id enim auctor egestas. Pellentesque pulvinar egestas odio.
-                            Integer lacus est, condimentum fringilla purus et, convallis imperdiet lorem.
-                        </p>
-                        <p class="font-weight-light news-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non commodo purus. Cras sapien nisl,
-                            ullamcorper non lorem a, fringilla tincidunt enim. In suscipit consequat varius. Integer ut iaculis
-                            libero, aliquet vestibulum dolor. Sed tincidunt a nisi nec tempus. Mauris porttitor viverra ultricies.
-                            Nulla scelerisque sapien nec nisl lacinia malesuada. Morbi ultricies lobortis massa id tempor.
-                            Etiam in ante eros. In vitae risus id enim auctor egestas. Pellentesque pulvinar egestas odio.
-                            Integer lacus est, condimentum fringilla purus et, convallis imperdiet lorem.
-                        </p>
-                        <p class="font-weight-light news-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non commodo purus. Cras sapien nisl,
-                            ullamcorper non lorem a, fringilla tincidunt enim. In suscipit consequat varius. Integer ut iaculis
-                            libero, aliquet vestibulum dolor. Sed tincidunt a nisi nec tempus. Mauris porttitor viverra ultricies.
-                            Nulla scelerisque sapien nec nisl lacinia malesuada. Morbi ultricies lobortis massa id tempor.
-                            Etiam in ante eros. In vitae risus id enim auctor egestas. Pellentesque pulvinar egestas odio.
-                            Integer lacus est, condimentum fringilla purus et, convallis imperdiet lorem.
-                        </p>
-                    </div>
-                </div>
+            <div class="container">
+                <a href="admin.html" class="btn btn-primary" role="button">Powrót do panelu administratora</a>
             </div>
         </div>
     </div>
