@@ -132,7 +132,7 @@
     <!-- cover-->
     <div class="container-fluid container-cover-title row">
         <div class="container cover-content">
-            <h2 class="font-weight-light cover-title">Panel administratora - użytkownicy</h2>
+            <h2 class="font-weight-light cover-title">Panel administratora - loty</h2>
         </div>
     </div>
 
@@ -141,102 +141,95 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modyfikacja użytkownika</h5>
+                    <h5 class="modal-title">Modyfikacja lotu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="container">
-                            <h3 class="font-weight-light section-title">Dane konta</h3>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">E-mail</p>
+                        <div class="container" style="margin-top: 12px">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Typ</p>
                                 </div>
-                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Adres e-mail" required="">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <div class="form-check" style="margin-top: 6px">
+                                        <label class="form-check-label" for="inputFlightArrival">Przylot</label>
+                                        <input class="form-check-input" type="radio" name="flightType" id="inputFlightarrival" value="flightArrival" checked>
+                                    </div>
                                 </div>
-                            </div>
-                            <h3 class="font-weight-light section-title">Dane osobowe</h3>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Imię</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                    <input type="numeric" class="form-control" id="inputName" placeholder="Imię">
-                                </div>
-                            </div>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Nazwisko</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                    <input type="numeric" class="form-control" id="inputSurname" placeholder="Nazwisko">
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                                    <div class="form-check" style="margin-top: 6px">
+                                        <label class="form-check-label" for="inputFlightDeparture">Odlot</label>
+                                        <input class="form-check-input" type="radio" name="flightType" id="inputFlightDeparture" value="flightDeparture">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Kraj</p>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Lotnisko</p>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                                    <select class="form-control" id="inputCountry" placeholder="Kraj">
-                                        <option>Poland</option>
-                                        <option>Zimbabwe</option>
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <select class="form-control" id="inputFlightAirport">
+                                        <option>Radom Airport</option>
                                     </select>
                                 </div>
-                                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Miasto</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Data odlotu</p>
                                 </div>
-                                <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                                    <input type="numeric" class="form-control" id="inputCity" placeholder="Miasto">
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <input type="datetime-local" class="form-control" id="inputFlightDateStart">
                                 </div>
                             </div>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Adres</p>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Data przylotu</p>
                                 </div>
-                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                    <input type="numeric" class="form-control" id="inputAddress" placeholder="Adres">
-                                </div>
-                            </div>
-                            <h3 class="font-weight-light section-title">Karta płatnicza</h3>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Numer</p>
-                                </div>
-                                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                    <input type="numeric" pattern="[0-9]{16}" class="form-control" id="inputCardNumber" placeholder="Numer karty">
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <input type="datetime-local" class="form-control" id="inputFlightDateEnd">
                                 </div>
                             </div>
-                            <div class="row profile-row">
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">Ważność</p>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Przewoźnik</p>
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <select class="form-control" id="inputCardMonth">
-                                        <option>01</option>
-                                        <option>02</option>
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <select class="form-control" id="inputFlightLine">
+                                        <option>LOT</option>
                                     </select>
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <select class="form-control" id="inputCardYear">
-                                        <option>2018</option>
-                                        <option>2019</option>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Samolot</p>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <select class="form-control" id="inputFlightAirplane">
+                                        <option>Boeing 747</option>
                                     </select>
                                 </div>
-                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-                                    <p class="description profile-description">
-                                        <i class="fa fa-margin fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Kod CVC/CVV to trzycyfrowy kod widoczny z tyłu karty"></i>CVC/CCV</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Cena</p>
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                                    <input type="numeric" pattern="[0-9]{3}" class="form-control" id="inputCardCVC" placeholder="CVC/CVV">
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <input type="number" min="1" class="form-control" id="inputFlightPrice">
                                 </div>
                             </div>
-                            <h3 class="font-weight-light section-title">Aktywacja konta</h3>
-                            <div class="container">
-                                <p class="description">Konto nie zostało aktywowane!</p>
-                                <a href="#" class="btn btn-primary" role="button">Aktywuj</a>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 form-group">
+                                    <p class="description form-description">Status</p>
+                                </div>
+                                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 form-group">
+                                    <select class="form-control" id="inputFlightStatus">
+                                        <option>Oczekujący</option>
+                                        <option>Zrelizowany</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -254,14 +247,14 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Usuwanie użytkownika</h5>
+                    <h5 class="modal-title">Usuwanie lotu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Czy na pewno chcesz usunąć użytkownika
-                        <b>Stanisław Wokulski</b>?</p>
+                    <p>Czy na pewno chcesz usunąć lot
+                        <b>LOT997</b>?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cofnij</button>
@@ -280,21 +273,25 @@
                     <table class="table">
                         <thead class="thead-primary">
                             <tr>
-                                <th scope="col">Identyfikator</th>
-                                <th scope="col">Aktywny</th>
-                                <th scope="col">Imię</th>
-                                <th scope="col">Nazwisko</th>
-                                <th scope="col">E-mail</th>
+                                <th scope="col">Lot</th>
+                                <th scope="col">Przewoźnik</th>
+                                <th scope="col">Samolot</th>
+                                <th scope="col">Typ</th>
+                                <th scope="col">Lotnisko</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Status</th>
                                 <th scope="col" style="min-width: 256px">Akcje</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1615215</th>
-                                <td>Tak</td>
-                                <td>Stanisław</td>
-                                <td>Wokulski</td>
-                                <td>swokulski@tinder.pl</td>
+                                <th scope="row">LOT997</th>
+                                <td>LuftWaffle</td>
+                                <td>Messerschmitt</td>
+                                <td>Przylot</td>
+                                <td>Radom Airport</td>
+                                <td>18.05.2018</td>
+                                <td>Zestrzelony</td>
                                 <td>
                                     <ul class="table-action">
                                         <li class="table-action">
@@ -307,11 +304,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">1615215</th>
-                                <td>Tak</td>
-                                <td>Stanisław</td>
-                                <td>Wokulski</td>
-                                <td>swokulski@tinder.pl</td>
+                                <th scope="row">LOT997</th>
+                                <td>LuftWaffle</td>
+                                <td>Messerschmitt</td>
+                                <td>Przylot</td>
+                                <td>Radom Airport</td>
+                                <td>18.05.2018</td>
+                                <td>Zestrzelony</td>
                                 <td>
                                     <ul class="table-action">
                                         <li class="table-action">
@@ -324,11 +323,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">1615215</th>
-                                <td>Tak</td>
-                                <td>Stanisław</td>
-                                <td>Wokulski</td>
-                                <td>swokulski@tinder.pl</td>
+                                <th scope="row">LOT997</th>
+                                <td>LuftWaffle</td>
+                                <td>Messerschmitt</td>
+                                <td>Przylot</td>
+                                <td>Radom Airport</td>
+                                <td>18.05.2018</td>
+                                <td>Zestrzelony</td>
                                 <td>
                                     <ul class="table-action">
                                         <li class="table-action">
@@ -341,11 +342,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">1615215</th>
-                                <td>Tak</td>
-                                <td>Stanisław</td>
-                                <td>Wokulski</td>
-                                <td>swokulski@tinder.pl</td>
+                                <th scope="row">LOT997</th>
+                                <td>LuftWaffle</td>
+                                <td>Messerschmitt</td>
+                                <td>Przylot</td>
+                                <td>Radom Airport</td>
+                                <td>18.05.2018</td>
+                                <td>Zestrzelony</td>
                                 <td>
                                     <ul class="table-action">
                                         <li class="table-action">

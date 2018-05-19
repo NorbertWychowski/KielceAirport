@@ -759,3 +759,11 @@ a.admin-link {
 a.admin-link:hover {
     color: #222831;
 }
+
+ul.table-action {
+    list-style: none;
+}
+
+li.table-action {
+    display: inline;
+}
