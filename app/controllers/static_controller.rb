@@ -12,6 +12,9 @@ class StaticController < ApplicationController
                             .limit(5)
                             .order(dep_date: :asc)
 
+    countries = Flight.joins(airport: {city: :country}).select('countries.name as name, COUNT(countries.name) as count').group('countries.name')
+    @countries = countries.collect {|country| [country.name, country.count]}
+
     @news = News.last
     unless @news.nil?
       @content = @news.content[0..(@news.content.index('.'))]

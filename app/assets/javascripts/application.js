@@ -16,6 +16,8 @@
 //= require rails-ujs
 //= require tether
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()

@@ -28,11 +28,14 @@ countries = Country.create([{name: "Polska", alpha2: "pl"},
                             {name: "Szwajcaria", alpha2: "ch"},
                             {name: "Holandia", alpha2: "nl"},
                             {name: "Stany Zjednoczone", alpha2: "us"},
-                            {name: "Stany Zjednoczone", alpha2: "us"},
                             {name: "Japonia", alpha2: "jp"},
                             {name: "Chiny", alpha2: "cn"},
                             {name: "Francja", alpha2: "fr"},
-                            {name: "Rosja", alpha2: "ru"}])
+                            {name: "Rosja", alpha2: "ru"},
+                            {name: "Serbia", alpha2: "rs"},
+                            {name: "Wielka Brytania", alpha2: "gb"},
+                            {name: "Tunezja", alpha2: "tn"},
+                            {name: "Australia", alpha2: "au"},])
 
 cities = City.create([{name: "Warszawa", country: countries[0]},
                       {name: "Berlin", country: countries[1]},
@@ -43,7 +46,11 @@ cities = City.create([{name: "Warszawa", country: countries[0]},
                       {name: "Tokio", country: countries[5]},
                       {name: "Pekin", country: countries[6]},
                       {name: "Paryż", country: countries[7]},
-                      {name: "Moskwa", country: countries[8]}])
+                      {name: "Moskwa", country: countries[8]},
+                      {name: "Belgrad", country: countries[9]},
+                      {name: "Londyn", country: countries[10]},
+                      {name: "Tunis", country: countries[11]},
+                      {name: "Sydney", country: countries[12]}])
 
 airports = Airport.create([{city: cities[0], name: "Okęcie / im. Fryderyka Chopina", IATA: "WAW"},
                            {city: cities[1], name: "Tegel", IATA: "TXL"},
@@ -54,7 +61,12 @@ airports = Airport.create([{city: cities[0], name: "Okęcie / im. Fryderyka Chop
                            {city: cities[6], name: "Haneda", IATA: "HND"},
                            {city: cities[7], name: "Capital International Airport", IATA: "PEK"},
                            {city: cities[8], name: "Charles de Gaulle", IATA: "CDG"},
-                           {city: cities[9], name: "Sheremyetyevo", IATA: "SVO"}])
+                           {city: cities[9], name: "Sheremyetyevo", IATA: "SVO"},
+                           {city: cities[10], name: "Nikola Tesla Intl Airport", IATA: "BEG"},
+                           {city: cities[11], name: "London City Airport", IATA: "LCY"},
+                           {city: cities[11], name: "Gatwick", IATA: "LGW"},
+                           {city: cities[12], name: "Carthage", IATA: "TUN"},
+                           {city: cities[13], name: "Kingsford Smith", IATA: "SYD"},])
 
 airplanes = Airplane.create([{name: "Boeing 747", seats: 513},
                              {name: "Boeing 747-400", seats: 1026},
@@ -103,9 +115,9 @@ Flight.create([{flight_identifier: "LOT Test 1", dep_date: DateTime.new(2018, 5,
                 airport: airports.sample, airplane: airplanes.sample, flight_type: flight_type[1], flight_status: flight_status[0]}])
 
 flights = []
-(1..1000).each {|i|
+(1..5000).each {|i|
   type = flight_type.sample
-  dep = Time.at(Time.now + rand * (DateTime.new(2018, 12, 24, 12, 0, 0).to_f - Time.now.to_f))
+  dep = Time.at(Time.now + rand * (DateTime.new(2019, 12, 24, 12, 0, 0).to_f - Time.now.to_f))
   flights << {flight_identifier: "LOT #{i}", dep_date: dep, arr_date: dep + (rand * 5).hours,
               airline: airlines.sample, ticket_price: (rand + 1.0) * 1000.0,
               airport: airports.sample, airplane: airplanes.sample, flight_type: type, flight_status: flight_status[2]}

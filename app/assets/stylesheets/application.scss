@@ -465,6 +465,22 @@ li.footer-list-item > a:hover {
 }
 
 /*** Main page ***/
+.container-main-geo {
+  padding: 0;
+  min-height: 128px;
+  background-color: #fff;
+}
+
+.container-main-advertisement {
+  padding: 0;
+  background-color: #709abd;
+}
+
+.container-main-map {
+  padding: 0;
+  min-height: 256px;
+  background: url("gmaps.png") no-repeat center center;
+}
 
 /*** Subpages ***/
 /* Login */
@@ -773,4 +789,60 @@ a.admin-link {
 
 a.admin-link:hover {
   color: #222831;
+}
+
+ul.table-action {
+  list-style: none;
+}
+
+li.table-action {
+  display: inline;
+}
+
+/* Ticket */
+.ticket-body {
+  background: none;
+  max-width: 1200px;
+  padding: 12px 36px;
+  margin: auto;
+  border-radius: 24px;
+  border-left: 48px solid #015e94;
+}
+
+.ticket-container {
+  margin-top: 48px;
+  padding: 16px;
+}
+
+.ticket-section {
+  border-radius: 8px;
+  margin-bottom: 48px;
+}
+
+.ticket-section-title {
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 2px 12px;
+  margin-bottom: 12px;
+  background-color: #015e94;
+}
+
+.ticket-section-title-secondary {
+  background-color: #709abd;
+}
+
+.ticket-section-content {
+  margin-bottom: 8px;
+}
+
+h1.ticket-title {
+  font-size: 48px;
+  color: #015e94;
+  margin-top: 96px;
+  text-align: center;
+}
+
+ul.ticket {
+  list-style: none;
+  color: rgba(34, 40, 49, 0.7);
 }
