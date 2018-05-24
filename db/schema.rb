@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 20180508124732) do
 
   create_table "airlines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.string "phone"
+    t.string "email"
     t.bigint "user_account_id"
     t.index ["user_account_id"], name: "index_airlines_on_user_account_id", unique: true
   end
@@ -108,15 +110,16 @@ ActiveRecord::Schema.define(version: 20180508124732) do
   end
 
   create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "email"
     t.string "first_name"
     t.string "last_name"
     t.float "price", limit: 24
-    t.bigint "customers_id"
+    t.bigint "customer_id"
     t.bigint "discount_type_id"
     t.bigint "flight_id"
-    t.bigint "baggages_id"
-    t.index ["baggages_id"], name: "index_tickets_on_baggages_id"
-    t.index ["customers_id"], name: "index_tickets_on_customers_id"
+    t.bigint "baggage_id"
+    t.index ["baggage_id"], name: "index_tickets_on_baggage_id"
+    t.index ["customer_id"], name: "index_tickets_on_customer_id"
     t.index ["discount_type_id"], name: "index_tickets_on_discount_type_id"
     t.index ["flight_id"], name: "index_tickets_on_flight_id"
   end
@@ -141,8 +144,8 @@ ActiveRecord::Schema.define(version: 20180508124732) do
   add_foreign_key "flights", "airports"
   add_foreign_key "flights", "flight_statuses"
   add_foreign_key "flights", "flight_types"
-  add_foreign_key "tickets", "baggages", column: "baggages_id"
-  add_foreign_key "tickets", "customers", column: "customers_id"
+  add_foreign_key "tickets", "baggages"
+  add_foreign_key "tickets", "customers"
   add_foreign_key "tickets", "discount_types"
   add_foreign_key "tickets", "flights"
   add_foreign_key "user_accounts", "people"

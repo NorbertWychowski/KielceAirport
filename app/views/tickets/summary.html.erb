@@ -1,0 +1,135 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Kup bilet - podsumowanie</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <%= form_for Ticket.new do |t| %>
+      <%= t.hidden_field :email, value: params[:email] %>
+      <%= t.hidden_field :flight, value: @flight.id %>
+      <%= t.hidden_field :customer, value: current_user.customer.id if loggen_in? %>
+      <div class="container">
+        <h2 class="font-weight-light section-title">Podsumowanie danych biletu</h2>
+        <div class="container container-ticket">
+          <h3 class="font-weight-light section-title">Lot</h3>
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Lotnisko docelowe:<br>
+                  <b><%= @flight.airport.name %> - <%= @flight.airport.city.name %></b>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Data:<br>
+                  <b><%= @flight.dep_date.strftime("%F") %></b> o godzinie
+                  <b><%= @flight.dep_date.strftime("%H:%M") %></b>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Przewoźnik:<br>
+                  <b><%= @flight.airline.name %></b>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <%= t.fields_for :tickets do |tck| %>
+          <% @tickets.each_with_index do |ticket, index| %>
+            <%= tck.fields_for "ticket_#{index + 1}" do |tc| %>
+              <%= tc.hidden_field :first_name, value: ticket[:first_name] %>
+              <%= tc.hidden_field :last_name, value: ticket[:last_name] %>
+              <%= tc.hidden_field :price, value: ticket[:price] %>
+              <%= tc.hidden_field :discount_type, value: ticket[:discount_type] %>
+              <%= tc.hidden_field :baggage, value: ticket[:baggage] %>
+            <% end %>
+            <div class="container container-ticket">
+              <h4 class="font-weight-light section-title">Bilet <%= index + 1 %></h4>
+              <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                  <ul class="list-group">
+                    <li class="list-group-item">Imię:
+                      <b><%= ticket[:first_name] %></b>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                  <ul class="list-group">
+                    <li class="list-group-item">Nazwisko:
+                      <b><%= ticket[:last_name] %></b>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                  <ul class="list-group">
+                    <li class="list-group-item">Ulga:
+                      <b><%= ticket[:discount] %></b>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item">Dodatkowy bagaż:
+                  <b><%= ticket[:baggage_n] %></b>
+                </li>
+              </ul>
+              <ul class="list-group">
+                <li class="list-group-item">Koszt osoby:
+                  <b><%= "%.02fzł" % ticket[:price] %></b>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="container container-ticket">
+          <h4 class="font-weight-light section-title">Ogółem</h4>
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Ilość biletów:
+                  <b><%= @tickets.count %></b>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Koszt całkowity:
+                  <b><%= "%.02fzł" % @total_price %></b>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">Adres e-mail:
+              <b><%= params[:email] %></b>
+            </li>
+          </ul>
+        </div>
+        <%= link_to "Dane nieprawidłowe? Wróć do wpisywania danych", new_ticket_path(params.try(:permit!)), method: :post,
+                    class: 'btn btn-primary' %>
+        <div class="container">
+          <h2 class="font-weight-light section-title" style="margin-top: 24px">Płatność</h2>
+          <p class="description">Jeśli wszystkie dane wprowadzone zostały poprawnie, wybierz metodę płatności i zapłać
+            za
+            bilet.</p>
+          <div class="container">
+            <div class="container-payment">
+              <a href="#" class="btn btn-primary btn-payment" role="button">
+                <i class="fa fa-margin fa-credit-card-alt" aria-hidden="true"></i>Zapłać z PayU</a>
+              <a href="#" class="btn btn-primary btn-payment" role="button">
+                <i class="fa fa-margin fa-cc-paypal" aria-hidden="true"></i>Zapłać z PayPal</a>
+              <%= t.submit "Zapłać z Frontem(xD)", class: 'btn btn-primary btn-payment' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -68,7 +68,7 @@
               </tr>
               </thead>
               <tbody id="flights">
-              <% @flights_incoming.each do |flight| %>
+              <% Flight.flights_incoming.each do |flight| %>
                 <tr>
                   <th scope="row"><%= flight.arr_date.strftime("%F %H:%M") %></th>
                   <td><%= flight.airport_name %></td>
@@ -95,7 +95,7 @@
               </tr>
               </thead>
               <tbody id="flights">
-              <% @flights_outgoing.each do |flight| %>
+              <% Flight.flights_outgoing.each do |flight| %>
                 <tr>
                   <th scope="row"><%= flight.dep_date.strftime("%F %H:%M") %></th>
                   <td><%= flight.airport_name %></td>

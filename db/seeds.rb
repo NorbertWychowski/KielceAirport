@@ -91,9 +91,18 @@ airplanes = Airplane.create([{name: "Boeing 747", seats: 513},
 flight_type = FlightType.create([{name: "arrival"}, {name: "departure"}])
 flight_status = FlightStatus.create([{name: "departed"}, {name: "landed"}, {name: "expected"}, {name: "canceled"}])
 
-airlines = Airline.create([{name: "Ryanair"}, {name: "EasyJet"}, {name: "Wizz Air"}, {name: "Germanwings"}, {name: "Norwegian"},
-                           {name: "LOT"}, {name: "Emirates"}, {name: "Qatar Airways"}, {name: "Turkish Airlines"}, {name: "Enter Air"},
-                           {name: "Aeroflot"}, {name: "Lufthansa"}])
+airlines = Airline.create([{name: "Ryanair", email: "", phone: "+48 22 577 77 55"},
+                           {name: "EasyJet", email: "", phone: "+44 330 365 5454"},
+                           {name: "Wizz Air", email: "communications@wizzair.com", phone: "+48 703 703 003"},
+                           {name: "Germanwings", email: "kontakt@germanwings.com", phone: "703 403 044"},
+                           {name: "Norwegian", email: "", phone: "+48 32 728 30 00"},
+                           {name: "LOT", email: "lot_info@lot.pl", phone: "+48 22 577 77 55"},
+                           {name: "Emirates", email: "", phone: "+48 22 306 0808"},
+                           {name: "Qatar Airways", email: "", phone: ""},
+                           {name: "Turkish Airlines", email: "", phone: "+90 212 463 63 63"},
+                           {name: "Enter Air", email: "enterair@enterair.pl", phone: "+48 22 322 57 57"},
+                           {name: "Aeroflot", email: "contact@aeroflot.ru", phone: "+7 (495) 223-55-55"},
+                           {name: "Lufthansa", email: "customer.relations@lufthansa.com", phone: "+48 22 512 3917"}])
 
 Flight.create([{flight_identifier: "LOT Test 1", dep_date: DateTime.new(2018, 5, 15, 10, 15, 0),
                 arr_date: DateTime.new(2018, 5, 15, 13, 15, 0), airline: airlines.sample, ticket_price: 1200.0,
@@ -122,6 +131,8 @@ flights = []
               airline: airlines.sample, ticket_price: (rand + 1.0) * 1000.0,
               airport: airports.sample, airplane: airplanes.sample, flight_type: type, flight_status: flight_status[2]}
 }
+
+
 Flight.create(flights)
 
 Baggage.create([{name: "Bagaż podręczny (1x 8kg)", price: 0.0},

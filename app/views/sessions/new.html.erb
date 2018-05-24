@@ -24,8 +24,11 @@
             <small id="passwordHelp" class="form-text text-muted"><%= t :never_give_password %></small>
           </div>
           <%= f.submit t(:login), class: 'btn btn-primary' %>
-          <% flash.each do |_, value| %>
+          <% flash.each do |type, value| %>
             <div class='alert alert-danger' , style="margin-top: 10px"><%= value %></div>
+            <% if type == "resend_email" %>
+              <%= link_to "Wyslij email aktywacyjny ponownie", send_activation_email_path(@person) %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

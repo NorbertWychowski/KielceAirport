@@ -1,0 +1,76 @@
+<%
+  baggage = Baggage.all.map {|b| ["#{b.name} #{'%.02f' % b.price.round(2)}zł", b.id]}
+  discount_type = DiscountType.all.map {|d| [d.name, d.id]}
+%>
+
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Kup bilet - szczegóły</h2>
+  </div>
+</div>
+
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container">
+      <%= form_tag tickets_summary_path, method: :get do %>
+        <%= hidden_field_tag :flight, params[:flight] %>
+        <h2 class="font-weight-light section-title">Uzupełnij wymagane dane</h2>
+        <p class="description">Uwaga! Wszystkie bilety kupowane są na wspólny rachunek!</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+              <p class="description form-description">Adres e-mail</p>
+            </div>
+            <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 form-group">
+              <%= email_field_tag :email, (loggen_in? ? current_user.email : params[:email]), class: 'form-control', placeholder: t(:email), required: '' %>
+            </div>
+          </div>
+          <%= fields_for :tickets do |t| %>
+            <% (1..(@tickets_count || params[:ticket_count].to_i)).each do |i| %>
+              <%= t.fields_for "ticket_#{i}" do |ticket| %>
+                <div class="form-group container-ticket">
+                  <h4 class="font-weight-light section-title">Bilet <%= i %></h4>
+                  <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                      <p class="description form-description">Dane osobowe</p>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                      <%= ticket.text_field :first_name, {value: (i == 1 and loggen_in?) ? current_user.first_name : (@tickets[i - 1][:first_name] if @tickets),
+                                                          class: 'form-control', placeholder: 'Imię', required: ''} %>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                      <%= ticket.text_field :last_name, {value: (i == 1 and loggen_in?) ? current_user.first_name : (@tickets[i - 1][:last_name] if @tickets),
+                                                         class: 'form-control', placeholder: 'Nazwisko', required: ''} %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                      <p class="description form-description">Bagaż</p>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                      <%= ticket.select(:baggage, baggage, {selected: (@tickets[i - 1][:baggage] if @tickets)}, class: 'form-control') %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
+                      <p class="description form-description">Ulga</p>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+                      <%= ticket.select(:discount_type, discount_type, {selected: (@tickets[i - 1][:discount_type] if @tickets)}, class: 'form-control') %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+              <%= submit_tag "Potwierdź dane", class: 'btn btn-primary btn-search' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,12 @@
 <div class="container content">
   <div class="content-content">
     <div class="container-register">
+      <% flash.each do |_, value| %>
+        <div class="alert alert-info alert-dismissible">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <%= value %>
+        </div>
+      <% end %>
       <h3 class="section-title font-weight-light"><%= t :data_required %></h3>
       <%= form_for :person, url: customers_path do |f| %>
         <div class="row">
@@ -29,12 +35,6 @@
                                   title: t(:password_info)}) %>
           </div>
         </div>
-        <% flash.each do |_, value| %>
-          <div class="alert alert-info alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <%= value %>
-          </div>
-        <% end %>
         <div class="row">
           <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 form-group">
             <p class="description register-description"><%= t :personal_data %></p>

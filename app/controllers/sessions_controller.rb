@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         customer = Customer.find_by(person_id: user.id)
         if customer && !customer.email_confirmed
-          flash.now[:danger] = "Konto nie zostało aktywowane"
+          flash.now[:resend_email] = "Konto nie zostało aktywowane"
+          @person = user
           render :action => 'new'
         else
           log_in(user)

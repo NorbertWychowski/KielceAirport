@@ -40,8 +40,7 @@
                   <td class="table-element"><%= flight.airport_name %></td>
                   <td class="table-element"><%= FlightStatus::i18n_status flight.flight_status_name %></td>
                   <td class="table-element">
-                    <a class="btn btn-primary" role="button" href="lot.html"><%= t :show_flight %>
-                    </a>
+                    <%= link_to t(:show_flight), flight, class: 'btn btn-primary' %>
                   </td>
                 </tr>
               <% end %>
@@ -72,8 +71,7 @@
                   <td class="table-element"><%= flight.airport_name %></td>
                   <td class="table-element"><%= FlightStatus::i18n_status flight.flight_status_name %></td>
                   <td class="table-element">
-                    <a class="btn btn-primary" role="button" href="lot.html"><%= t :show_flight %>
-                    </a>
+                    <%= link_to t(:show_flight), flight, class: 'btn btn-primary' %>
                   </td>
                 </tr>
               <% end %>

@@ -112,7 +112,7 @@
                   </div>
                 <% end %>
                 <div class="container" style="margin-top: 12px" id="#confirm_button" id="confirm_container">
-                  <%= submit_tag t(:confirm_data_change), class: 'btn btn-primary' %>
+                  <%= submit_tag t(:confirm_data_change), class: 'btn btn-primary', action: 'update_data' %>
                 </div>
             <% end %>
             </div>
@@ -161,19 +161,22 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td class="table-element">
-                      <a href="#" class="table-link">3515612</a>
-                    </td>
-                    <td class="table-element">02.05.2018</td>
-                    <td class="table-element">Górnicza Dolina</td>
-                    <td class="table-element">Pięćset sztuk złota</td>
-                    <td class="table-element">Zrealizowany</td>
-                    <td class="table-element">
-                      <a class="table-link" href="#">
-                        <i class="fa fa-margin fa-file" aria-hidden="true"></i>Pobierz</a>
-                    </td>
-                  </tr>
+                  <% @tickets.each do |ticket| %>
+                    <tr>
+                      <td class="table-element">
+                        <a href="#" class="table-link"><%= ticket.flight_identifier %></a>
+                      </td>
+                      <td class="table-element"><%= ticket.dep_date.strftime("%F") %></td>
+                      <td class="table-element"><%= ticket.airport %></td>
+                      <td class="table-element"><%= "%.02fzł" % ticket.price %></td>
+                      <td class="table-element"><%= FlightStatus.i18n_status ticket.status %></td>
+                      <td class="table-element">
+                        <%= link_to ticket_pdf_path(ticket, format: :pdf), class: 'table-link' do %>
+                          <i class="fa fa-margin fa-file" aria-hidden="true"></i>Pobierz
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
                   </tbody>
                 </table>
               </div>

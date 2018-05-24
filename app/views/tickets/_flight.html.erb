@@ -2,13 +2,19 @@
   <tr>
     <td>
       <div class="form-check">
-        <%= radio_button_tag "flight", flight.id, false, {class: 'form-check-input'} %>
+        <%= radio_button_tag :flight, flight.id, false, {class: 'form-check-input', onclick: 'f()'} %>
       </div>
     </td>
     <td><%= flight.dep_date.strftime("%F %H:%M") %></td>
     <td><%= flight.airline_name %></td>
     <td><%= flight.city_name %></td>
-    <td><%= "%.2f" % flight.ticket_price.round %></td>
+    <td><%= "%.2f" % flight.ticket_price %></td>
     <td><%= flight.flight_identifier %></td>
   </tr>
 <% end %>
+
+<script>
+    function f() {
+        document.getElementById('submit_ticket').disabled = false;
+    }
+</script>

@@ -1,2 +1,6 @@
 <%= paginate @flights, window: 2, class: 'page-item' %>
-<a href="bilet-szczegoly.html" role="button" class="btn btn-primary">Przejdź dalej</a>
+<% unless @flights.blank? %>
+  <%= submit_tag "Przejdź dalej", class: 'btn btn-primary', style: 'margin-top: 24px',
+                 id: 'submit_ticket', disabled: true %>
+<% end %>
+<div class="loader" id="loading" style="display: none; margin-top: 24px;"></div>

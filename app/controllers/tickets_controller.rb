@@ -1,23 +1,102 @@
 class TicketsController < ApplicationController
   def index
-    if params[:airport] and !params[:airport].empty? and
-        params[:dep_date] and !params[:dep_date].empty? and
-        params[:dep_date] and !params[:tickets_count].empty?
-      airport_cond = " and (LOWER(airports.name) LIKE LOWER('%#{params[:airport]}%') or LOWER(cities.name) LIKE LOWER('%#{params[:airport]}%'))"
-      dep_date_cond = " and DATE(flights.dep_date) > DATE('#{params[:dep_date]}')"
-      tickets_count_cond = "COUNT(tickets.id) - 1 + #{params[:tickets_count]}"
-      @flights = Flight.left_joins(:tickets).joins(:airline, :airplane, :airport, airport: :city)
-                     .select('flights.*, airports.name as airport_name, airplanes.seats as seats, cities.name as city_name, ' +
-                                 'airlines.name as airline_name, COUNT(tickets.id) as tickets_count')
-                     .where("flights.dep_date > ?" + airport_cond + dep_date_cond, Time.now)
-                     .group(:flights)
-                     .having("#{tickets_count_cond} < seats")
-                     .order('flights.dep_date ASC')
-                     .page(params[:page]).per(10)
+    unless params[:airport].blank? or params[:dep_date].blank? or params[:dep_date].blank?
+      @flights = Flight.search_ticket(params)
     end
+
     respond_to do |format|
       format.js {render index: {index: @flights, query: [params[:airport], params[:dep_date], params[:tickets_count]]}}
       format.html {render :index}
     end
+  end
+
+  def new
+    if params[:flight].nil?
+      redirect_to tickets_path
+    else
+      if params[:tickets]
+        @tickets = []
+        ticket_params.to_h.each do |_, value|
+          @tickets << value
+        end
+
+        @tickets_count = @tickets.count
+      else
+        @tickets_count = params[:tickets_count].to_i
+        if @tickets_count < 1
+          @tickets_count = 1
+        end
+      end
+    end
+  end
+
+  def summary
+    @flight = Flight.find(params[:flight])
+
+    if @flight.dep_date < Time.now or @flight.flight_status.name != "expected"
+      redirect_to tickets_path
+    else
+      baggage = Baggage.all
+      discount_type = DiscountType.all
+
+      @tickets = []
+      @total_price = 0.0
+      ticket_params.to_h.each do |_, value|
+        d = value[:discount_type].to_i - 1
+        b = value[:baggage].to_i - 1
+        @total_price += value[:price] = (@flight.ticket_price * discount_type[d][:value] + baggage[b][:price]).round(2)
+        value[:discount] = discount_type[d][:name]
+        value[:baggage_n] = baggage[b][:name] + " - %.02fzł" % baggage[b][:price].round(2)
+        @tickets << value
+      end
+    end
+  end
+
+  def create
+    tickets = []
+    create_ticket_params(params).to_h.each do |_, value|
+      ticket = Ticket.new(email: params[:ticket][:email],
+                          customer_id: params[:ticket][:customer],
+                          flight_id: params[:ticket][:flight],
+                          first_name: value[:first_name],
+                          last_name: value[:last_name],
+                          price: value[:price],
+                          discount_type_id: value[:discount_type].to_i,
+                          baggage_id: value[:baggage].to_i)
+      ticket.save
+    end
+  end
+
+  def ticket_pdf
+    @ticket = Ticket.find(params[:id])
+    @flight = @ticket.flight
+
+    pdf = render_to_string pdf: 'Ticket',
+                           template: 'tickets/ticket_pdf.html.erb',
+                           layout: 'ticket',
+                           viewport_size: '1280x1024'
+
+    save_path = Rails.root.join('public', 'test.pdf')
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'Ticket',
+               template: 'tickets/ticket_pdf.html.erb',
+               layout: 'ticket',
+               viewport_size: '1280x1024'
+      end
+    end
+  end
+
+  def ticket_params
+    params[:tickets].try(:permit!)
+  end
+
+  def create_ticket_params(params)
+    params.require(:ticket)[:tickets].try(:permit!)
   end
 end

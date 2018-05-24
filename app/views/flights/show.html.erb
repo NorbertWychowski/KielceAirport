@@ -1,0 +1,64 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Przedstawienie lotu</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container">
+      <h2 class="font-weight-light section-title">Dane podstawowe</h2>
+      <div class="container flight-attributes">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="margin: 12px 0px">
+            <h3 class="font-weight-light section-title" style="margin-left: 24px">Czas</h3>
+            <ul class="list-group flight-attributes">
+              <li class="list-group-item"><%= t :departure_time %>:
+                <b><%= @flight.dep_date.strftime("%F %T") %></b>
+              </li>
+              <li class="list-group-item"><%= t :arrival_time %>:
+                <b><%= @flight.arr_date.strftime("%F %T") %></b>
+              </li>
+            </ul>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="margin: 12px 0px">
+            <h3 class="font-weight-light section-title" style="margin-left: 24px">Trasa</h3>
+            <ul class="list-group flight-attributes">
+              <% if @flight.flight_type.name == "arrival" %>
+                <li class="list-group-item">Lotnisko początkowe:
+                  <b><%= @flight.airport.name %></b>
+                </li>
+                <li class="list-group-item">Lotnisko docelowe:
+                  <b>Kielce Airport</b>
+                </li>
+              <% else %>
+                <li class="list-group-item">Lotnisko początkowe:
+                  <b>Kielce Airport</b>
+                </li>
+                <li class="list-group-item">Lotnisko docelowe:
+                  <b><%= @flight.airport.name %></b>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h2 class="font-weight-light section-title">Przewoźnik</h2>
+      <div class="col">
+        <ul class="list-group flight-attributes">
+          <li class="list-group-item">Nazwa:
+            <b><%= @airline.name %></b>
+          </li>
+          <li class="list-group-item">Infolinia:
+            <b><%= @airline.phone %></b>
+          </li>
+          <li class="list-group-item"><%= t :email %>:
+            <b><%= @airline.email %></b>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

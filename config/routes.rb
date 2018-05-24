@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
 
     # loty
-    get '/flights', to: 'flights#index'
+    resources :flights, only: [:index, :show]
+    #get '/flights', to: 'flights#index'
     match 'search(/:search)', to: 'flights#search', as: :search, via: [:get, :post]
 
 
@@ -21,10 +22,15 @@ Rails.application.routes.draw do
 
     # klienci
     resources :customers, only: [:show, :new, :create, :update]
+    get '/send_activation_email/:person', to: 'customers#send_activation_email', as: 'send_activation_email'
 
     # bilet
-    resources :tickets, only: [:index]
+    resources :tickets, only: [:index, :new, :create]
     post '/tickets', to: 'tickets#index'
+    post '/tickets/new', to: 'tickets#new'
+    get '/tickets/summary', to: 'tickets#summary'
+    get '/tickets/ticket_pdf/:id', to: 'tickets#ticket_pdf', as: 'ticket_pdf'
+
   end
 
   # google+
