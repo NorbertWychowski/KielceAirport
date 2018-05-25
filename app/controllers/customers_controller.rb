@@ -11,9 +11,6 @@ class CustomersController < ApplicationController
       redirect_to new_customer_path
     else
       person = Person.new(person_params)
-      person.update(country: params[:person][:country],
-                    city: params[:person][:city],
-                    street: params[:person][:street])
       if person.save
         customer = Customer.new(card_number: params[:customer][:card_number],
                                 year: params[:customer][:year],
@@ -21,9 +18,10 @@ class CustomersController < ApplicationController
                                 cvv: params[:customer][:cvv],
                                 confirm_token: SecureRandom.urlsafe_base64.to_s,
                                 person_id: person.id)
-        customer.save
-        RegistrationMailer.registration_confirmation(ENV['host'] + ":" + request.port.to_s, person, params[:locale]).deliver
-        redirect_to registration_confirm_path(person.email)
+        if customer.save
+          RegistrationMailer.registration_confirmation(person, request, params[:locale]).deliver
+          redirect_to registration_confirm_path(person.email)
+        end
       end
     end
   end
@@ -33,7 +31,7 @@ class CustomersController < ApplicationController
     if person.customer.email_confirmed
       redirect_to root_path
     else
-      RegistrationMailer.registration_confirmation(ENV['host'] + ":" + request.port.to_s, person, params[:locale]).deliver
+      RegistrationMailer.registration_confirmation(person, request, params[:locale]).deliver
       redirect_to registration_confirm_path(person.email)
     end
   end

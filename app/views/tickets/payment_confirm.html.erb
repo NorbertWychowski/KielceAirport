@@ -1,0 +1,18 @@
+<!-- cover-->
+<div class="container-fluid container-cover-title row">
+  <div class="container cover-content">
+    <h2 class="font-weight-light cover-title">Kup bilet - potwierdzenie płatności</h2>
+  </div>
+</div>
+
+<!-- content -->
+<div class="container content">
+  <div class="content-content">
+    <div class="container">
+      <p class="description">Płatność na kwotę
+        <b><%= "%.02fzł" % params[:price] %></b> została zrealizowana. Potwierdzenie płatności wraz z biletem zostało wysłane na
+        Twój adres e-mail <b><%= params[:email] %></b>. Pamiętaj, że na lotnisku konieczne jest okazanie biletu
+        wydrukowanego lub wyświetlonego na urządzeniu elektronicznym.</p>
+    </div>
+  </div>
+</div>

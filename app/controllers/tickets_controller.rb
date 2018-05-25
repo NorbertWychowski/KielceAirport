@@ -41,6 +41,7 @@ class TicketsController < ApplicationController
 
       @tickets = []
       @total_price = 0.0
+      @order = {products: []}
       ticket_params.to_h.each do |_, value|
         d = value[:discount_type].to_i - 1
         b = value[:baggage].to_i - 1
@@ -48,24 +49,21 @@ class TicketsController < ApplicationController
         value[:discount] = discount_type[d][:name]
         value[:baggage_n] = baggage[b][:name] + " - %.02fzł" % baggage[b][:price].round(2)
         @tickets << value
+        @order[:products] << {name: {first_name: value[:first_name],
+                                     last_name: value[:last_name],
+                                     price: value[:price],
+                                     discount_type: value[:discount_type],
+                                     baggage: value[:baggage]},
+                              unitPrice: (value[:price] * 100).to_i.to_s,
+                              quantity: "1"}
       end
+      @order[:total_price] = (@total_price * 100).to_i
+      @order[:email] = params[:email]
+      @order[:flight] = @flight.id
+      @order[:customer] = current_user.customer.id if loggen_in?
     end
   end
 
-  def create
-    tickets = []
-    create_ticket_params(params).to_h.each do |_, value|
-      ticket = Ticket.new(email: params[:ticket][:email],
-                          customer_id: params[:ticket][:customer],
-                          flight_id: params[:ticket][:flight],
-                          first_name: value[:first_name],
-                          last_name: value[:last_name],
-                          price: value[:price],
-                          discount_type_id: value[:discount_type].to_i,
-                          baggage_id: value[:baggage].to_i)
-      ticket.save
-    end
-  end
 
   def ticket_pdf
     @ticket = Ticket.find(params[:id])
@@ -92,11 +90,10 @@ class TicketsController < ApplicationController
     end
   end
 
-  def ticket_params
-    params[:tickets].try(:permit!)
+  def payment_confirm
   end
 
-  def create_ticket_params(params)
-    params.require(:ticket)[:tickets].try(:permit!)
+  def ticket_params
+    params[:tickets].try(:permit!)
   end
 end

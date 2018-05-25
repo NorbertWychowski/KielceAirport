@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# REST do platnosci
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
+
 # jQuery, Boostrap, font-awesome
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'

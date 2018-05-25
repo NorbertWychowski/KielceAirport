@@ -8,8 +8,8 @@
       <b>Kielce Airport</b>. Aby zweryfikować swoje konto kliknij w poniższy link aktywacyjny. Jeśli strona nie
       uruchamia
       się, skopiuj link aktywacyjny do paska przeglądarki.</p>
-    <b><%= link_to confirm_account_url(token: @customer.confirm_token, host: params[:host], locale: params[:locale]),
-                   confirm_account_url(token: @customer.confirm_token, host: params[:host], locale: params[:locale]),
+    <b><%= link_to confirm_account_url(token: @customer.confirm_token, host: @host, locale: @locale),
+                   confirm_account_url(token: @customer.confirm_token, host: @host, locale: @locale),
                    style: 'font-size: 14px; text-decoration: none; color: #015e94;' %></b>
     <p style="font-size: 14px; color: rgba(34, 40, 49, 0.7)">Aktywując konto w serwisie Kielce Airport wyrażasz zgodę na
       warunki użytkowania i oświadczasz, że zapoznałeś się z zasadami prywatności.</p>

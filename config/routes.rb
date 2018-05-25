@@ -25,11 +25,16 @@ Rails.application.routes.draw do
     get '/send_activation_email/:person', to: 'customers#send_activation_email', as: 'send_activation_email'
 
     # bilet
-    resources :tickets, only: [:index, :new, :create]
+    resources :tickets, only: [:index, :new]
     post '/tickets', to: 'tickets#index'
     post '/tickets/new', to: 'tickets#new'
     get '/tickets/summary', to: 'tickets#summary'
     get '/tickets/ticket_pdf/:id', to: 'tickets#ticket_pdf', as: 'ticket_pdf'
+    get '/tickets/payment_confirm', to: 'tickets#payment_confirm', as: 'payment_confirm'
+
+    # platnosc
+    resource :payments, only: [:create]
+    post '/payment_notifications', to: 'payment_notifications#create', as: 'payment_notification'
 
   end
 

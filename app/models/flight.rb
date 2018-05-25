@@ -48,7 +48,7 @@ class Flight < ApplicationRecord
         .group('flights.id')
         .having("#{tickets_count_cond} < seats")
         .order('flights.dep_date ASC')
-        .page(params[:page]).per(10)
+        .page(params[:page]).per(6)
   end
 
   def self.flights_incoming

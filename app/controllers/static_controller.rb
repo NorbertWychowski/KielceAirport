@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
   def index
-    countries = Flight.joins(airport: {city: :country}).select('countries.name as name, COUNT(countries.name) as count').group('countries.name')
+    countries = Airport.joins(city: :country).select('countries.name as name, COUNT(countries.name) as count').group('countries.name')
     @countries = countries.collect {|country| [country.name, country.count]}
 
     @news = News.last

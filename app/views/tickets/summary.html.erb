@@ -8,10 +8,8 @@
 <!-- content -->
 <div class="container content">
   <div class="content-content">
-    <%= form_for Ticket.new do |t| %>
-      <%= t.hidden_field :email, value: params[:email] %>
-      <%= t.hidden_field :flight, value: @flight.id %>
-      <%= t.hidden_field :customer, value: current_user.customer.id if loggen_in? %>
+    <%= form_for :ticket, url: payments_path do |t| %>
+      <%= t.hidden_field :order, value: @order %>
       <div class="container">
         <h2 class="font-weight-light section-title">Podsumowanie danych biletu</h2>
         <div class="container container-ticket">
@@ -41,52 +39,43 @@
             </div>
           </div>
         </div>
-        <%= t.fields_for :tickets do |tck| %>
-          <% @tickets.each_with_index do |ticket, index| %>
-            <%= tck.fields_for "ticket_#{index + 1}" do |tc| %>
-              <%= tc.hidden_field :first_name, value: ticket[:first_name] %>
-              <%= tc.hidden_field :last_name, value: ticket[:last_name] %>
-              <%= tc.hidden_field :price, value: ticket[:price] %>
-              <%= tc.hidden_field :discount_type, value: ticket[:discount_type] %>
-              <%= tc.hidden_field :baggage, value: ticket[:baggage] %>
-            <% end %>
-            <div class="container container-ticket">
-              <h4 class="font-weight-light section-title">Bilet <%= index + 1 %></h4>
-              <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-                  <ul class="list-group">
-                    <li class="list-group-item">Imię:
-                      <b><%= ticket[:first_name] %></b>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-                  <ul class="list-group">
-                    <li class="list-group-item">Nazwisko:
-                      <b><%= ticket[:last_name] %></b>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                  <ul class="list-group">
-                    <li class="list-group-item">Ulga:
-                      <b><%= ticket[:discount] %></b>
-                    </li>
-                  </ul>
-                </div>
+        <% @tickets.each_with_index do |ticket, index| %>
+          <div class="container container-ticket">
+            <h4 class="font-weight-light section-title">Bilet <%= index + 1 %></h4>
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                <ul class="list-group">
+                  <li class="list-group-item">Imię:
+                    <b><%= ticket[:first_name] %></b>
+                  </li>
+                </ul>
               </div>
-              <ul class="list-group">
-                <li class="list-group-item">Dodatkowy bagaż:
-                  <b><%= ticket[:baggage_n] %></b>
-                </li>
-              </ul>
-              <ul class="list-group">
-                <li class="list-group-item">Koszt osoby:
-                  <b><%= "%.02fzł" % ticket[:price] %></b>
-                </li>
-              </ul>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                <ul class="list-group">
+                  <li class="list-group-item">Nazwisko:
+                    <b><%= ticket[:last_name] %></b>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <ul class="list-group">
+                  <li class="list-group-item">Ulga:
+                    <b><%= ticket[:discount] %></b>
+                  </li>
+                </ul>
+              </div>
             </div>
-          <% end %>
+            <ul class="list-group">
+              <li class="list-group-item">Dodatkowy bagaż:
+                <b><%= ticket[:baggage_n] %></b>
+              </li>
+            </ul>
+            <ul class="list-group">
+              <li class="list-group-item">Koszt osoby:
+                <b><%= "%.02fzł" % ticket[:price] %></b>
+              </li>
+            </ul>
+          </div>
         <% end %>
         <div class="container container-ticket">
           <h4 class="font-weight-light section-title">Ogółem</h4>
@@ -121,11 +110,12 @@
             bilet.</p>
           <div class="container">
             <div class="container-payment">
-              <a href="#" class="btn btn-primary btn-payment" role="button">
-                <i class="fa fa-margin fa-credit-card-alt" aria-hidden="true"></i>Zapłać z PayU</a>
+              <%= t.button type: 'submit', class: 'btn btn-primary btn-payment',
+                           name: 'provider', value: 'payu', formtarget: '_blank' do %>
+                <i class="fa fa-margin fa-credit-card-alt" aria-hidden="true"></i>Zapłać z PayU
+              <% end %>
               <a href="#" class="btn btn-primary btn-payment" role="button">
                 <i class="fa fa-margin fa-cc-paypal" aria-hidden="true"></i>Zapłać z PayPal</a>
-              <%= t.submit "Zapłać z Frontem(xD)", class: 'btn btn-primary btn-payment' %>
             </div>
           </div>
         </div>

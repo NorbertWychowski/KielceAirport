@@ -5,6 +5,4 @@ module ApplicationHelper
     options = {units: "metric", APPID: "9543b10cc8bd8c2eb67591813db9ad24", lang: I18n.locale}
     OpenWeather::Current.city_id("769250", options)
   end
-
-  def
 end

@@ -19,7 +19,7 @@
               <label class="label-input" for="inputDate">Podaj lub wybierz termin</label>
               <%= date_field_tag :dep_date, (params[:dep_date] || Time.now.to_date), class: 'form-control' %>
               <label class="label-input" for="inputPassengers">Podaj liczbę pasażerów</label>
-              <%= number_field_tag :tickets_count, params[:tickets_count] || 1, class: 'form-control', min: 1, step: 1, id: 'f_tickets_count' %>
+              <%= number_field_tag :tickets_count, params[:tickets_count] || 1, class: 'form-control', max: 10, min: 1, step: 1, id: 'f_tickets_count' %>
               <%= button_tag type: 'submit', class: 'btn btn-secondary btn-search', style: 'margin-top: 24px', name: 'search_button' do %>
                 <i class="fa fa-margin fa-search" aria-hidden="true"></i> Wyszukaj
               <% end %>
@@ -36,7 +36,7 @@
                   <th scope="col" class="radio-th">Wybierz</th>
                   <th scope="col" class="width-th">Godzina</th>
                   <th scope="col" class="width-th">Przewoźnik</th>
-                  <th scope="col" class="width-th">Miasto</th>
+                  <th scope="col" class="width-th">Lotnisko</th>
                   <th scope="col" class="width-th">Cena<br>(za os.)</th>
                   <th scope="col" class="width-th">Lot</th>
                 </tr>

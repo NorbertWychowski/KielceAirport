@@ -31,7 +31,7 @@ class Person < ApplicationRecord
     end
   end
 
-  def person_params(params)
+  def self.person_params(params)
     params.require(:person).permit(:email, :first_name, :last_name, :password, :password_confirmation, :country, :city, :street)
         .merge(without_password: false)
   end
