@@ -1,0 +1,34 @@
+<h3 class="font-weight-light section-title">Twoje bilety</h3>
+<div class="container table-responsive" style="margin-top: 12px">
+  <table class="table table-hover">
+    <thead class="thead-primary">
+    <tr>
+      <th scope="col">Numer lotu</th>
+      <th scope="col">Data</th>
+      <th scope="col">Kierunek</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Status</th>
+      <th scope="col">Bilet</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td class="table-element">
+          <%= link_to ticket.flight_identifier, flight_path(ticket.flight_id), class: 'table-link' %>
+        </td>
+        <td class="table-element"><%= ticket.dep_date.strftime("%F") %></td>
+        <td class="table-element"><%= ticket.airport %></td>
+        <td class="table-element"><%= "%.02fzł" % ticket.price %></td>
+        <td class="table-element"><%= FlightStatus.i18n_status ticket.status %></td>
+        <td class="table-element">
+          <%= link_to ticket_pdf_path(ticket, format: :pdf), class: 'table-link' do %>
+            <i class="fa fa-margin fa-file" aria-hidden="true"></i>Pobierz
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @tickets, window: 2, class: 'page-item', params: {anchor: 'sectionTickets'} %>

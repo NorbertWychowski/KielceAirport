@@ -20,12 +20,14 @@
 //= require chartkick
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-});
+    $('[data-toggle="tooltip"]').tooltip();
 
-
-$(function () {
     $("#flights").on('click', '.pagination .justify-content-center a', function () {
+        $.getScript(this.href);
+        return false;
+    });
+
+    $('#customer_tickets').on('click', function () {
         $.getScript(this.href);
         return false;
     });

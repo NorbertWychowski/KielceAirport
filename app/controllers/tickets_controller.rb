@@ -64,29 +64,18 @@ class TicketsController < ApplicationController
     end
   end
 
-
   def ticket_pdf
-    @ticket = Ticket.find(params[:id])
-    @flight = @ticket.flight
+    require 'rqrcode'
 
-    pdf = render_to_string pdf: 'Ticket',
-                           template: 'tickets/ticket_pdf.html.erb',
-                           layout: 'ticket',
-                           viewport_size: '1280x1024'
+    ticket = Ticket.find(params[:id])
+    flight = ticket.flight
+    airport = flight.airport
 
-    save_path = Rails.root.join('public', 'test.pdf')
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end
+    qr = RQRCode::QRCode.new(ticket.id.to_s, size: 4, level: :h)
 
     respond_to do |format|
-      format.html
-      format.pdf do
-        render pdf: 'Ticket',
-               template: 'tickets/ticket_pdf.html.erb',
-               layout: 'ticket',
-               viewport_size: '1280x1024'
-      end
+      format.html {render :ticket_pdf, locals: {ticket: ticket, flight: flight, airpot: airport, qr: qr}}
+      format.pdf Rails.root.join('public', 'tickets', "#{ticket.id}")
     end
   end
 

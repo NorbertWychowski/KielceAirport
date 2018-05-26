@@ -9,6 +9,7 @@ class CreateTickets < ActiveRecord::Migration[5.1]
       t.references :discount_type, foreign_key: true
       t.references :flight, foreign_key: true
       t.references :baggage, foreign_key: true
+      t.references :order, foreign_key: true
     end
   end
 end

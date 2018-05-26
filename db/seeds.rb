@@ -35,7 +35,8 @@ countries = Country.create([{name: "Polska", alpha2: "pl"},
                             {name: "Serbia", alpha2: "rs"},
                             {name: "Wielka Brytania", alpha2: "gb"},
                             {name: "Tunezja", alpha2: "tn"},
-                            {name: "Australia", alpha2: "au"},])
+                            {name: "Australia", alpha2: "au"},
+                            {name: "Kanada", alpha2: "ca"}])
 
 cities = City.create([{name: "Warszawa", country: countries[0]},
                       {name: "Berlin", country: countries[1]},
@@ -50,7 +51,8 @@ cities = City.create([{name: "Warszawa", country: countries[0]},
                       {name: "Belgrad", country: countries[9]},
                       {name: "Londyn", country: countries[10]},
                       {name: "Tunis", country: countries[11]},
-                      {name: "Sydney", country: countries[12]}])
+                      {name: "Sydney", country: countries[12]},
+                      {name: "Ottawa", country: countries[13]}])
 
 airports = Airport.create([{city: cities[0], name: "Okęcie / im. Fryderyka Chopina", IATA: "WAW"},
                            {city: cities[1], name: "Tegel", IATA: "TXL"},
@@ -66,7 +68,8 @@ airports = Airport.create([{city: cities[0], name: "Okęcie / im. Fryderyka Chop
                            {city: cities[11], name: "London City Airport", IATA: "LCY"},
                            {city: cities[11], name: "Gatwick", IATA: "LGW"},
                            {city: cities[12], name: "Carthage", IATA: "TUN"},
-                           {city: cities[13], name: "Kingsford Smith", IATA: "SYD"},])
+                           {city: cities[13], name: "Kingsford Smith", IATA: "SYD"},
+                           {city: cities[14], name: "Ottawa International Airport", IATA: "YOW"}])
 
 airplanes = Airplane.create([{name: "Boeing 747", seats: 513},
                              {name: "Boeing 747-400", seats: 1026},

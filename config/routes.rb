@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root 'static#index'
   scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
-    get 'customers/show'
+    root 'static#index'
 
     # logowanie
     get '/login', to: 'sessions#new'
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
     #get '/flights', to: 'flights#index'
     match 'search(/:search)', to: 'flights#search', as: :search, via: [:get, :post]
 
-
     get '/confirm_account/:token', to: 'customers#confirm_email', as: 'confirm_account'
     get '/registration_confirm/:email', to: 'static#registration_confirm', as: 'registration_confirm', constraints: {email: /[^\/]+/}
 
@@ -21,7 +19,8 @@ Rails.application.routes.draw do
     resources :news
 
     # klienci
-    resources :customers, only: [:show, :new, :create, :update]
+    resources :customers, only: [:new, :create, :update]
+    get '/profile', to: 'customers#profile', as: 'profile'
     get '/send_activation_email/:person', to: 'customers#send_activation_email', as: 'send_activation_email'
 
     # bilet

@@ -49,42 +49,64 @@ class CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-    @tab = params[:tab]
+  def profile
     if loggen_in? and !current_user.customer.nil?
       @customer = Person.joins(:customer).select('*, customers.id as customer_id').first
       @tickets = Ticket.joins(:flight, flight: [:airport, :flight_status])
-                     .select('tickets.id, flights.flight_identifier as flight_identifier, flights.dep_date as dep_date,' +
-                                 ' airports.name as airport, tickets.price as price, flight_statuses.name as status')
+                     .select('tickets.id, flights.id as flight_id, flights.flight_identifier as flight_identifier, ' +
+                                 'flights.dep_date as dep_date, airports.name as airport, tickets.price as price, ' +
+                                 'flight_statuses.name as status')
                      .where(customer: @customer.customer_id)
+                     .page(params[:page]).per(10)
+      #@tickets.each {|t| TicketsHelper.ticket_pdf(t.id)}
     else
       redirect_to root_path
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
     end
   end
 
   def update
     customer = Customer.find(params[:id])
-    case params[:action]
-      when 'update'
-        customer.update_data(params)
-        redirect_to customer_path(params[:id])
-      when 'change_password'
-        if !params[:person][:old_password].nil? and customer.person.try(:authenticate, params[:person][:old_password]) and
-            params[:person][:password] == params[:person][:password_confirmation]
-          customer.update_data(params)
-          redirect_to customer_path(params[:id])
+    person = customer.person
+
+    if person.authenticate(params[:person][:old_password])
+      person.update(person_params)
+      if person.save
+        if params[:type] == 'update_data'
+          customer.update(customer_params)
+          if customer.save
+            flash[:success] = "Dane został zmienione"
+          else
+            flash[:danger] = "Podano nieprawidłowe dane. Spróbuj jeszcze raz"
+          end
         else
-          flash[:danger] = "Podano nieprawidłowe hasło lub hasła się różnią. Spróbuj jeszcze raz"
-          redirect_to customer_path(params[:id], tab: 'sectionPassword')
+          flash[:success] = "Hasło zostało zmienione"
         end
       else
-        redirect_to customer_path(params[:id])
+        flash[:danger] = "Hasła się różnią. Spróbuj jeszcze raz"
+      end
+    else
+      flash[:danger] = "Podano nieprawidłowe hasło. Spróbuj jeszcze raz"
     end
+    if params[:type] == 'change_password'
+      redirect_to profile_path(anchor: 'sectionPassword')
+    else
+      redirect_to profile_path
+    end
+  end
+
+  def customer_params
+    params.require(:customer).permit(:card_number, :year, :month, :cvv)
   end
 
   def person_params
     params.require(:person).permit(:email, :first_name, :last_name, :password, :password_confirmation, :country, :city, :street)
         .merge(without_password: false)
   end
+
 end
 

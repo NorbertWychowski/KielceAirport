@@ -96,6 +96,10 @@ ActiveRecord::Schema.define(version: 20180508124732) do
     t.string "image"
   end
 
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "order_id"
+  end
+
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
     t.string "first_name"
@@ -118,10 +122,12 @@ ActiveRecord::Schema.define(version: 20180508124732) do
     t.bigint "discount_type_id"
     t.bigint "flight_id"
     t.bigint "baggage_id"
+    t.bigint "order_id"
     t.index ["baggage_id"], name: "index_tickets_on_baggage_id"
     t.index ["customer_id"], name: "index_tickets_on_customer_id"
     t.index ["discount_type_id"], name: "index_tickets_on_discount_type_id"
     t.index ["flight_id"], name: "index_tickets_on_flight_id"
+    t.index ["order_id"], name: "index_tickets_on_order_id"
   end
 
   create_table "user_accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -148,6 +154,7 @@ ActiveRecord::Schema.define(version: 20180508124732) do
   add_foreign_key "tickets", "customers"
   add_foreign_key "tickets", "discount_types"
   add_foreign_key "tickets", "flights"
+  add_foreign_key "tickets", "orders"
   add_foreign_key "user_accounts", "people"
   add_foreign_key "user_accounts", "user_types"
 end

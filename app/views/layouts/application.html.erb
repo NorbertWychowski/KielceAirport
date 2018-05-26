@@ -61,7 +61,7 @@
             </li>
           <% else %>
             <li class="nav-control">
-              <%= link_to customer_path(current_user) do %>
+              <%= link_to profile_path do %>
                 <i class="fa fa-margin fa-user" aria-hidden="true"></i><%= t :your_profile %>
               <% end %>
             </li>
@@ -71,7 +71,6 @@
               <% end %>
             </li>
           <% end %>
-          </li>
           <li class="nav-control nav-control-language">
             <%= link_to "PL", url_for(locale: :pl) %>
             <span>/</span>

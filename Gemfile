@@ -23,6 +23,9 @@ gem 'country_select'
 # API Google+
 gem 'omniauth-google-oauth2'
 
+# qr code
+gem 'rqrcode'
+
 #gem imagemagick - potrzebny do mini_magick
 gem 'rmagick', '~> 2.15', '>= 2.15.4'
 # gem do wysyłania i pobierania obrazów
@@ -37,7 +40,6 @@ gem 'kaminari'
 gem 'chartkick'
 
 # pdf
-gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
