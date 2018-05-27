@@ -21,5 +21,6 @@
 /config/application.yml
 /config/payu.yml
 /config/paypal.yml
+/front/*
 
 .byebug_history
