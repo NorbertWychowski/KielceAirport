@@ -8,6 +8,9 @@ end
 # REST do platnosci
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
 
+# paypal
+gem 'paypal-sdk-rest', '~> 2.0.0.rc2'
+
 # jQuery, Boostrap, font-awesome
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.1'

@@ -107,7 +107,17 @@ class TicketsController < ApplicationController
     pdfs
   end
 
+  include PayPal::V1::Payments
   def payment_confirm
+    if params[:provider] == 'paypal'
+      require "uri"
+      require "net/http"
+      require 'paypal-sdk-rest'
+      require 'pp'
+
+      payment = PaymentGetRequest.new(params[:paymentId])
+      pp payment
+    end
   end
 
   def ticket_params

@@ -51,7 +51,10 @@ class CustomersController < ApplicationController
 
   def profile
     if loggen_in? and !current_user.customer.nil?
-      @customer = Person.joins(:customer).select('*, customers.id as customer_id').first
+      @customer = Person.joins(:customer)
+                      .select('*, customers.id as customer_id')
+                      .where(id: current_user)
+                      .first
       @tickets = Ticket.joins(:flight, flight: [:airport, :flight_status])
                      .select('tickets.id, flights.id as flight_id, flights.flight_identifier as flight_identifier, ' +
                                  'flights.dep_date as dep_date, airports.name as airport, tickets.price as price, ' +
@@ -59,7 +62,10 @@ class CustomersController < ApplicationController
                      .where(customer: @customer.customer_id)
                      .order(id: :asc)
                      .page(params[:page]).per(10)
-      #@tickets.each {|t| TicketsHelper.ticket_pdf(t.id)}
+      @flights = Ticket.joins(:flight, flight: :airport)
+                     .select('flights.id, flights.flight_identifier, flights.dep_date, airports.name as airport')
+                     .where(customer: @customer.customer_id, 'flights.flight_type_id': 2)
+                     .order(id: :asc)
     else
       redirect_to root_path
     end

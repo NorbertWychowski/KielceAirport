@@ -48,6 +48,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    braintreehttp (0.5.0)
     builder (3.2.3)
     byebug (10.0.2)
     carrierwave (1.2.2)
@@ -152,6 +153,8 @@ GEM
       omniauth (~> 1.2)
     open-weather (0.12.0)
       json (~> 1)
+    paypal-sdk-rest (2.0.0.rc2)
+      braintreehttp (~> 0.5.0)
     pg (1.0.0-x86-mingw32)
     popper_js (1.12.9)
     puma (3.11.4)
@@ -260,6 +263,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   omniauth-google-oauth2
   open-weather
+  paypal-sdk-rest (~> 2.0.0.rc2)
   pg
   puma (~> 3.7)
   rails (~> 5.1.6)

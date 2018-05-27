@@ -42,7 +42,7 @@
                                                           class: 'form-control', placeholder: 'Imię', required: ''} %>
                     </div>
                     <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                      <%= ticket.text_field :last_name, {value: (i == 1 and loggen_in?) ? current_user.first_name : (@tickets[i - 1][:last_name] if @tickets),
+                      <%= ticket.text_field :last_name, {value: (i == 1 and loggen_in?) ? current_user.last_name : (@tickets[i - 1][:last_name] if @tickets),
                                                          class: 'form-control', placeholder: 'Nazwisko', required: ''} %>
                     </div>
                   </div>

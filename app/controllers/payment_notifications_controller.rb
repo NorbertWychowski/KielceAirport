@@ -7,7 +7,7 @@ class PaymentNotificationsController < ApplicationController
 
     head 200
 
-    config = Rails.configuration.payment
+    config = Rails.configuration.payu
     body = request.body.read
 
     case params[:provider]

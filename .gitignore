@@ -19,6 +19,7 @@
 /node_modules
 /yarn-error.log
 /config/application.yml
-/config/payment.yml
+/config/payu.yml
+/config/paypal.yml
 
 .byebug_history

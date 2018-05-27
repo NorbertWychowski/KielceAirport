@@ -1,8 +1,12 @@
 class PaymentsController < ApplicationController
+  include PayPal::V1::Payments
+
   def create
     case params[:provider]
       when 'payu'
         payu(params[:ticket])
+      when 'paypal'
+        paypal(params[:ticket])
       else
         redirect_to root_path
     end
@@ -15,7 +19,7 @@ class PaymentsController < ApplicationController
 
     order = eval(params[:order])
 
-    config = Rails.configuration.payment
+    config = Rails.configuration.payu
     param = {grant_type: 'client_credentials',
              client_id: config['client_id'],
              client_secret: config['client_secret']}
@@ -51,8 +55,51 @@ class PaymentsController < ApplicationController
         }
     }.to_json
 
-         res = http.request(req)
+    res = http.request(req)
     puts res.body
     redirect_to JSON.parse(res.body)['redirectUri']
+  end
+
+  def paypal(params)
+    order = eval(params[:order])
+    products = []
+    order[:products].each do |f|
+      products << {name: "#{f[:name]}",
+                   price: f[:unitPrice].to_f / 100.0,
+                   quantity: f[:quantity],
+                   currency: 'PLN',
+                   sku: 'item'}
+    end
+
+    require 'paypal-sdk-rest'
+    config = Rails.configuration.paypal
+    environment = PayPal::SandboxEnvironment.new(config['client_id'], config['client_secret'])
+    client = PayPal::PayPalHttpClient.new(environment)
+
+    payment = {
+        intent: 'sale',
+        payer: {
+            payment_method: "paypal"},
+        redirect_urls: {
+            return_url: payment_confirm_url(host: request.host, price: order[:total_price] / 100.0, email: order[:email], provider: 'paypal'),
+            cancel_url: payment_confirm_url(host: request.host, price: order[:total_price] / 100.0, email: order[:email], error: '501')},
+        transactions: [{item_list: {items: products},
+                        amount: {total: order[:total_price].to_f / 100.0,
+                                 currency: "PLN"}}]}
+
+    request = PaymentCreateRequest.new
+    request.request_body(payment)
+
+    require 'pp'
+    require 'json'
+    begin
+      response = client.execute(request)
+      pp response.status_code
+      pp response.result
+      redirect_to response.result.links[1].href
+    rescue BraintreeHttp::HttpError => e
+      pp e.status_code
+      pp e.result
+    end
   end
 end

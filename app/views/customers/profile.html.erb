@@ -185,19 +185,19 @@
                   <tr>
                     <th scope="col">Numer lotu</th>
                     <th scope="col">Data</th>
-                    <th scope="col">Wylot</th>
                     <th scope="col">Przylot</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td class="table-element">
-                      <a href="#" class="table-link">3515612</a>
-                    </td>
-                    <td class="table-element">02.05.2018</td>
-                    <td class="table-element">Górnicza Dolina</td>
-                    <td class="table-element">Kielce</td>
-                  </tr>
+                  <% @flights.each do |flight| %>
+                    <tr>
+                      <td class="table-element">
+                        <%= link_to flight.flight_identifier, flight_path(flight), class: 'table-link' %>
+                      </td>
+                      <td class="table-element"><%= flight.dep_date %></td>
+                      <td class="table-element"><%= flight.airport %></td>
+                    </tr>
+                  <% end %>
                   </tbody>
                 </table>
               </div>

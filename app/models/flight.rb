@@ -44,7 +44,7 @@ class Flight < ApplicationRecord
     left_joins(:tickets).joins(:airline, :airplane, :airport, airport: :city)
         .select('flights.*, airports.name as airport_name, airplanes.seats as seats, cities.name as city_name, ' +
                     'airlines.name as airline_name, COUNT(tickets.id) as tickets_count')
-        .where("flights.dep_date > ?" + airport_cond + dep_date_cond, Time.now)
+        .where("flights.dep_date > ? and flights.flight_type_id = 2" + airport_cond + dep_date_cond, Time.now)
         .group('flights.id')
         .having("#{tickets_count_cond} < seats")
         .order('flights.dep_date ASC')

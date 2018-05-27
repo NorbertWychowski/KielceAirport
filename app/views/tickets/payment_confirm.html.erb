@@ -9,10 +9,17 @@
 <div class="container content">
   <div class="content-content">
     <div class="container">
-      <p class="description">Płatność na kwotę
-        <b><%= "%.02fzł" % params[:price] %></b> została zrealizowana. Potwierdzenie płatności wraz z biletem zostało wysłane na
-        Twój adres e-mail <b><%= params[:email] %></b>. Pamiętaj, że na lotnisku konieczne jest okazanie biletu
-        wydrukowanego lub wyświetlonego na urządzeniu elektronicznym.</p>
+      <% if params[:error] == '501' %>
+        <p class="description">
+          Anulowano transakcję na kwotę <b><%= "%.02fzł" % params[:price] %></b>
+        </p>
+      <% else %>
+        <p class="description">Płatność na kwotę
+          <b><%= "%.02fzł" % params[:price] %></b> została zrealizowana. Potwierdzenie płatności wraz z biletem zostało
+          wysłane na
+          Twój adres e-mail <b><%= params[:email] %></b>. Pamiętaj, że na lotnisku konieczne jest okazanie biletu
+          wydrukowanego lub wyświetlonego na urządzeniu elektronicznym.</p>
+      <% end %>
     </div>
   </div>
 </div>

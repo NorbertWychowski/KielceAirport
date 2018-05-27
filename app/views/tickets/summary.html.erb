@@ -114,8 +114,10 @@
                            name: 'provider', value: 'payu', formtarget: '_blank' do %>
                 <i class="fa fa-margin fa-credit-card-alt" aria-hidden="true"></i>Zapłać z PayU
               <% end %>
-              <a href="#" class="btn btn-primary btn-payment" role="button">
-                <i class="fa fa-margin fa-cc-paypal" aria-hidden="true"></i>Zapłać z PayPal</a>
+              <%= t.button type: 'submit', class: 'btn btn-primary btn-payment',
+                           name: 'provider', value: 'paypal', formtarget: '_blank' do %>
+                <i class="fa fa-margin fa-cc-paypal" aria-hidden="true"></i>Zapłać z PayPal
+              <% end %>
             </div>
           </div>
         </div>
