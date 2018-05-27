@@ -1,7 +1,0 @@
-development:
-  auth_url: https://secure.snd.payu.com/pl/standard/user/oauth/authorize
-  api_url: https://secure.snd.payu.com/api/v2_1
-  client_id: 332752
-  client_secret: 71d96d2e86f13220a37bcfba3864f5f0
-  second_key: 1513cb43578964a232064ce7441d3b60
-  pos_id: 332752

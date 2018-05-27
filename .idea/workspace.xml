@@ -3,40 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d0762bc2-0350-475c-947b-1942a85ac175" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/config/paypal.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/config/payu.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/admin-lista-aktualnosci.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/admin-lista-lotow.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/admin-lista-uzytkownikow.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/admin.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/aktualnosci.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/bilet-podsumowanie.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/bilet-potwierdzenie.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/bilet-szczegoly.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/bilet.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/blad404.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/Thumbs.db" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/bg.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/covermain.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/coversearch.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/geochart.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/gmaps.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/news.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/images/qr.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/kup-bilet.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/logowanie.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/lot.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/loty.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/mail_weryfikacyjny.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/news.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/profil.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/rejestracja.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/rejestracja_potwierdzenie.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/front/wyszukiwarka.html" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -107,8 +73,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+            <state relative-caret-position="504">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -374,6 +340,11 @@
             <path>
               <item name="KielceAirport" type="b2602c69:ProjectViewProjectNode" />
               <item name="KielceAirport" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KielceAirport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="KielceAirport" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -674,14 +645,7 @@
       <workItem from="1527192470020" duration="1376000" />
       <workItem from="1527243371658" duration="33784000" />
       <workItem from="1527329814254" duration="23476000" />
-      <workItem from="1527415976280" duration="32782000" />
-    </task>
-    <task id="LOCAL-00007" summary="v3">
-      <created>1525111001764</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1525111001764</updated>
+      <workItem from="1527415976280" duration="32865000" />
     </task>
     <task id="LOCAL-00008" summary="v3">
       <created>1525111689170</created>
@@ -1019,7 +983,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527449275818</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="v10.9">
+      <created>1527449369539</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1527449369539</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1028,7 +999,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332721000" />
+    <option name="totallyTimeSpent" value="332804000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1071,7 +1042,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="v6.5" />
     <MESSAGE value="v6.5.1" />
     <MESSAGE value="v6.5.2" />
     <MESSAGE value="v6.5.3" />
@@ -1096,7 +1066,8 @@
     <MESSAGE value="v10.6" />
     <MESSAGE value="v10.7" />
     <MESSAGE value="v10.8" />
-    <option name="LAST_COMMIT_MESSAGE" value="v10.8" />
+    <MESSAGE value="v10.9" />
+    <option name="LAST_COMMIT_MESSAGE" value="v10.9" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1508,8 +1479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        <state relative-caret-position="504">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
