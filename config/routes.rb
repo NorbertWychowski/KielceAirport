@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static#index'
   scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
     root 'static#index'
 

@@ -70,13 +70,41 @@ class TicketsController < ApplicationController
     ticket = Ticket.find(params[:id])
     flight = ticket.flight
     airport = flight.airport
-
     qr = RQRCode::QRCode.new(ticket.id.to_s, size: 4, level: :h)
 
+    TicketsController.create_ticket_pdf([ticket]) unless File.exists?(Rails.root.join('public', 'tickets', "#{ticket.id}.pdf"))
+
     respond_to do |format|
-      format.html {render :ticket_pdf, locals: {ticket: ticket, flight: flight, airpot: airport, qr: qr}}
-      format.pdf Rails.root.join('public', 'tickets', "#{ticket.id}")
+      format.html {render :ticket_pdf,
+                          template: 'tickets/ticket_pdf.html.erb',
+                          layout: 'ticket',
+                          locals: {ticket: ticket, flight: flight, airpot: airport, qr: qr, type: 'html'}}
+      format.pdf {send_file(Rails.root.join('public', 'tickets', "#{ticket.id}.pdf"),
+                            filename: "Bilet - #{airport.name} #{flight.dep_date}.pdf",
+                            type: :pdf,
+                            stream: true,
+                            buffer_size: 4096,
+                            disposition: :inline)}
     end
+  end
+
+  def self.create_ticket_pdf(tickets)
+    pdfs = []
+    tickets.each do |t|
+      flight = t.flight
+      airport = flight.airport
+      qr = RQRCode::QRCode.new(t.id.to_s, size: 4, level: :h)
+      pdf = render pdf: "BILET - #{airport.name} - #{flight.dep_date}",
+                   template: 'tickets/ticket_pdf.html.erb',
+                   layout: 'ticket',
+                   page_size: 'A4',
+                   locals: {ticket: t, flight: flight, airport: airport, qr: qr, type: 'pdf'}
+
+      File.open(Rails.root.join('public', 'tickets', "#{t.id}.pdf"), mode: 'wb') {|file| file << pdf}
+      pdfs << {name: "BILET - #{airport.name} - #{flight.dep_date}",
+               path: Rails.root.join('public', 'tickets', "#{t.id}.pdf")}
+    end
+    pdfs
   end
 
   def payment_confirm

@@ -22,8 +22,8 @@
         <td class="table-element"><%= "%.02fzł" % ticket.price %></td>
         <td class="table-element"><%= FlightStatus.i18n_status ticket.status %></td>
         <td class="table-element">
-          <%= link_to ticket_pdf_path(ticket, format: :pdf), class: 'table-link' do %>
-            <i class="fa fa-margin fa-file" aria-hidden="true"></i>Pobierz
+          <%= link_to ticket_pdf_path(ticket, format: :pdf), class: 'table-link', target: '_blank' do %>
+            <i class="fa fa-margin fa-file-pdf-o" aria-hidden="true"></i>Pobierz
           <% end %>
         </td>
       </tr>

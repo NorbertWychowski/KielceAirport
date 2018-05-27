@@ -57,6 +57,7 @@ class CustomersController < ApplicationController
                                  'flights.dep_date as dep_date, airports.name as airport, tickets.price as price, ' +
                                  'flight_statuses.name as status')
                      .where(customer: @customer.customer_id)
+                     .order(id: :asc)
                      .page(params[:page]).per(10)
       #@tickets.each {|t| TicketsHelper.ticket_pdf(t.id)}
     else

@@ -6,10 +6,11 @@
 
   <%= wicked_pdf_stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': true %>
   <%= wicked_pdf_stylesheet_link_tag 'w3' %>
-  <%= wicked_pdf_javascript_include_tag 'application', 'data-turbolinks-track': true %>
 </head>
 
-<body class="ticket-body" style="transform: scale(0.5)">
-<%= yield %>
+<body class="ticket-body">
+<div style="border: 1px solid white; background-color: white; padding: 12px 36px;">
+  <%= yield %>
+</div>
 </body>
 </html>

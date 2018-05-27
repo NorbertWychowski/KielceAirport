@@ -803,13 +803,13 @@ li.table-action {
 .ticket-body {
   background: none;
   max-width: 1200px;
-  padding: 12px 36px;
   margin: auto;
   border-radius: 24px;
   border-left: 48px solid #015e94;
 }
 
 .ticket-container {
+  left: 12px;
   margin-top: 48px;
   padding: 16px;
 }
@@ -844,7 +844,7 @@ h1.ticket-title {
 
 ul.ticket {
   list-style: none;
-  color: rgba(34, 40, 49, 0.7);
+  color: rgb(34, 40, 49);
 }
 
 .loader {
