@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails KielceAirport: production" uuid="1751f098-77dc-4363-b2b2-7e1172005ebc">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>hr</user-name>
+    </data-source>
+    <data-source name="Rails KielceAirport: test" uuid="bda35684-d62f-4c46-a676-8d7950fde06d">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="@localhost" uuid="2aebcbe4-6b87-4708-ad02-47b709731d4a">
+      <database-info product="MySQL" version="5.7.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>hr</user-name>
+      <introspection-schemas>*:*</introspection-schemas>
+    </data-source>
+    <data-source name="Rails KielceAirport: development" uuid="b0fa547b-3fc4-4833-8d91-c71b43a50fa1">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
