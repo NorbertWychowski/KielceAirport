@@ -27,7 +27,8 @@ $(function () {
         return false;
     });
 
-    $('#customer_tickets').on('click', function () {
+    $('#customer_tickets #paginate').on('click', function () {
+        console.log("test");
         $.getScript(this.href);
         return false;
     });
