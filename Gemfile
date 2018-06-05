@@ -36,7 +36,7 @@ gem 'carrierwave', '~> 1.0'
 # gem do skalowania obrazow
 gem 'mini_magick', '~> 4.3'
 
-# gem do podstron - m.in. newsy
+# gem do paginacji
 gem 'kaminari'
 
 # wykresy
